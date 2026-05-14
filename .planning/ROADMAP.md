@@ -12,7 +12,7 @@ A cinematic dashboard surfacing real-time Mars and Moon environmental data from 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Scaffold & Shell** — Vite/React/Tailwind/Query app boots with two-tab dark UI and env vars wired
+- [x] **Phase 1: Scaffold & Shell** — Vite/React/Tailwind/Query app boots with two-tab dark UI and env vars wired
 - [ ] **Phase 2: Shared UI Primitives** — Reusable DataCard/TooltipWrapper/StatusBadge/AlertCard/LastUpdated/LoadingState ready for data tabs
 - [ ] **Phase 3: Mars Tab — Surface Data** — Mars tab shows live MAAS2/Curiosity REMS data with tooltips and timestamps
 - [ ] **Phase 4: Moon Tab — Three Sub-Sections** — Moon tab shows lunar context, NOAA solar wind, and NASA DONKI alerts end-to-end
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. User's NASA API key is read from `VITE_NASA_API_KEY` (defaulting to `DEMO_KEY`) without ever being hardcoded, and `.env` is gitignored.
 **Plans**: 2 plans
 - [x] 01-01-scaffold-PLAN.md — Vite + React + Tailwind + TanStack Query scaffold; env-var accessor; .gitignore (SCAF-01..05)
-- [ ] 01-02-shell-PLAN.md — Two-tab dark shell with star-field, Inter typography, palette-aware TabBar, responsive baseline (SHELL-01..05)
+- [x] 01-02-shell-PLAN.md — Two-tab dark shell with star-field, Inter typography, palette-aware TabBar, responsive baseline (SHELL-01..05)
 **UI hint**: yes
 
 ### Phase 2: Shared UI Primitives
@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffold & Shell | 1/2 | In progress | - |
+| 1. Scaffold & Shell | 2/2 | Complete | 2026-05-14 |
 | 2. Shared UI Primitives | 0/TBD | Not started | - |
 | 3. Mars Tab — Surface Data | 0/TBD | Not started | - |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |

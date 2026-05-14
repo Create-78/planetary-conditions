@@ -23,11 +23,16 @@ REQ-ID format: `[CATEGORY]-[NUMBER]`.
 
 ### Shell & Navigation (SHELL)
 
-- [ ] **SHELL-01**: Two-tab top-level navigation (Mars / Moon) with prominent visual styling matched to each body's palette
-- [ ] **SHELL-02**: Active tab is visually distinct; switching tabs is instant (state-only, no route reload)
-- [ ] **SHELL-03**: Subtle star-field background texture applied behind both tabs
-- [ ] **SHELL-04**: Typography uses a clean technical sans-serif (Space Grotesk, Inter, or Geist)
-- [ ] **SHELL-05**: Layout is desktop-first; mobile renders without breaking (basic responsive baseline, single-column fallback)
+- [x] **SHELL-01
+**: Two-tab top-level navigation (Mars / Moon) with prominent visual styling matched to each body's palette
+- [x] **SHELL-02
+**: Active tab is visually distinct; switching tabs is instant (state-only, no route reload)
+- [x] **SHELL-03
+**: Subtle star-field background texture applied behind both tabs
+- [x] **SHELL-04
+**: Typography uses a clean technical sans-serif (Space Grotesk, Inter, or Geist)
+- [x] **SHELL-05
+**: Layout is desktop-first; mobile renders without breaking (basic responsive baseline, single-column fallback)
 
 ### Reusable Data UI (UI)
 
@@ -137,16 +142,16 @@ Every v1 REQ-ID is mapped to exactly one phase. Coverage: 54/54 ✓
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCAF-01 | Phase 1: Scaffold & Shell | Pending |
-| SCAF-02 | Phase 1: Scaffold & Shell | Pending |
-| SCAF-03 | Phase 1: Scaffold & Shell | Pending |
-| SCAF-04 | Phase 1: Scaffold & Shell | Pending |
-| SCAF-05 | Phase 1: Scaffold & Shell | Pending |
-| SHELL-01 | Phase 1: Scaffold & Shell | Pending |
-| SHELL-02 | Phase 1: Scaffold & Shell | Pending |
-| SHELL-03 | Phase 1: Scaffold & Shell | Pending |
-| SHELL-04 | Phase 1: Scaffold & Shell | Pending |
-| SHELL-05 | Phase 1: Scaffold & Shell | Pending |
+| SCAF-01 | Phase 1: Scaffold & Shell | Complete |
+| SCAF-02 | Phase 1: Scaffold & Shell | Complete |
+| SCAF-03 | Phase 1: Scaffold & Shell | Complete |
+| SCAF-04 | Phase 1: Scaffold & Shell | Complete |
+| SCAF-05 | Phase 1: Scaffold & Shell | Complete |
+| SHELL-01 | Phase 1: Scaffold & Shell | Complete |
+| SHELL-02 | Phase 1: Scaffold & Shell | Complete |
+| SHELL-03 | Phase 1: Scaffold & Shell | Complete |
+| SHELL-04 | Phase 1: Scaffold & Shell | Complete |
+| SHELL-05 | Phase 1: Scaffold & Shell | Complete |
 | UI-01 | Phase 2: Shared UI Primitives | Pending |
 | UI-02 | Phase 2: Shared UI Primitives | Pending |
 | UI-03 | Phase 2: Shared UI Primitives | Pending |
