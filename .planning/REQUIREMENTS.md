@@ -128,4 +128,61 @@ Data source: NASA DONKI (CME, FLR, GST endpoints). Requires `VITE_NASA_API_KEY`.
 
 ## Traceability
 
-(Filled by roadmap — maps each REQ-ID to its phase.)
+Every v1 REQ-ID is mapped to exactly one phase. Coverage: 54/54 ✓
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| SCAF-01 | Phase 1: Scaffold & Shell | Pending |
+| SCAF-02 | Phase 1: Scaffold & Shell | Pending |
+| SCAF-03 | Phase 1: Scaffold & Shell | Pending |
+| SCAF-04 | Phase 1: Scaffold & Shell | Pending |
+| SCAF-05 | Phase 1: Scaffold & Shell | Pending |
+| SHELL-01 | Phase 1: Scaffold & Shell | Pending |
+| SHELL-02 | Phase 1: Scaffold & Shell | Pending |
+| SHELL-03 | Phase 1: Scaffold & Shell | Pending |
+| SHELL-04 | Phase 1: Scaffold & Shell | Pending |
+| SHELL-05 | Phase 1: Scaffold & Shell | Pending |
+| UI-01 | Phase 2: Shared UI Primitives | Pending |
+| UI-02 | Phase 2: Shared UI Primitives | Pending |
+| UI-03 | Phase 2: Shared UI Primitives | Pending |
+| UI-04 | Phase 2: Shared UI Primitives | Pending |
+| UI-05 | Phase 2: Shared UI Primitives | Pending |
+| UI-06 | Phase 2: Shared UI Primitives | Pending |
+| UI-07 | Phase 2: Shared UI Primitives | Pending |
+| MARS-01 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-02 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-03 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-04 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-05 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-06 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-07 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-08 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-09 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-10 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-11 | Phase 3: Mars Tab — Surface Data | Pending |
+| LUNAR-01 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| LUNAR-02 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| LUNAR-03 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| LUNAR-04 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| LUNAR-05 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-01 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-02 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-03 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-04 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-05 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-06 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-07 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| DONKI-01 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| DONKI-02 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| DONKI-03 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| DONKI-04 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| DONKI-05 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| REL-01 | Phase 5: Reliability & UX Polish | Pending |
+| REL-02 | Phase 5: Reliability & UX Polish | Pending |
+| REL-03 | Phase 5: Reliability & UX Polish | Pending |
+| REL-04 | Phase 5: Reliability & UX Polish | Pending |
+| REL-05 | Phase 5: Reliability & UX Polish | Pending |
+| DEPLOY-01 | Phase 6: Vercel Deployment | Pending |
+| DEPLOY-02 | Phase 6: Vercel Deployment | Pending |
+| DEPLOY-03 | Phase 6: Vercel Deployment | Pending |
+| DEPLOY-04 | Phase 6: Vercel Deployment | Pending |
