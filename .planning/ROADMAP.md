@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. User on desktop sees the intended layout; user on a narrow viewport sees a non-broken single-column fallback.
   5. User's NASA API key is read from `VITE_NASA_API_KEY` (defaulting to `DEMO_KEY`) without ever being hardcoded, and `.env` is gitignored.
 **Plans**: 2 plans
-- [ ] 01-01-scaffold-PLAN.md — Vite + React + Tailwind + TanStack Query scaffold; env-var accessor; .gitignore (SCAF-01..05)
+- [x] 01-01-scaffold-PLAN.md — Vite + React + Tailwind + TanStack Query scaffold; env-var accessor; .gitignore (SCAF-01..05)
 - [ ] 01-02-shell-PLAN.md — Two-tab dark shell with star-field, Inter typography, palette-aware TabBar, responsive baseline (SHELL-01..05)
 **UI hint**: yes
 
@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffold & Shell | 0/2 | Not started | - |
+| 1. Scaffold & Shell | 1/2 | In progress | - |
 | 2. Shared UI Primitives | 0/TBD | Not started | - |
 | 3. Mars Tab — Surface Data | 0/TBD | Not started | - |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |

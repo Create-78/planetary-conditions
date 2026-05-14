@@ -10,11 +10,16 @@ REQ-ID format: `[CATEGORY]-[NUMBER]`.
 
 ### Project Scaffold (SCAF)
 
-- [ ] **SCAF-01**: Vite + React project initialized with the recommended structure (App.jsx, components/, tabs/, hooks/, utils/, constants/)
-- [ ] **SCAF-02**: Tailwind CSS configured with dark theme as default and body-specific color tokens (amber/rust palette for Mars, blue/silver palette for Moon)
-- [ ] **SCAF-03**: TanStack Query (React Query) installed and `QueryClientProvider` wraps the app
-- [ ] **SCAF-04**: `VITE_NASA_API_KEY` env var wired (reads from `.env`, defaults to `DEMO_KEY` if unset); never hardcoded
-- [ ] **SCAF-05**: Repo initialized on GitHub with `.gitignore` excluding `.env` and `node_modules`
+- [x] **SCAF-01
+**: Vite + React project initialized with the recommended structure (App.jsx, components/, tabs/, hooks/, utils/, constants/)
+- [x] **SCAF-02
+**: Tailwind CSS configured with dark theme as default and body-specific color tokens (amber/rust palette for Mars, blue/silver palette for Moon)
+- [x] **SCAF-03
+**: TanStack Query (React Query) installed and `QueryClientProvider` wraps the app
+- [x] **SCAF-04
+**: `VITE_NASA_API_KEY` env var wired (reads from `.env`, defaults to `DEMO_KEY` if unset); never hardcoded
+- [x] **SCAF-05
+**: Repo initialized on GitHub with `.gitignore` excluding `.env` and `node_modules`
 
 ### Shell & Navigation (SHELL)
 

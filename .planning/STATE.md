@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Roadmap and STATE initialized; ready for `/gsd-plan-phase 1`
-last_updated: "2026-05-14T20:55:10.529Z"
-last_activity: 2026-05-14 — Roadmap created, 6 phases derived, 100% requirement coverage validated
+status: executing
+stopped_at: Completed 01-scaffold-shell/01-01-scaffold-PLAN.md — ready for 01-02-shell-PLAN.md
+last_updated: "2026-05-14T21:03:08.950Z"
+last_activity: 2026-05-14
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 2
-  completed_plans: 0
-  percent: 0
+  completed_plans: 1
+  percent: 50
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 
 ## Current Position
 
-Phase: 1 of 6 (Scaffold & Shell)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-05-14 — Roadmap created, 6 phases derived, 100% requirement coverage validated
+Phase: 1 (Scaffold & Shell) — EXECUTING
+Plan: 2 of 2
+Status: Ready to execute
+Last activity: 2026-05-14
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-scaffold-shell P01-scaffold | 3.08 | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,9 @@ Recent decisions affecting current work:
 - Lunar surface temp is a phase-based model (clearly labeled estimate), not LRO Diviner live data
 - Client-side API calls only — no backend proxy unless `DEMO_KEY` rate limits hit
 - Moon tab's three sub-sections (Lunar / SWPC / DONKI) ship as parallelizable plans inside one phase
+- Phase 1 Plan 1: Wrote Vite scaffold files directly (no npm create vite) — non-empty working dir would hang the interactive prompt under autonomous execution
+- Phase 1 Plan 1: Pinned tailwindcss to ^3.4.0 (not v4) for ecosystem stability
+- Phase 1 Plan 1: Omitted /vite.svg favicon link to keep console clean and avoid demo-asset 404
 
 ### Pending Todos
 
@@ -84,8 +88,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-14
-Stopped at: Roadmap and STATE initialized; ready for `/gsd-plan-phase 1`
+Last session: 2026-05-14T21:03:08.939Z
+Stopped at: Completed 01-scaffold-shell/01-01-scaffold-PLAN.md — ready for 01-02-shell-PLAN.md
 Resume file: None
 
 **Planned Phase:** 1 (Scaffold & Shell) — 2 plans — 2026-05-14T20:55:10.519Z
