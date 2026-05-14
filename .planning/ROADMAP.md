@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffold & Shell | 2/2 | Complete | 2026-05-14 |
+| 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
 | 2. Shared UI Primitives | 0/TBD | Not started | - |
 | 3. Mars Tab — Surface Data | 0/TBD | Not started | - |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |
