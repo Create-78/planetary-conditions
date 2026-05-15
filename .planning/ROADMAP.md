@@ -46,7 +46,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User sees independent per-card skeleton loaders — a slow component never blanks neighbouring cards.
   4. User sees colored status badges (e.g., Low/Moderate/High) and alert cards (event-type badge, UTC time, severity) rendered consistently with the body's palette.
   5. All tooltip copy lives in `constants/tooltips.js` and updating it there updates the UI everywhere.
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 02-01-foundation-primitives-PLAN.md — TooltipWrapper, LoadingState, useNow hook, tooltips.js source-of-truth (UI-02, UI-06, UI-07)
+- [ ] 02-02-composite-primitives-PLAN.md — DataCard, StatusBadge, AlertCard, LastUpdated (UI-01, UI-03, UI-04, UI-05)
+- [ ] 02-03-demo-galleries-PLAN.md — MarsTab and MoonTab demo galleries rendering every primitive in every state
 **UI hint**: yes
 
 ### Phase 3: Mars Tab — Surface Data
@@ -107,7 +110,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
-| 2. Shared UI Primitives | 0/TBD | Not started | - |
+| 2. Shared UI Primitives | 0/3 | Not started | - |
 | 3. Mars Tab — Surface Data | 0/TBD | Not started | - |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |
 | 5. Reliability & UX Polish | 0/TBD | Not started | - |
