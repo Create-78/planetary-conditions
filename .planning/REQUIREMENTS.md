@@ -57,16 +57,26 @@ Data source: MAAS2 API (`https://api.maas2.apollorion.com/`), no auth required, 
 
 - [x] **MARS-01
 **: `useMarsData` React Query hook fetches latest sol from MAAS2 with `refetchInterval: 1h`
-- [ ] **MARS-02**: Display Sol number (Martian day) with tooltip explaining sol length (~24h 37min)
-- [ ] **MARS-03**: Display Earth date (`terrestrial_date`) corresponding to the sol
-- [ ] **MARS-04**: Display Min Temperature in °C with tooltip anchoring against Mars overnight lows
-- [ ] **MARS-05**: Display Max Temperature in °C with tooltip anchoring against daytime highs
-- [ ] **MARS-06**: Display Atmospheric Pressure in Pa with tooltip comparing to Earth (~0.6%)
-- [ ] **MARS-07**: Display Wind Speed in m/s with tooltip explaining why high speeds feel gentle on Mars
-- [ ] **MARS-08**: Display Humidity (%) with tooltip explaining dryness and water-ice context
-- [ ] **MARS-09**: Display Atmospheric Opacity (categorical, e.g., "Sunny" / "Dusty") with tooltip on dust storms
-- [ ] **MARS-10**: Source attribution: "From Curiosity Rover / REMS instrument" visible on the tab
-- [ ] **MARS-11**: Every data card shows per-card last-updated timestamp and a graceful "Data temporarily unavailable" error state
+- [x] **MARS-02
+**: Display Sol number (Martian day) with tooltip explaining sol length (~24h 37min)
+- [x] **MARS-03
+**: Display Earth date (`terrestrial_date`) corresponding to the sol
+- [x] **MARS-04
+**: Display Min Temperature in °C with tooltip anchoring against Mars overnight lows
+- [x] **MARS-05
+**: Display Max Temperature in °C with tooltip anchoring against daytime highs
+- [x] **MARS-06
+**: Display Atmospheric Pressure in Pa with tooltip comparing to Earth (~0.6%)
+- [x] **MARS-07
+**: Display Wind Speed in m/s with tooltip explaining why high speeds feel gentle on Mars
+- [x] **MARS-08
+**: Display Humidity (%) with tooltip explaining dryness and water-ice context
+- [x] **MARS-09
+**: Display Atmospheric Opacity (categorical, e.g., "Sunny" / "Dusty") with tooltip on dust storms
+- [x] **MARS-10
+**: Source attribution: "From Curiosity Rover / REMS instrument" visible on the tab
+- [x] **MARS-11
+**: Every data card shows per-card last-updated timestamp and a graceful "Data temporarily unavailable" error state
 
 ### Moon Tab — Lunar Context (LUNAR)
 

@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffold & Shell** — Vite/React/Tailwind/Query app boots with two-tab dark UI and env vars wired
 - [x] **Phase 2: Shared UI Primitives** — Reusable DataCard/TooltipWrapper/StatusBadge/AlertCard/LastUpdated/LoadingState ready for data tabs
-- [ ] **Phase 3: Mars Tab — Surface Data** — Mars tab shows live MAAS2/Curiosity REMS data with tooltips and timestamps
+- [x] **Phase 3: Mars Tab — Surface Data** — Mars tab shows live MAAS2/Curiosity REMS data with tooltips and timestamps
 - [ ] **Phase 4: Moon Tab — Three Sub-Sections** — Moon tab shows lunar context, NOAA solar wind, and NASA DONKI alerts end-to-end
 - [ ] **Phase 5: Reliability & UX Polish** — Every panel has loading/error/freshness states; no blank panels, no full-page failures
 - [ ] **Phase 6: Vercel Deployment** — App ships on Vercel with VITE_NASA_API_KEY and CORS verified from production origin
@@ -113,7 +113,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
 | 2. Shared UI Primitives | 3/3 | Complete    | 2026-05-19 |
-| 3. Mars Tab — Surface Data | 0/2 | Not started | - |
+| 3. Mars Tab — Surface Data | 2/2 | Complete    | 2026-05-19 |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |
 | 5. Reliability & UX Polish | 0/TBD | Not started | - |
 | 6. Vercel Deployment | 0/TBD | Not started | - |
