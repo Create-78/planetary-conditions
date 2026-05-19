@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 01-scaffold-shell/01-02-shell-PLAN.md — Phase 1 complete; ready to transition to Phase 2
-last_updated: "2026-05-15T14:30:45.052Z"
-last_activity: 2026-05-14
+status: executing
+stopped_at: Completed 02-shared-ui-primitives/02-01-foundation-primitives-PLAN.md
+last_updated: "2026-05-19T12:50:10.241Z"
+last_activity: 2026-05-19
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 5
-  completed_plans: 2
-  percent: 40
+  completed_plans: 3
+  percent: 60
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 1 — Scaffold & Shell
+**Current focus:** Phase 02 — shared-ui-primitives
 
 ## Current Position
 
-Phase: 2
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-14
+Phase: 02 (shared-ui-primitives) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-05-19
 
-Progress: [██████████] 100%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Progress: [██████████] 100%
 *Updated after each plan completion*
 | Phase 01-scaffold-shell P01-scaffold | 3.08 | 2 tasks | 16 files |
 | Phase 01-scaffold-shell P02-shell | 1.85 | 3 tasks | 7 files |
+| Phase 02-shared-ui-primitives P01-foundation-primitives | 3 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,9 @@ Recent decisions affecting current work:
 - Phase 1 Plan 2: Task 3 human-verify checkpoint auto-approved per session-wide 'no clarifying questions' instruction; rollback via git revert if needed
 - Phase 1 Plan 2: TabBar takes activeTab/onTabChange as props (no internal state) so the source of truth stays in App.jsx — clean lift path to React context in Phase 2 if needed
 - Phase 1 Plan 2: StarField is fixed inset-0 z-0 pointer-events-none aria-hidden — content sits at z-10; this z-index contract is the baseline for all subsequent UI
+- Phase 2 Plan 1: TooltipWrapper uses createPortal to document.body to escape ancestor overflow/transform clipping; no external library per 02-CONTEXT
+- Phase 2 Plan 1: useNow shares one module-level setInterval across all subscribers (ref-counted teardown) so 10 LastUpdated cards don't drift apart
+- Phase 2 Plan 1: tooltips.js is a flat namespaced object with getTooltip(key) returning null on miss — Phase 3/4 will add real per-datapoint keys against the same shape
 
 ### Pending Todos
 
@@ -94,8 +98,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-14T21:08:30.504Z
-Stopped at: Completed 01-scaffold-shell/01-02-shell-PLAN.md — Phase 1 complete; ready to transition to Phase 2
+Last session: 2026-05-19T12:50:10.231Z
+Stopped at: Completed 02-shared-ui-primitives/02-01-foundation-primitives-PLAN.md
 Resume file: None
 
 **Planned Phase:** 2 () — 0 plans — 2026-05-15T14:30:45.042Z

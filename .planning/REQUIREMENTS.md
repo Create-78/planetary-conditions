@@ -37,12 +37,15 @@ REQ-ID format: `[CATEGORY]-[NUMBER]`.
 ### Reusable Data UI (UI)
 
 - [ ] **UI-01**: `DataCard` component renders label, value, unit, and tooltip trigger; supports loading skeleton and error state per card
-- [ ] **UI-02**: `TooltipWrapper` shows a plain-language explainer on hover with an Earth comparison where relevant
+- [x] **UI-02
+**: `TooltipWrapper` shows a plain-language explainer on hover with an Earth comparison where relevant
 - [ ] **UI-03**: `StatusBadge` renders a colored badge (e.g., Radiation Risk: Low/Moderate/High) with body-appropriate palette
 - [ ] **UI-04**: `AlertCard` renders a DONKI solar event with type badge, UTC time, severity/class, and tooltip
 - [ ] **UI-05**: `LastUpdated` component shows "Last updated X mins ago" (or UTC timestamp) per data panel
-- [ ] **UI-06**: `LoadingState` skeleton loaders render independently per card — one slow API never blocks a whole tab
-- [ ] **UI-07**: Tooltip copy lives in a single `constants/tooltips.js` source-of-truth file
+- [x] **UI-06
+**: `LoadingState` skeleton loaders render independently per card — one slow API never blocks a whole tab
+- [x] **UI-07
+**: Tooltip copy lives in a single `constants/tooltips.js` source-of-truth file
 
 ### Mars Tab — Surface Data (MARS)
 
