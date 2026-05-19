@@ -77,7 +77,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User sees a scrollable list of last-7-days DONKI events (CME / Flare / GST) rendered as alert cards with type badge, UTC time, severity/class, and tooltips on what each means for lunar surface radiation.
   4. User who opens the Moon tab during a quiet space-weather week sees "No significant events in the past 7 days — conditions are calm." instead of an empty panel.
   5. User's Moon tab refreshes each section on its own cadence (SWPC every 5 min, DONKI every 15 min, lunar phase static) without blanking the UI.
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 04-01-PLAN.md — Pure utilities + tooltip copy: src/utils/lunarPhase.js, src/utils/radiationRisk.js, 11-key extension to tooltips.js (LUNAR-05, SWPC-07)
+- [ ] 04-02-PLAN.md — Three data hooks: useLunarPhase (pure math), useSolarWind (3 NOAA endpoints @ 5min), useDonkiEvents (3 NASA DONKI endpoints @ 15min) (LUNAR-01, SWPC-01, DONKI-01)
+- [ ] 04-03-PLAN.md — Live MoonTab.jsx: three independently-sourced sections (Lunar Context, Space Weather, Solar Event Alerts) with per-section cardState, scrollable AlertCard list, verbatim empty-state copy (LUNAR-02..04, SWPC-02..06, DONKI-02..05)
 **UI hint**: yes
 
 ### Phase 5: Reliability & UX Polish
@@ -114,6 +117,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
 | 2. Shared UI Primitives | 3/3 | Complete    | 2026-05-19 |
 | 3. Mars Tab — Surface Data | 2/2 | Complete    | 2026-05-19 |
-| 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |
+| 4. Moon Tab — Three Sub-Sections | 0/3 | Planned | - |
 | 5. Reliability & UX Polish | 0/TBD | Not started | - |
 | 6. Vercel Deployment | 0/TBD | Not started | - |
