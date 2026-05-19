@@ -36,12 +36,16 @@ REQ-ID format: `[CATEGORY]-[NUMBER]`.
 
 ### Reusable Data UI (UI)
 
-- [ ] **UI-01**: `DataCard` component renders label, value, unit, and tooltip trigger; supports loading skeleton and error state per card
+- [x] **UI-01
+**: `DataCard` component renders label, value, unit, and tooltip trigger; supports loading skeleton and error state per card
 - [x] **UI-02
 **: `TooltipWrapper` shows a plain-language explainer on hover with an Earth comparison where relevant
-- [ ] **UI-03**: `StatusBadge` renders a colored badge (e.g., Radiation Risk: Low/Moderate/High) with body-appropriate palette
-- [ ] **UI-04**: `AlertCard` renders a DONKI solar event with type badge, UTC time, severity/class, and tooltip
-- [ ] **UI-05**: `LastUpdated` component shows "Last updated X mins ago" (or UTC timestamp) per data panel
+- [x] **UI-03
+**: `StatusBadge` renders a colored badge (e.g., Radiation Risk: Low/Moderate/High) with body-appropriate palette
+- [x] **UI-04
+**: `AlertCard` renders a DONKI solar event with type badge, UTC time, severity/class, and tooltip
+- [x] **UI-05
+**: `LastUpdated` component shows "Last updated X mins ago" (or UTC timestamp) per data panel
 - [x] **UI-06
 **: `LoadingState` skeleton loaders render independently per card — one slow API never blocks a whole tab
 - [x] **UI-07
@@ -155,13 +159,13 @@ Every v1 REQ-ID is mapped to exactly one phase. Coverage: 54/54 ✓
 | SHELL-03 | Phase 1: Scaffold & Shell | Complete |
 | SHELL-04 | Phase 1: Scaffold & Shell | Complete |
 | SHELL-05 | Phase 1: Scaffold & Shell | Complete |
-| UI-01 | Phase 2: Shared UI Primitives | Pending |
-| UI-02 | Phase 2: Shared UI Primitives | Pending |
-| UI-03 | Phase 2: Shared UI Primitives | Pending |
-| UI-04 | Phase 2: Shared UI Primitives | Pending |
-| UI-05 | Phase 2: Shared UI Primitives | Pending |
-| UI-06 | Phase 2: Shared UI Primitives | Pending |
-| UI-07 | Phase 2: Shared UI Primitives | Pending |
+| UI-01 | Phase 2: Shared UI Primitives | Complete |
+| UI-02 | Phase 2: Shared UI Primitives | Complete |
+| UI-03 | Phase 2: Shared UI Primitives | Complete |
+| UI-04 | Phase 2: Shared UI Primitives | Complete |
+| UI-05 | Phase 2: Shared UI Primitives | Complete |
+| UI-06 | Phase 2: Shared UI Primitives | Complete |
+| UI-07 | Phase 2: Shared UI Primitives | Complete |
 | MARS-01 | Phase 3: Mars Tab — Surface Data | Pending |
 | MARS-02 | Phase 3: Mars Tab — Surface Data | Pending |
 | MARS-03 | Phase 3: Mars Tab — Surface Data | Pending |

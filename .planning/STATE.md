@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-shared-ui-primitives/02-01-foundation-primitives-PLAN.md
-last_updated: "2026-05-19T12:50:10.241Z"
+stopped_at: Completed 02-shared-ui-primitives/02-02-composite-primitives-PLAN.md
+last_updated: "2026-05-19T12:56:37.615Z"
 last_activity: 2026-05-19
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 5
-  completed_plans: 3
-  percent: 60
+  completed_plans: 4
+  percent: 80
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 ## Current Position
 
 Phase: 02 (shared-ui-primitives) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-05-19
 
-Progress: [██████░░░░] 60%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Progress: [██████░░░░] 60%
 | Phase 01-scaffold-shell P01-scaffold | 3.08 | 2 tasks | 16 files |
 | Phase 01-scaffold-shell P02-shell | 1.85 | 3 tasks | 7 files |
 | Phase 02-shared-ui-primitives P01-foundation-primitives | 3 | 2 tasks | 4 files |
+| Phase 02-shared-ui-primitives PP02-composite-primitives | 2.47 | 2 tasks tasks | 4 files files |
 
 ## Accumulated Context
 
@@ -79,6 +80,11 @@ Recent decisions affecting current work:
 - Phase 2 Plan 1: TooltipWrapper uses createPortal to document.body to escape ancestor overflow/transform clipping; no external library per 02-CONTEXT
 - Phase 2 Plan 1: useNow shares one module-level setInterval across all subscribers (ref-counted teardown) so 10 LastUpdated cards don't drift apart
 - Phase 2 Plan 1: tooltips.js is a flat namespaced object with getTooltip(key) returning null on miss — Phase 3/4 will add real per-datapoint keys against the same shape
+- Phase 2 Plan 2: StatusBadge severity colors are universal (green/amber/red), NOT palette-tinted — semantic signals must read consistently across Mars/Moon tabs
+- Phase 2 Plan 2: DataCard renders em-dash '—' for null/undefined value in state='ok' rather than crashing — matches LastUpdated null-timestamp glyph for visual consistency
+- Phase 2 Plan 2: LastUpdated skips TooltipWrapper when timestamp is null/invalid — wrapping an em-dash in a hover affordance would be a confusing no-op
+- Phase 2 Plan 2: AlertCard info-icon trigger gets tabIndex=0 + role='button' so TooltipWrapper's focus handlers give keyboard users the same tooltip access mouse users get
+- Phase 2 Plan 2: Slate fallback color classes for unknown StatusBadge severity and unknown AlertCard eventType — Phase 3/4 can extend the type sets without crashing on undefined.classes
 
 ### Pending Todos
 
@@ -98,8 +104,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-19T12:50:10.231Z
-Stopped at: Completed 02-shared-ui-primitives/02-01-foundation-primitives-PLAN.md
+Last session: 2026-05-19T12:56:37.606Z
+Stopped at: Completed 02-shared-ui-primitives/02-02-composite-primitives-PLAN.md
 Resume file: None
 
 **Planned Phase:** 2 () — 0 plans — 2026-05-15T14:30:45.042Z

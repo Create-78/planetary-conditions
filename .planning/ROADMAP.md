@@ -48,7 +48,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. All tooltip copy lives in `constants/tooltips.js` and updating it there updates the UI everywhere.
 **Plans**: 3 plans
 - [x] 02-01-foundation-primitives-PLAN.md — TooltipWrapper, LoadingState, useNow hook, tooltips.js source-of-truth (UI-02, UI-06, UI-07)
-- [ ] 02-02-composite-primitives-PLAN.md — DataCard, StatusBadge, AlertCard, LastUpdated (UI-01, UI-03, UI-04, UI-05)
+- [x] 02-02-composite-primitives-PLAN.md — DataCard, StatusBadge, AlertCard, LastUpdated (UI-01, UI-03, UI-04, UI-05)
 - [ ] 02-03-demo-galleries-PLAN.md — MarsTab and MoonTab demo galleries rendering every primitive in every state
 **UI hint**: yes
 
