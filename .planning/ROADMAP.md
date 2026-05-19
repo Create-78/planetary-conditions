@@ -63,7 +63,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. User sees per-card last-updated timestamps and a graceful "Data temporarily unavailable" message if MAAS2 fails — the tab never goes fully blank.
   5. User's Mars tab refreshes silently in the background on a 1-hour cadence without blanking the UI.
 **Plans**: 2 plans
-- [ ] 03-01-PLAN.md — useMarsData TanStack Query hook (MAAS2 + Content-Type quirk + 1h cadence) + mars.* tooltip copy in tooltips.js (MARS-01)
+- [x] 03-01-PLAN.md — useMarsData TanStack Query hook (MAAS2 + Content-Type quirk + 1h cadence) + mars.* tooltip copy in tooltips.js (MARS-01)
 - [ ] 03-02-PLAN.md — Live MarsTab.jsx: 8 DataCards bound to MAAS2 fields, source attribution, tab-level + per-card LastUpdated, shared loading/error state (MARS-02..11)
 **UI hint**: yes
 

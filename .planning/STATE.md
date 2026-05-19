@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 02-shared-ui-primitives/02-03-demo-galleries-PLAN.md
-last_updated: "2026-05-19T13:37:12.892Z"
+stopped_at: Completed 03-mars-tab-surface-data/03-01-PLAN.md
+last_updated: "2026-05-19T13:49:50.950Z"
 last_activity: 2026-05-19
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 7
-  completed_plans: 5
-  percent: 71
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 02 — shared-ui-primitives
+**Current focus:** Phase 03 — mars-tab-surface-data
 
 ## Current Position
 
 Phase: 3
-Plan: Not started
-Status: Ready to plan
+Plan: 03-01 complete; 03-02 next
+Status: Executing
 Last activity: 2026-05-19
 
-Progress: [██████████] 100%
+Progress: [█████████░] 86%
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [██████████] 100%
 | Phase 02-shared-ui-primitives P01-foundation-primitives | 3 | 2 tasks | 4 files |
 | Phase 02-shared-ui-primitives PP02-composite-primitives | 2.47 | 2 tasks tasks | 4 files files |
 | Phase 02-shared-ui-primitives P03-demo-galleries | 2.42 | 2 tasks tasks | 2 files files |
+| Phase 03-mars-tab-surface-data P03-01 | 2.43 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -90,6 +91,11 @@ Recent decisions affecting current work:
 - Phase 2 Plan 3: Demo gallery timestamps live at module scope so values stay stable across useNow 30s ticks — declaring them inside the component would resample on every render and jitter the 'just now' / '3 mins ago' / '2 hours ago' chips
 - Phase 2 Plan 3: Both MarsTab and MoonTab use identical 4-section structure with only palette + tooltip-key swaps — proves universal-severity colors (high=red on both tabs) and AlertCard event-type colors are palette-neutral, with body palette reserved for DataCard accent rings + LastUpdated dim text
 - Phase 2 Plan 3: Comments inside MarsTab/MoonTab avoid the literal strings 'Phase 3' / 'Phase 4' because the plan's verification negative-greps assert these tokens do not appear in the tab files — same pattern as Plan 01's 'shimmer' and 'setInterval' comment-grep collisions
+- Phase 3 Plan 1: useMarsData hook uses fetch(url).then(r => r.text()).then(JSON.parse) (not r.json()) to bypass MAAS2's GitHub-Pages Content-Type quirk per D-04
+- Phase 3 Plan 1: useMarsData throws Error on !response.ok or invalid JSON so TanStack Query surfaces isError=true; returning null would bypass the DataCard error branch in Plan 03-02
+- Phase 3 Plan 1: useMarsData queryKey is ['mars','maas2','latest'] — the 'latest' discriminator leaves room for a v2 sol-selector ['mars','maas2', solNumber] without collisions
+- Phase 3 Plan 1: Doc-comment in useMarsData.js paraphrases around the literals r.json() and VITE_NASA_API_KEY because the plan's verification negative-greps both strings — same comment-grep collision pattern as Phase 1/2 tab files
+- Phase 3 Plan 1: Tooltip source string locked to verbatim 'MAAS2 / Curiosity REMS' across all eight mars.* entries per D-21
 
 ### Pending Todos
 
@@ -109,8 +115,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-19T13:03:28.024Z
-Stopped at: Completed 02-shared-ui-primitives/02-03-demo-galleries-PLAN.md
+Last session: 2026-05-19T13:49:50.940Z
+Stopped at: Completed 03-mars-tab-surface-data/03-01-PLAN.md
 Resume file: None
 
 **Planned Phase:** 03 () — 0 plans — 2026-05-19T13:37:12.882Z

@@ -55,7 +55,8 @@ REQ-ID format: `[CATEGORY]-[NUMBER]`.
 
 Data source: MAAS2 API (`https://api.maas2.apollorion.com/`), no auth required, refetch every 1 hour. Parse as JSON regardless of Content-Type header.
 
-- [ ] **MARS-01**: `useMarsData` React Query hook fetches latest sol from MAAS2 with `refetchInterval: 1h`
+- [x] **MARS-01
+**: `useMarsData` React Query hook fetches latest sol from MAAS2 with `refetchInterval: 1h`
 - [ ] **MARS-02**: Display Sol number (Martian day) with tooltip explaining sol length (~24h 37min)
 - [ ] **MARS-03**: Display Earth date (`terrestrial_date`) corresponding to the sol
 - [ ] **MARS-04**: Display Min Temperature in °C with tooltip anchoring against Mars overnight lows
@@ -166,7 +167,7 @@ Every v1 REQ-ID is mapped to exactly one phase. Coverage: 54/54 ✓
 | UI-05 | Phase 2: Shared UI Primitives | Complete |
 | UI-06 | Phase 2: Shared UI Primitives | Complete |
 | UI-07 | Phase 2: Shared UI Primitives | Complete |
-| MARS-01 | Phase 3: Mars Tab — Surface Data | Pending |
+| MARS-01 | Phase 3: Mars Tab — Surface Data | Complete |
 | MARS-02 | Phase 3: Mars Tab — Surface Data | Pending |
 | MARS-03 | Phase 3: Mars Tab — Surface Data | Pending |
 | MARS-04 | Phase 3: Mars Tab — Surface Data | Pending |
