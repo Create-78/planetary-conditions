@@ -13,7 +13,7 @@ A cinematic dashboard surfacing real-time Mars and Moon environmental data from 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffold & Shell** — Vite/React/Tailwind/Query app boots with two-tab dark UI and env vars wired
-- [ ] **Phase 2: Shared UI Primitives** — Reusable DataCard/TooltipWrapper/StatusBadge/AlertCard/LastUpdated/LoadingState ready for data tabs
+- [x] **Phase 2: Shared UI Primitives** — Reusable DataCard/TooltipWrapper/StatusBadge/AlertCard/LastUpdated/LoadingState ready for data tabs
 - [ ] **Phase 3: Mars Tab — Surface Data** — Mars tab shows live MAAS2/Curiosity REMS data with tooltips and timestamps
 - [ ] **Phase 4: Moon Tab — Three Sub-Sections** — Moon tab shows lunar context, NOAA solar wind, and NASA DONKI alerts end-to-end
 - [ ] **Phase 5: Reliability & UX Polish** — Every panel has loading/error/freshness states; no blank panels, no full-page failures
@@ -49,7 +49,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 - [x] 02-01-foundation-primitives-PLAN.md — TooltipWrapper, LoadingState, useNow hook, tooltips.js source-of-truth (UI-02, UI-06, UI-07)
 - [x] 02-02-composite-primitives-PLAN.md — DataCard, StatusBadge, AlertCard, LastUpdated (UI-01, UI-03, UI-04, UI-05)
-- [ ] 02-03-demo-galleries-PLAN.md — MarsTab and MoonTab demo galleries rendering every primitive in every state
+- [x] 02-03-demo-galleries-PLAN.md — MarsTab and MoonTab demo galleries rendering every primitive in every state
 **UI hint**: yes
 
 ### Phase 3: Mars Tab — Surface Data
@@ -110,7 +110,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
-| 2. Shared UI Primitives | 1/3 | In progress | - |
+| 2. Shared UI Primitives | 3/3 | Complete    | 2026-05-19 |
 | 3. Mars Tab — Surface Data | 0/TBD | Not started | - |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |
 | 5. Reliability & UX Polish | 0/TBD | Not started | - |

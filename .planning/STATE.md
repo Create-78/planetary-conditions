@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 02-shared-ui-primitives/02-02-composite-primitives-PLAN.md
-last_updated: "2026-05-19T12:56:37.615Z"
+status: verifying
+stopped_at: Completed 02-shared-ui-primitives/02-03-demo-galleries-PLAN.md
+last_updated: "2026-05-19T13:03:28.034Z"
 last_activity: 2026-05-19
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 4
-  percent: 80
+  completed_plans: 5
+  percent: 100
 ---
 
 # Project State
@@ -27,10 +27,10 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 
 Phase: 02 (shared-ui-primitives) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-05-19
 
-Progress: [████████░░] 80%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [████████░░] 80%
 | Phase 01-scaffold-shell P02-shell | 1.85 | 3 tasks | 7 files |
 | Phase 02-shared-ui-primitives P01-foundation-primitives | 3 | 2 tasks | 4 files |
 | Phase 02-shared-ui-primitives PP02-composite-primitives | 2.47 | 2 tasks tasks | 4 files files |
+| Phase 02-shared-ui-primitives P03-demo-galleries | 2.42 | 2 tasks tasks | 2 files files |
 
 ## Accumulated Context
 
@@ -85,6 +86,9 @@ Recent decisions affecting current work:
 - Phase 2 Plan 2: LastUpdated skips TooltipWrapper when timestamp is null/invalid — wrapping an em-dash in a hover affordance would be a confusing no-op
 - Phase 2 Plan 2: AlertCard info-icon trigger gets tabIndex=0 + role='button' so TooltipWrapper's focus handlers give keyboard users the same tooltip access mouse users get
 - Phase 2 Plan 2: Slate fallback color classes for unknown StatusBadge severity and unknown AlertCard eventType — Phase 3/4 can extend the type sets without crashing on undefined.classes
+- Phase 2 Plan 3: Demo gallery timestamps live at module scope so values stay stable across useNow 30s ticks — declaring them inside the component would resample on every render and jitter the 'just now' / '3 mins ago' / '2 hours ago' chips
+- Phase 2 Plan 3: Both MarsTab and MoonTab use identical 4-section structure with only palette + tooltip-key swaps — proves universal-severity colors (high=red on both tabs) and AlertCard event-type colors are palette-neutral, with body palette reserved for DataCard accent rings + LastUpdated dim text
+- Phase 2 Plan 3: Comments inside MarsTab/MoonTab avoid the literal strings 'Phase 3' / 'Phase 4' because the plan's verification negative-greps assert these tokens do not appear in the tab files — same pattern as Plan 01's 'shimmer' and 'setInterval' comment-grep collisions
 
 ### Pending Todos
 
@@ -104,8 +108,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-19T12:56:37.606Z
-Stopped at: Completed 02-shared-ui-primitives/02-02-composite-primitives-PLAN.md
+Last session: 2026-05-19T13:03:28.024Z
+Stopped at: Completed 02-shared-ui-primitives/02-03-demo-galleries-PLAN.md
 Resume file: None
 
 **Planned Phase:** 2 () — 0 plans — 2026-05-15T14:30:45.042Z
