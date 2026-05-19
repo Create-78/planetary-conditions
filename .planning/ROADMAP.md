@@ -62,7 +62,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User sees "From Curiosity Rover / REMS instrument" source attribution visible on the tab.
   4. User sees per-card last-updated timestamps and a graceful "Data temporarily unavailable" message if MAAS2 fails — the tab never goes fully blank.
   5. User's Mars tab refreshes silently in the background on a 1-hour cadence without blanking the UI.
-**Plans**: TBD
+**Plans**: 2 plans
+- [ ] 03-01-PLAN.md — useMarsData TanStack Query hook (MAAS2 + Content-Type quirk + 1h cadence) + mars.* tooltip copy in tooltips.js (MARS-01)
+- [ ] 03-02-PLAN.md — Live MarsTab.jsx: 8 DataCards bound to MAAS2 fields, source attribution, tab-level + per-card LastUpdated, shared loading/error state (MARS-02..11)
 **UI hint**: yes
 
 ### Phase 4: Moon Tab — Three Sub-Sections
@@ -111,7 +113,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
 | 2. Shared UI Primitives | 3/3 | Complete    | 2026-05-19 |
-| 3. Mars Tab — Surface Data | 0/TBD | Not started | - |
+| 3. Mars Tab — Surface Data | 0/2 | Not started | - |
 | 4. Moon Tab — Three Sub-Sections | 0/TBD | Not started | - |
 | 5. Reliability & UX Polish | 0/TBD | Not started | - |
 | 6. Vercel Deployment | 0/TBD | Not started | - |
