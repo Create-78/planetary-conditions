@@ -16,7 +16,7 @@ import { useQuery } from '@tanstack/react-query'
  *
  * Returns the full TanStack Query result object so the consumer (MarsTab.jsx)
  * can read { data, isLoading, isError, dataUpdatedAt, ... } and propagate state
- * to all nine DataCards from a single fetch (per 03-CONTEXT D-01, D-02).
+ * to all eight DataCards from a single fetch (per 03-CONTEXT D-01, D-02).
  *
  * No API key required for MAAS2 — Phase 4's DONKI calls will use the project's
  * NASA API key env var (out of scope here).

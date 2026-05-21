@@ -1,6 +1,7 @@
 import DataCard from '../components/DataCard.jsx'
 import LastUpdated from '../components/LastUpdated.jsx'
 import { useMarsData } from '../hooks/useMarsData.js'
+import { formatInt, formatOneDecimal } from '../utils/formatters.js'
 
 /**
  * MarsTab — Phase 3 live wiring.
@@ -22,21 +23,7 @@ import { useMarsData } from '../hooks/useMarsData.js'
 // src/constants/sources.js — but doesn't exist yet and isn't worth pre-extracting.
 const SOURCE_LINE = 'From Curiosity Rover · REMS instrument'
 
-// Number formatters — kept inline per D-26 / Claude's discretion. If Phase 4
-// needs the same formatters, extract to src/utils/formatters.js then.
-function formatInt(value) {
-  if (value === null || value === undefined) return null
-  const n = Number(value)
-  if (Number.isNaN(n)) return null
-  return Math.round(n).toString()
-}
-
-function formatOneDecimal(value) {
-  if (value === null || value === undefined) return null
-  const n = Number(value)
-  if (Number.isNaN(n)) return null
-  return n.toFixed(1)
-}
+// Number formatters live in src/utils/formatters.js (per 05-CONTEXT D-16).
 
 function MarsTab() {
   const { data, isLoading, isError, dataUpdatedAt } = useMarsData()

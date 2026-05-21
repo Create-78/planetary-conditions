@@ -7,6 +7,7 @@ import { useLunarPhase } from '../hooks/useLunarPhase.js'
 import { useSolarWind } from '../hooks/useSolarWind.js'
 import { useDonkiEvents } from '../hooks/useDonkiEvents.js'
 import { deriveRadiationRisk } from '../utils/radiationRisk.js'
+import { formatInt, formatOneDecimal, formatSignedDecimal } from '../utils/formatters.js'
 
 /**
  * MoonTab — live wiring for the three Moon-tab sub-sections.
@@ -26,40 +27,7 @@ import { deriveRadiationRisk } from '../utils/radiationRisk.js'
  * and 15-minute refetch ticks keep prior values rendered (D-43).
  */
 
-// Inline number formatters — kept inline per the prior Mars-tab carry-forward
-// note ("extract to src/utils/formatters.js when a second tab needs them").
-// This is now the second consumer; deferring extraction to Phase 5 polish so
-// MarsTab.jsx and MoonTab.jsx can be refactored together rather than in two
-// separate touches.
-function formatInt(value) {
-  if (value === null || value === undefined) return null
-  const n = Number(value)
-  if (Number.isNaN(n)) return null
-  return Math.round(n).toString()
-}
-
-function formatOneDecimal(value) {
-  if (value === null || value === undefined) return null
-  const n = Number(value)
-  if (Number.isNaN(n)) return null
-  return n.toFixed(1)
-}
-
-function formatSignedInt(value) {
-  if (value === null || value === undefined) return null
-  const n = Number(value)
-  if (Number.isNaN(n)) return null
-  const rounded = Math.round(n)
-  return rounded >= 0 ? `+${rounded}` : rounded.toString()
-}
-
-function formatSignedOneDecimal(value) {
-  if (value === null || value === undefined) return null
-  const n = Number(value)
-  if (Number.isNaN(n)) return null
-  const fixed = n.toFixed(1)
-  return n >= 0 ? `+${fixed}` : fixed
-}
+// Number formatters live in src/utils/formatters.js (per 05-CONTEXT D-16, D-17).
 
 function MoonTab() {
   const lunar = useLunarPhase()
@@ -81,7 +49,7 @@ function MoonTab() {
   const phaseName = lunar.phaseName
   const phasePercent = formatInt(lunar.phaseFraction * 100)
   const dayNight = lunar.dayNightStatus
-  const surfaceTemp = formatSignedInt(lunar.surfaceTempC)
+  const surfaceTemp = formatSignedDecimal(lunar.surfaceTempC)
 
   // Radiation Risk severity — null when either input is missing or when
   // the SWPC section is loading/errored. We only render the badge when we
@@ -190,7 +158,7 @@ function MoonTab() {
           <div className="flex flex-col gap-2">
             <DataCard
               label="Bz"
-              value={formatSignedOneDecimal(swpc.bz)}
+              value={formatSignedDecimal(swpc.bz)}
               unit="nT"
               tooltipKey="swpc.bz"
               state={swpcCardState}

@@ -113,6 +113,8 @@ export function useDonkiEvents() {
       flrUrl: `https://api.nasa.gov/DONKI/FLR?startDate=${d}&api_key=${NASA_API_KEY}`,
       gstUrl: `https://api.nasa.gov/DONKI/GST?startDate=${d}&api_key=${NASA_API_KEY}`,
     }
+    // NASA_API_KEY is a module-level constant baked in at build time by Vite;
+    // it is deliberately omitted from deps — only dayKey should re-trigger URL recomputation.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dayKey])
 
