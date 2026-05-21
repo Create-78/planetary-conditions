@@ -78,8 +78,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. User who opens the Moon tab during a quiet space-weather week sees "No significant events in the past 7 days — conditions are calm." instead of an empty panel.
   5. User's Moon tab refreshes each section on its own cadence (SWPC every 5 min, DONKI every 15 min, lunar phase static) without blanking the UI.
 **Plans**: 3 plans
-- [ ] 04-01-PLAN.md — Pure utilities + tooltip copy: src/utils/lunarPhase.js, src/utils/radiationRisk.js, 11-key extension to tooltips.js (LUNAR-05, SWPC-07)
-- [ ] 04-02-PLAN.md — Three data hooks: useLunarPhase (pure math), useSolarWind (3 NOAA endpoints @ 5min), useDonkiEvents (3 NASA DONKI endpoints @ 15min) (LUNAR-01, SWPC-01, DONKI-01)
+- [x] 04-01-PLAN.md — Pure utilities + tooltip copy: src/utils/lunarPhase.js, src/utils/radiationRisk.js, 11-key extension to tooltips.js (LUNAR-05, SWPC-07)
+- [x] 04-02-PLAN.md — Three data hooks: useLunarPhase (pure math), useSolarWind (3 NOAA endpoints @ 5min), useDonkiEvents (3 NASA DONKI endpoints @ 15min) (LUNAR-01, SWPC-01, DONKI-01)
 - [x] 04-03-PLAN.md — Live MoonTab.jsx: three independently-sourced sections (Lunar Context, Space Weather, Solar Event Alerts) with per-section cardState, scrollable AlertCard list, verbatim empty-state copy (LUNAR-02..04, SWPC-02..06, DONKI-02..05)
 **UI hint**: yes
 
