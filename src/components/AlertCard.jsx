@@ -43,13 +43,16 @@ function AlertCard({ eventType, timeUtc, severity, description, tooltipKey }) {
   const eventClasses = EVENT_CLASSES[eventType] || FALLBACK_EVENT_CLASS
   const tip = tooltipKey ? getTooltip(tooltipKey) : null
 
+  // The info icon is a static visual affordance — hover (desktop) and tap
+  // (touch, per TooltipWrapper IS_TOUCH path) drive the tooltip. No button
+  // ARIA role is advertised because we do not implement Enter/Space
+  // activation (per 05-CONTEXT D-12 / 02-REVIEW WR-01 — a false ARIA
+  // contract is worse than no contract).
   const infoIcon = tip ? (
     <TooltipWrapper content={tip.text}>
       <span
         className="ml-auto text-slate-500 text-xs cursor-help"
         aria-label="More info"
-        tabIndex={0}
-        role="button"
       >
         ⓘ
       </span>
