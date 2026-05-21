@@ -109,7 +109,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User's NASA DONKI calls use the `VITE_NASA_API_KEY` set in the Vercel dashboard, not `DEMO_KEY`.
   4. User on a production preview deploy sees the same end-to-end experience as local development.
 **Plans**: 2 plans
-- [ ] 06-01-PLAN.md — Pre-deploy hygiene audit + DEPLOYMENT.md runbook + README Deployment section (autonomous; prep for user-gated 06-02)
+- [x] 06-01-PLAN.md — Pre-deploy hygiene audit + DEPLOYMENT.md runbook + README Deployment section (autonomous; prep for user-gated 06-02)
 - [ ] 06-02-PLAN.md — User-gated deploy: GitHub push, Vercel import, env var, first build, CORS verify, smoke test, then docs-update sweep (DEPLOY-01..04)
 
 ## Progress
@@ -124,4 +124,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Mars Tab — Surface Data | 2/2 | Complete    | 2026-05-19 |
 | 4. Moon Tab — Three Sub-Sections | 3/3 | Complete    | 2026-05-21 |
 | 5. Reliability & UX Polish | 3/3 | Complete    | 2026-05-21 |
-| 6. Vercel Deployment | 0/2 | Not started | - |
+| 6. Vercel Deployment | 1/2 | In Progress | - |

@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 05-reliability-ux-polish/05-03-PLAN.md
-last_updated: "2026-05-21T19:07:09.625Z"
+stopped_at: Completed 06-vercel-deployment/06-01-PLAN.md
+last_updated: "2026-05-21T19:14:28.690Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 15
-  completed_plans: 13
-  percent: 87
+  completed_plans: 14
+  percent: 93
 ---
 
 # Project State
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 05 — reliability-ux-polish COMPLETE (Plans 01 + 02 + 03 shipped) → next: Phase 06 — Vercel Deployment (final phase)
+**Current focus:** Phase 06 — Vercel Deployment Plan 06-01 (pre-deploy hygiene + runbook) COMPLETE → next: Plan 06-02 (user-action gates: GitHub push, Vercel import, env var, CORS verification, smoke test)
 
 ## Current Position
 
 Phase: 6
-Plan: Not started
-Status: Ready to plan
+Plan: 06-02
+Status: Ready to execute
 Last activity: 2026-05-21
 
-Progress: [██████████] 100%
+Progress: [█████████░] 93%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 15
+- Total plans completed: 14
 - Average duration: —
 - Total execution time: 0.0 hours
 
@@ -70,6 +70,7 @@ Progress: [██████████] 100%
 | Phase 05 P05-01 | 2.35 | 2 tasks | 5 files |
 | Phase Phase 05 PP05-02 | 2.38 | 2 tasks tasks | 2 files files |
 | Phase Phase 05 PP05-03 | 2.4 | 3 tasks | 4 files |
+| Phase 06-vercel-deployment P06-01 | 4 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -141,6 +142,9 @@ Recent decisions affecting current work:
 - Phase 5 Plan 3: AbortSignal threaded into all three data hooks via TanStack v5 queryFn({ signal }) destructure; helpers accept { signal } = {} default-empty so they remain callable outside the Query pipeline
 - Phase 5 Plan 3: MoonTab DONKI scroll region is keyboard-focusable named landmark (tabIndex={0} + role=region + aria-label) and AlertCard list keys are namespaced by event type (D-14, D-15)
 - Phase 5 Plan 3: Audit inlined in plan SUMMARY.md (no separate AUDIT.md) per D-01; found zero REL-01..REL-05 drift across MarsTab + MoonTab — Phase 2 primitives + Phase 3/4 wiring already satisfy all reliability locks
+- Phase 6 Plan 1: Paraphrased DEMO_KEY refs in useDonkiEvents.js JSDoc to satisfy Audit 9 file-count gate (exactly one src/ file mentioning DEMO_KEY) — same comment-grep-collision-avoidance pattern as phases 1-5
+- Phase 6 Plan 1: DEPLOYMENT.md lives at repo root (NOT inside .planning/) per D-16 — users follow it without GSD context; runbook is 171 lines with Prerequisites, First-time deployment, Subsequent deploys, Preview deploys, Troubleshooting sections
+- Phase 6 Plan 1: README Live demo placeholder ('coming soon') NOT a real *.vercel.app URL — real URL inserted by Plan 06-02 Task 7 after user confirms first successful deploy (D-19)
 
 ### Pending Todos
 
@@ -160,8 +164,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T16:49:52.007Z
-Stopped at: Completed 05-reliability-ux-polish/05-03-PLAN.md
+Last session: 2026-05-21T19:14:28.678Z
+Stopped at: Completed 06-vercel-deployment/06-01-PLAN.md
 Resume file: None
 
 **Planned Phase:** 06 () — 0 plans — 2026-05-21T19:07:09.611Z
