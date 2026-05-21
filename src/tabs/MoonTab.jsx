@@ -203,10 +203,15 @@ function MoonTab() {
             No significant events in the past 7 days — conditions are calm.
           </div>
         ) : (
-          <div className="flex flex-col gap-2 max-h-96 overflow-y-auto pr-2">
+          <div
+            className="flex flex-col gap-2 max-h-96 overflow-y-auto pr-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-moon-accent"
+            tabIndex={0}
+            role="region"
+            aria-label="Recent solar events"
+          >
             {donki.events.map((ev) => (
               <AlertCard
-                key={ev.id}
+                key={`${ev.type}-${ev.id}`}
                 eventType={ev.type}
                 timeUtc={ev.time}
                 severity={ev.severity}
