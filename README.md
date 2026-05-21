@@ -4,6 +4,8 @@ Real-time surface and space environment data from Mars and the Moon — a cinema
 
 Why not "weather"? The Moon has no atmosphere. "Planetary Conditions" is more precise — and more interesting.
 
+**Live demo:** (coming soon — will be updated when first Vercel deploy completes)
+
 ---
 
 ## Status
@@ -33,6 +35,16 @@ Why not "weather"? The Moon has no atmosphere. "Planetary Conditions" is more pr
 - **Data:** TanStack Query (React Query) with per-source refresh intervals
 - **Deployment:** Vercel (auto-deploy from `main`)
 - **APIs:** MAAS2 (Mars/Curiosity), NOAA SWPC (solar wind), NASA DONKI (solar events), computed lunar phase
+
+---
+
+## Deployment
+
+The app deploys to Vercel as a static SPA with auto-deploy from `main`. Vercel auto-detects the Vite framework — no `vercel.json` config needed. Set `VITE_NASA_API_KEY` in the Vercel dashboard (Project → Settings → Environment Variables, Production + Preview scopes).
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F<USER>%2Fplanetary-conditions&env=VITE_NASA_API_KEY&envDescription=NASA%20API%20key%20for%20DONKI%20events&envLink=https%3A%2F%2Fapi.nasa.gov%2F)
+
+Full step-by-step instructions: see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ---
 
