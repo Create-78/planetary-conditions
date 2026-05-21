@@ -188,19 +188,19 @@ Every v1 REQ-ID is mapped to exactly one phase. Coverage: 54/54 ✓
 | MARS-09 | Phase 3: Mars Tab — Surface Data | Pending |
 | MARS-10 | Phase 3: Mars Tab — Surface Data | Pending |
 | MARS-11 | Phase 3: Mars Tab — Surface Data | Pending |
-| LUNAR-01 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| LUNAR-01 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-02) |
 | LUNAR-02 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | LUNAR-03 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | LUNAR-04 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
-| LUNAR-05 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
-| SWPC-01 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| LUNAR-05 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-01) |
+| SWPC-01 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-02) |
 | SWPC-02 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | SWPC-03 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | SWPC-04 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | SWPC-05 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | SWPC-06 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
-| SWPC-07 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
-| DONKI-01 | Phase 4: Moon Tab — Three Sub-Sections | Pending |
+| SWPC-07 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-01) |
+| DONKI-01 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-02) |
 | DONKI-02 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | DONKI-03 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
 | DONKI-04 | Phase 4: Moon Tab — Three Sub-Sections | Complete (2026-05-21, 04-03) |
