@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 04-moon-tab-three-sub-sections/04-03-PLAN.md (Phase 4 complete)
-last_updated: "2026-05-21T14:14:36.191Z"
+stopped_at: Completed 05-reliability-ux-polish/05-01-PLAN.md
+last_updated: "2026-05-21T16:34:14.584Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 13
-  completed_plans: 10
-  percent: 77
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 04 — moon-tab-three-sub-sections (COMPLETE) → next: Phase 05 reliability-and-ux-polish
+**Current focus:** Phase 05 — reliability-ux-polish (Plan 01 COMPLETE) → next: Plan 05-02 (TooltipWrapper a11y/touch/scroll + AlertCard info-icon cleanup)
 
 ## Current Position
 
 Phase: 5
-Plan: Not started
-Status: Ready to plan
+Plan: 05-02 (next)
+Status: Plan 05-01 complete; ready for Plan 05-02
 Last activity: 2026-05-21
 
-Progress: [██████████] 100% (Phase 4 of 6 complete; Phase 5/6 not yet planned)
+Progress: [█████████░] 85%
 
 ## Performance Metrics
 
@@ -66,6 +66,7 @@ Progress: [██████████] 100% (Phase 4 of 6 complete; Phase 5/
 | Phase 04 P04-01 | 2.83 | 3 tasks | 3 files |
 | Phase 04 P04-02 | 3.10 | 3 tasks | 3 files |
 | Phase 04 P04-03 | 1.80 | 1 tasks | 1 files |
+| Phase 05 P05-01 | 2.35 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -123,6 +124,9 @@ Recent decisions affecting current work:
 - Phase 4 Plan 3: Doc-comment paraphrases 'the background-refresh flag' for D-43 silent-refresh lock comment-grep collision — same Phase 1/2/3 pattern
 - Phase 4 Plan 3: Tab-level LastUpdated intentionally omitted on MoonTab (three sources, three cadences); MarsTab keeps its tab-level chip (single source) — asymmetry is intentional, preserve in Phase 5
 - Phase 4 Plan 3: DONKI empty-state rendered as plain styled div (not wrapped in AlertCard) per D-25 — empty state is not an alert
+- Phase 5 Plan 1: Signed-number formatters collapsed from 2 (formatSignedInt + formatSignedOneDecimal) to 1 (formatSignedDecimal); lunar surface temp now renders as '+95.0' instead of '+95' — acceptable for a phase-derived estimate already labeled 'Estimated…'
+- Phase 5 Plan 1: src/utils/formatters.js returns null (not the em-dash glyph) so DataCard.jsx remains the single source of truth for the U+2014 fallback (D-18)
+- Phase 5 Plan 1: No Vitest introduced — pure-utility correctness verified via inline node smoke check at execution time (D-25)
 
 ### Pending Todos
 
@@ -142,8 +146,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T13:22:00.000Z
-Stopped at: Completed 04-moon-tab-three-sub-sections/04-03-PLAN.md (Phase 4 complete)
+Last session: 2026-05-21T16:34:14.574Z
+Stopped at: Completed 05-reliability-ux-polish/05-01-PLAN.md
 Resume file: None
 
 **Planned Phase:** 05 () — 0 plans — 2026-05-21T14:14:36.179Z
