@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 05-reliability-ux-polish/05-02-PLAN.md
-last_updated: "2026-05-21T16:41:40.823Z"
+status: completed
+stopped_at: Completed 05-reliability-ux-polish/05-03-PLAN.md
+last_updated: "2026-05-21T16:50:01.287Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 13
-  completed_plans: 12
-  percent: 92
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 05 — reliability-ux-polish (Plans 01 + 02 COMPLETE) → next: Plan 05-03 (AbortSignal threading + MoonTab DONKI a11y + AlertCard key prefix + Phase 5 audit checklist)
+**Current focus:** Phase 05 — reliability-ux-polish COMPLETE (Plans 01 + 02 + 03 shipped) → next: Phase 06 — Vercel Deployment (final phase)
 
 ## Current Position
 
-Phase: 5
-Plan: 05-03 (next)
-Status: Plans 05-01 + 05-02 complete; ready for Plan 05-03
+Phase: 6 (next)
+Plan: 06-TBD
+Status: Phase 5 complete; ready to plan Phase 6 (Vercel Deployment)
 Last activity: 2026-05-21
 
-Progress: [█████████░] 92%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -68,6 +68,7 @@ Progress: [█████████░] 92%
 | Phase 04 P04-03 | 1.80 | 1 tasks | 1 files |
 | Phase 05 P05-01 | 2.35 | 2 tasks | 5 files |
 | Phase Phase 05 PP05-02 | 2.38 | 2 tasks tasks | 2 files files |
+| Phase Phase 05 PP05-03 | 2.4 | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -136,6 +137,9 @@ Recent decisions affecting current work:
 - Phase 5 Plan 2: Math.max(0, ...) guards maxLeft so tooltips wider than viewport - margins don't propagate negative horizontal offsets — clamp width via maxWidth instead (D-11)
 - Phase 5 Plan 2: AlertCard info-icon drops role=button + tabIndex={0} per D-12; TooltipWrapper.cloneElement onFocus/onBlur is the real keyboard contract
 - Phase 5 Plan 2: AlertCard inline rationale comment phrased to avoid literal 'role=button' string — same comment-grep-collision pattern Phases 1-4 used (D-43, useMarsData JSDoc, useDonkiEvents env-discipline)
+- Phase 5 Plan 3: AbortSignal threaded into all three data hooks via TanStack v5 queryFn({ signal }) destructure; helpers accept { signal } = {} default-empty so they remain callable outside the Query pipeline
+- Phase 5 Plan 3: MoonTab DONKI scroll region is keyboard-focusable named landmark (tabIndex={0} + role=region + aria-label) and AlertCard list keys are namespaced by event type (D-14, D-15)
+- Phase 5 Plan 3: Audit inlined in plan SUMMARY.md (no separate AUDIT.md) per D-01; found zero REL-01..REL-05 drift across MarsTab + MoonTab — Phase 2 primitives + Phase 3/4 wiring already satisfy all reliability locks
 
 ### Pending Todos
 
@@ -155,8 +159,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T16:41:40.813Z
-Stopped at: Completed 05-reliability-ux-polish/05-02-PLAN.md
+Last session: 2026-05-21T16:49:52.007Z
+Stopped at: Completed 05-reliability-ux-polish/05-03-PLAN.md
 Resume file: None
 
 **Planned Phase:** 05 () — 0 plans — 2026-05-21T14:14:36.179Z

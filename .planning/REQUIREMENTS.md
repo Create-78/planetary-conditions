@@ -112,13 +112,16 @@ Data source: NASA DONKI (CME, FLR, GST endpoints). Requires `VITE_NASA_API_KEY`.
 
 ### Reliability & UX Polish (REL)
 
-- [ ] **REL-01**: Every data panel surfaces loading, error, and no-data states meaningfully (no blank panels, no full-page failures)
+- [x] **REL-01
+**: Every data panel surfaces loading, error, and no-data states meaningfully (no blank panels, no full-page failures)
 - [x] **REL-02
 **: All numerical values display with units (°C, Pa, km/s, nT, p/cm³, %) — never bare numbers
 - [x] **REL-03
 **: Tooltips anchor Mars/Moon values to Earth equivalents wherever it aids understanding
-- [ ] **REL-04**: Per-source timestamps visibly communicate freshness ("Last updated X minutes ago")
-- [ ] **REL-05**: Stale-while-revalidate is the default — UI never blanks during background refresh
+- [x] **REL-04
+**: Per-source timestamps visibly communicate freshness ("Last updated X minutes ago")
+- [x] **REL-05
+**: Stale-while-revalidate is the default — UI never blanks during background refresh
 
 ### Deployment (DEPLOY)
 
