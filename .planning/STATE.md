@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-moon-tab-three-sub-sections/04-01-PLAN.md
-last_updated: "2026-05-21T13:10:07.478Z"
+stopped_at: Completed 04-moon-tab-three-sub-sections/04-02-PLAN.md
+last_updated: "2026-05-21T13:17:12.080Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 6
   completed_phases: 3
   total_plans: 10
-  completed_plans: 8
-  percent: 80
+  completed_plans: 9
+  percent: 90
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 ## Current Position
 
 Phase: 4
-Plan: 04-01 complete (next: 04-02)
+Plan: 04-02 complete (next: 04-03)
 Status: Executing
 Last activity: 2026-05-21
 
-Progress: [████████░░] 80%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ Progress: [████████░░] 80%
 | Phase 03-mars-tab-surface-data P03-01 | 2.43 | 2 tasks | 2 files |
 | Phase 03 P03-02 | 2.33 | 1 tasks | 1 files |
 | Phase 04 P04-01 | 2.83 | 3 tasks | 3 files |
+| Phase 04 P04-02 | 3.10 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -107,6 +108,13 @@ Recent decisions affecting current work:
 - Phase 4 Plan 1: radiationRisk threshold literals (5/700/3/500) inlined — not reused elsewhere in v1; extract only if Phase 5 adds a Severe tier
 - Phase 4 Plan 1: No Vitest added — 04-CONTEXT allowed but did not require it; durable proof is build + grep contracts plus inline node behavioral checks at execution time
 - Phase 4 Plan 1: moon.example tooltip key removed despite 2 live references in MoonTab.jsx demo gallery — getTooltip returns null on miss, Plan 04-03 deletes those DataCards entirely; expected mid-phase transient state
+- Phase 4 Plan 2: useLunarPhase subscribes to useNow's native 30s tick (not widened to 60s) — over-satisfies LUNAR-01 / ROADMAP-5 'stay current' criterion; math is sub-millisecond
+- Phase 4 Plan 2: useSolarWind latestObject() walks rows newest→oldest to skip rows with null target fields — DataCard em-dash fallback only triggers when every row's measurement is null
+- Phase 4 Plan 2: toNumberOrNull coerces '' / non-numeric to null (not NaN) so DataCard's null branch renders the em-dash glyph consistently
+- Phase 4 Plan 2: useDonkiEvents memoizes URL set on todayKey() (YYYY-MM-DD) — mid-hour re-renders don't churn the URL; date rollover at midnight evicts prior day's cache via dayKey-suffixed queryKey
+- Phase 4 Plan 2: Event sort uses new Date(time).getTime() (not string compare) for tz-deterministic reverse-chronological ordering across mixed ISO formats
+- Phase 4 Plan 2: GST severity reduces over allKpIndex (not Math.max with spread) so non-numeric kpIndex entries are skipped without NaN poisoning
+- Phase 4 Plan 2: useDonkiEvents JSDoc paraphrases 'import.meta.env' as 'the build-time env object' to avoid comment-grep collision with the env-discipline negative-grep — same pattern as Phase 1/2/3 doc comments
 
 ### Pending Todos
 
@@ -126,8 +134,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T13:10:07.468Z
-Stopped at: Completed 04-moon-tab-three-sub-sections/04-01-PLAN.md
+Last session: 2026-05-21T13:17:12.069Z
+Stopped at: Completed 04-moon-tab-three-sub-sections/04-02-PLAN.md
 Resume file: None
 
 **Planned Phase:** 04 () — 0 plans — 2026-05-19T18:16:11.397Z

@@ -82,31 +82,29 @@ Data source: MAAS2 API (`https://api.maas2.apollorion.com/`), no auth required, 
 
 No API required — computed via `astronomia` or manual Julian Date math.
 
-- [ ] **LUNAR-01**: `useLunarPhase` pure-computation hook returns current phase name, phase percentage, and day/night indicator
+- [x] **LUNAR-01**: `useLunarPhase` pure-computation hook returns current phase name, phase percentage, and day/night indicator
 - [ ] **LUNAR-02**: Display current lunar phase name (New Moon, Waxing Crescent, etc.) with tooltip explaining the ~29.5-day cycle
 - [ ] **LUNAR-03**: Display approximate surface temperature (daytime face ~+127°C, nightside ~-173°C) interpolated by phase position
 - [ ] **LUNAR-04**: Temperature is clearly labeled as estimate ("Estimated surface temp") with tooltip on lunar temperature swing
-- [x] **LUNAR-05
-**: `utils/lunarPhase.js` and `utils/lunarTemperature.js` (or co-located) encapsulate the math
+- [x] **LUNAR-05**: `utils/lunarPhase.js` and `utils/lunarTemperature.js` (or co-located) encapsulate the math
 
 ### Moon Tab — Space Weather (SWPC)
 
 Data source: NOAA SWPC (no auth, public). Refetch every 5 min.
 
-- [ ] **SWPC-01**: `useSolarWind` React Query hook fetches plasma (`plasma-2-hour.json`), mag-field (`mag-2-hour.json`), and Kp (`noaa-planetary-k-index.json`) with `refetchInterval: 5min`
+- [x] **SWPC-01**: `useSolarWind` React Query hook fetches plasma (`plasma-2-hour.json`), mag-field (`mag-2-hour.json`), and Kp (`noaa-planetary-k-index.json`) with `refetchInterval: 5min`
 - [ ] **SWPC-02**: Display Solar Wind Speed in km/s with tooltip on typical 400–800 km/s range and lunar surface impact
 - [ ] **SWPC-03**: Display Solar Wind Density in p/cm³ with tooltip on surface interaction
 - [ ] **SWPC-04**: Display Bz (IMF south component) in nT with tooltip on geomagnetic storm trigger
 - [ ] **SWPC-05**: Display Kp Index on 0–9 scale with tooltip on Kp ≥ 5 = storm conditions
 - [ ] **SWPC-06**: Display a derived Radiation Risk badge (Low / Moderate / High) computed from solar wind speed + Kp index, with explanation tooltip
-- [x] **SWPC-07
-**: `utils/radiationRisk.js` encapsulates the derivation logic with test-friendly pure function
+- [x] **SWPC-07**: `utils/radiationRisk.js` encapsulates the derivation logic with test-friendly pure function
 
 ### Moon Tab — Solar Event Alerts (DONKI)
 
 Data source: NASA DONKI (CME, FLR, GST endpoints). Requires `VITE_NASA_API_KEY`. Refetch every 15 min. Last 7 days of events.
 
-- [ ] **DONKI-01**: `useDonkiEvents` React Query hook fetches CME, Flare, and GST events from the last 7 days with `refetchInterval: 15min`
+- [x] **DONKI-01**: `useDonkiEvents` React Query hook fetches CME, Flare, and GST events from the last 7 days with `refetchInterval: 15min`
 - [ ] **DONKI-02**: Display events as a scrollable list of `AlertCard`s with event-type badge, UTC time, and severity/class
 - [ ] **DONKI-03**: Tooltips on each card explain what the event type means for lunar surface radiation
 - [ ] **DONKI-04**: Empty state shows "No significant events in the past 7 days — conditions are calm." (never a bare empty panel)
