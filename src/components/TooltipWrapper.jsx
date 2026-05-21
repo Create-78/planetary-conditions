@@ -13,6 +13,15 @@ import { createPortal } from 'react-dom'
 const OPEN_DELAY_MS = 150
 const VIEWPORT_MARGIN = 8
 
+// Touch capability is detected once at module load — it does not change at
+// runtime in normal browsing (per 05-CONTEXT D-04). Hybrid devices (e.g.
+// iPad Pro with mouse) report touch true; the hover/focus desktop path
+// still fires on them, so touch behavior is additive (D-07).
+const IS_TOUCH =
+  typeof window !== 'undefined' &&
+  ('ontouchstart' in window ||
+    (window.matchMedia && window.matchMedia('(pointer: coarse)').matches))
+
 /**
  * Custom hover/focus tooltip.
  *
@@ -28,7 +37,13 @@ const VIEWPORT_MARGIN = 8
  *
  * Behavior:
  *   - 150ms open delay on mouseenter/focus, 0ms close.
+ *   - Touch devices: tap toggles tooltip (no open delay) — per 05-CONTEXT D-05.
  *   - Esc dismisses; click outside dismisses; focus loss dismisses.
+ *   - Scroll / resize while open: tooltip re-positions to track its trigger
+ *     (rAF-debounced, passive scroll, capture phase) — per 05-CONTEXT D-08, D-09.
+ *   - Narrow viewports: portal element clamped to max-width min(90vw, 320px)
+ *     and horizontal-position math floored at 0 (no negative offsets) —
+ *     per 05-CONTEXT D-10, D-11.
  *   - Tooltip element has role="tooltip" and id linked from the trigger's
  *     aria-describedby, so screen readers announce it.
  */
@@ -61,13 +76,19 @@ function TooltipWrapper({ content, children, side = 'top' }) {
     setIsOpen(false)
   }, [clearOpenTimer])
 
+  // Touch tap-to-toggle is synchronous — no 150ms delay; taps should feel immediate.
+  const toggleImmediate = useCallback(() => {
+    clearOpenTimer()
+    setIsOpen((prev) => !prev)
+  }, [clearOpenTimer])
+
   // Clean up any pending open timer on unmount.
   useEffect(() => () => clearOpenTimer(), [clearOpenTimer])
 
-  // Position the tooltip relative to the trigger AFTER it's rendered so we
-  // can measure its real size. Default to `side`, flip if it would clip.
-  useLayoutEffect(() => {
-    if (!isOpen) return
+  // Reusable position calculator — called both from layout effect (on open)
+  // and from scroll/resize listeners (while open). Pulled out of the layout
+  // effect body so the scroll/resize path doesn't duplicate the math.
+  const reposition = useCallback(() => {
     const trigger = triggerRef.current
     const tip = tooltipRef.current
     if (!trigger || !tip) return
@@ -94,11 +115,22 @@ function TooltipWrapper({ content, children, side = 'top' }) {
     }
 
     // Clamp horizontally to the viewport so tooltips near edges stay visible.
-    const maxLeft = window.innerWidth - tipRect.width - VIEWPORT_MARGIN
+    // Floor at 0: when the tooltip is wider than the viewport minus margins,
+    // maxLeft would otherwise go negative; Math.max(0, ...) keeps the offset
+    // safe (per 05-CONTEXT D-11). The inline maxWidth on the portal element
+    // (D-10) is what actually shrinks the tooltip in that case.
+    const maxLeft = Math.max(0, window.innerWidth - tipRect.width - VIEWPORT_MARGIN)
     const left = Math.max(VIEWPORT_MARGIN, Math.min(centeredLeft, maxLeft))
 
     setPosition({ top, left })
-  }, [isOpen, side, content])
+  }, [side])
+
+  // Position the tooltip relative to the trigger AFTER it's rendered so we
+  // can measure its real size. Default to `side`, flip if it would clip.
+  useLayoutEffect(() => {
+    if (!isOpen) return
+    reposition()
+  }, [isOpen, content, reposition])
 
   // Esc to close; click-outside to close.
   useEffect(() => {
@@ -125,6 +157,30 @@ function TooltipWrapper({ content, children, side = 'top' }) {
       document.removeEventListener('mousedown', onMouseDown)
     }
   }, [isOpen, close])
+
+  // Scroll / resize follow: while the tooltip is open, re-run the positioning
+  // logic so the tooltip tracks its trigger instead of floating where the
+  // trigger USED to be (per 05-CONTEXT D-08). rAF-debounced to avoid layout
+  // thrash during scroll storms (D-09). Passive scroll for perf; capture
+  // phase so scroll inside nested scrollers (e.g. DONKI list) also triggers.
+  useEffect(() => {
+    if (!isOpen) return
+    let rafId = null
+    const schedule = () => {
+      if (rafId !== null) return
+      rafId = requestAnimationFrame(() => {
+        rafId = null
+        reposition()
+      })
+    }
+    window.addEventListener('scroll', schedule, { passive: true, capture: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      window.removeEventListener('scroll', schedule, { capture: true })
+      window.removeEventListener('resize', schedule)
+      if (rafId !== null) cancelAnimationFrame(rafId)
+    }
+  }, [isOpen, reposition])
 
   // No content? Render the trigger unchanged.
   if (!content) {
@@ -163,6 +219,16 @@ function TooltipWrapper({ content, children, side = 'top' }) {
     },
   }
 
+  // Touch tap-to-toggle (additive — desktop hover/focus still works on hybrid
+  // devices per 05-CONTEXT D-07). Click-outside dismiss is already wired by
+  // the existing onMouseDown listener above, so tapping elsewhere closes.
+  if (IS_TOUCH) {
+    triggerProps.onClick = (event) => {
+      toggleImmediate()
+      if (children.props.onClick) children.props.onClick(event)
+    }
+  }
+
   const trigger = cloneElement(children, triggerProps)
 
   const tooltipPortal = isOpen
@@ -172,7 +238,11 @@ function TooltipWrapper({ content, children, side = 'top' }) {
           id={tooltipId}
           role="tooltip"
           className="fixed z-50 max-w-xs rounded-md bg-space-900/95 px-3 py-2 text-xs text-slate-100 ring-1 ring-slate-700/60 shadow-lg pointer-events-none"
-          style={{ top: position.top, left: position.left }}
+          style={{
+            top: position.top,
+            left: position.left,
+            maxWidth: 'min(90vw, 320px)',
+          }}
         >
           {content}
         </div>,
