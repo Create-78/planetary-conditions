@@ -86,7 +86,8 @@ No API required — computed via `astronomia` or manual Julian Date math.
 - [ ] **LUNAR-02**: Display current lunar phase name (New Moon, Waxing Crescent, etc.) with tooltip explaining the ~29.5-day cycle
 - [ ] **LUNAR-03**: Display approximate surface temperature (daytime face ~+127°C, nightside ~-173°C) interpolated by phase position
 - [ ] **LUNAR-04**: Temperature is clearly labeled as estimate ("Estimated surface temp") with tooltip on lunar temperature swing
-- [ ] **LUNAR-05**: `utils/lunarPhase.js` and `utils/lunarTemperature.js` (or co-located) encapsulate the math
+- [x] **LUNAR-05
+**: `utils/lunarPhase.js` and `utils/lunarTemperature.js` (or co-located) encapsulate the math
 
 ### Moon Tab — Space Weather (SWPC)
 
@@ -98,7 +99,8 @@ Data source: NOAA SWPC (no auth, public). Refetch every 5 min.
 - [ ] **SWPC-04**: Display Bz (IMF south component) in nT with tooltip on geomagnetic storm trigger
 - [ ] **SWPC-05**: Display Kp Index on 0–9 scale with tooltip on Kp ≥ 5 = storm conditions
 - [ ] **SWPC-06**: Display a derived Radiation Risk badge (Low / Moderate / High) computed from solar wind speed + Kp index, with explanation tooltip
-- [ ] **SWPC-07**: `utils/radiationRisk.js` encapsulates the derivation logic with test-friendly pure function
+- [x] **SWPC-07
+**: `utils/radiationRisk.js` encapsulates the derivation logic with test-friendly pure function
 
 ### Moon Tab — Solar Event Alerts (DONKI)
 

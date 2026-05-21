@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 03-mars-tab-surface-data/03-02-PLAN.md
-last_updated: "2026-05-19T18:16:11.408Z"
-last_activity: 2026-05-19
+status: executing
+stopped_at: Completed 04-moon-tab-three-sub-sections/04-01-PLAN.md
+last_updated: "2026-05-21T13:10:07.478Z"
+last_activity: 2026-05-21
 progress:
   total_phases: 6
   completed_phases: 3
   total_plans: 10
-  completed_plans: 7
-  percent: 70
+  completed_plans: 8
+  percent: 80
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 ## Current Position
 
 Phase: 4
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-19
+Plan: 04-01 complete (next: 04-02)
+Status: Executing
+Last activity: 2026-05-21
 
-Progress: [██████████] 100%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -62,6 +62,7 @@ Progress: [██████████] 100%
 | Phase 02-shared-ui-primitives P03-demo-galleries | 2.42 | 2 tasks tasks | 2 files files |
 | Phase 03-mars-tab-surface-data P03-01 | 2.43 | 2 tasks | 2 files |
 | Phase 03 P03-02 | 2.33 | 1 tasks | 1 files |
+| Phase 04 P04-01 | 2.83 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -102,6 +103,10 @@ Recent decisions affecting current work:
 - Phase 3 Plan 2: Eight DataCards + nine LastUpdated chips is canonical (1 tab-level + 8 per-card); the 'nine' phrasing in 03-CONTEXT referred to LastUpdated chips, not DataCards
 - Phase 3 Plan 2: dataUpdatedAt ? new Date(dataUpdatedAt) : null guard prevents LastUpdated rendering 'N years ago' relative to epoch 0 before first successful fetch
 - Phase 3 Plan 2: Doc comments paraphrase 'the background-refresh flag' instead of naming the TanStack Query field directly because the plan's verification negative-greps the literal identifier — same comment-grep collision pattern as Phase 1/2/3-01
+- Phase 4 Plan 1: lunarPhase.js keeps surfaceTemp() co-located rather than splitting to lunarTemperature.js — module is ~50 LOC; D-03 / LUNAR-05 lock
+- Phase 4 Plan 1: radiationRisk threshold literals (5/700/3/500) inlined — not reused elsewhere in v1; extract only if Phase 5 adds a Severe tier
+- Phase 4 Plan 1: No Vitest added — 04-CONTEXT allowed but did not require it; durable proof is build + grep contracts plus inline node behavioral checks at execution time
+- Phase 4 Plan 1: moon.example tooltip key removed despite 2 live references in MoonTab.jsx demo gallery — getTooltip returns null on miss, Plan 04-03 deletes those DataCards entirely; expected mid-phase transient state
 
 ### Pending Todos
 
@@ -121,8 +126,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-19T13:56:49.459Z
-Stopped at: Completed 03-mars-tab-surface-data/03-02-PLAN.md
+Last session: 2026-05-21T13:10:07.468Z
+Stopped at: Completed 04-moon-tab-three-sub-sections/04-01-PLAN.md
 Resume file: None
 
 **Planned Phase:** 04 () — 0 plans — 2026-05-19T18:16:11.397Z
