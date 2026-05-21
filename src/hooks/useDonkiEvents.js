@@ -16,9 +16,9 @@ import { NASA_API_KEY } from '../utils/env.js'
  *
  * Auth: NASA_API_KEY is imported from src/utils/env.js per project
  * convention — never read the build-time env object directly at the call
- * site. The env module falls back to DEMO_KEY if the build-time variable
- * is unset; rate limits are documented in PROJECT.md if DEMO_KEY hits
- * them in production.
+ * site. The env module falls back to the NASA public demo key if the
+ * build-time variable is unset; rate limits are documented in PROJECT.md
+ * if the demo-key fallback hits them in production.
  *
  * Cadence: 15-minute refetchInterval per Discussion.md §3 and 04-CONTEXT D-24.
  * refetchOnWindowFocus disabled (matches Phase 3 silent-refresh lock).
