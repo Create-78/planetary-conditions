@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 05-reliability-ux-polish/05-01-PLAN.md
-last_updated: "2026-05-21T16:34:14.584Z"
+stopped_at: Completed 05-reliability-ux-polish/05-02-PLAN.md
+last_updated: "2026-05-21T16:41:40.823Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 13
-  completed_plans: 11
-  percent: 85
+  completed_plans: 12
+  percent: 92
 ---
 
 # Project State
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 05 — reliability-ux-polish (Plan 01 COMPLETE) → next: Plan 05-02 (TooltipWrapper a11y/touch/scroll + AlertCard info-icon cleanup)
+**Current focus:** Phase 05 — reliability-ux-polish (Plans 01 + 02 COMPLETE) → next: Plan 05-03 (AbortSignal threading + MoonTab DONKI a11y + AlertCard key prefix + Phase 5 audit checklist)
 
 ## Current Position
 
 Phase: 5
-Plan: 05-02 (next)
-Status: Plan 05-01 complete; ready for Plan 05-02
+Plan: 05-03 (next)
+Status: Plans 05-01 + 05-02 complete; ready for Plan 05-03
 Last activity: 2026-05-21
 
-Progress: [█████████░] 85%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 10
+- Total plans completed: 12
 - Average duration: —
 - Total execution time: 0.0 hours
 
@@ -67,6 +67,7 @@ Progress: [█████████░] 85%
 | Phase 04 P04-02 | 3.10 | 3 tasks | 3 files |
 | Phase 04 P04-03 | 1.80 | 1 tasks | 1 files |
 | Phase 05 P05-01 | 2.35 | 2 tasks | 5 files |
+| Phase Phase 05 PP05-02 | 2.38 | 2 tasks tasks | 2 files files |
 
 ## Accumulated Context
 
@@ -127,6 +128,14 @@ Recent decisions affecting current work:
 - Phase 5 Plan 1: Signed-number formatters collapsed from 2 (formatSignedInt + formatSignedOneDecimal) to 1 (formatSignedDecimal); lunar surface temp now renders as '+95.0' instead of '+95' — acceptable for a phase-derived estimate already labeled 'Estimated…'
 - Phase 5 Plan 1: src/utils/formatters.js returns null (not the em-dash glyph) so DataCard.jsx remains the single source of truth for the U+2014 fallback (D-18)
 - Phase 5 Plan 1: No Vitest introduced — pure-utility correctness verified via inline node smoke check at execution time (D-25)
+- Phase 5 Plan 2: IS_TOUCH constant lives at MODULE scope (not in-component) per D-04 — touch capability is a device property, not a render-time variable
+- Phase 5 Plan 2: Touch onClick is ADDITIVE to hover/focus (D-07); hybrid devices (iPad Pro + mouse) get both paths — neither blocks the other
+- Phase 5 Plan 2: reposition extracted to a useCallback shared by useLayoutEffect (on open) and scroll/resize useEffect (while open) — single source of positioning math (D-09)
+- Phase 5 Plan 2: scroll listener uses { passive: true, capture: true } so nested scrollers (DONKI list) reposition too; rAF-debounced (D-08, D-09)
+- Phase 5 Plan 2: Portal inline style.maxWidth = 'min(90vw, 320px)' AND Tailwind max-w-xs class both retained — defensive double cap (D-10)
+- Phase 5 Plan 2: Math.max(0, ...) guards maxLeft so tooltips wider than viewport - margins don't propagate negative horizontal offsets — clamp width via maxWidth instead (D-11)
+- Phase 5 Plan 2: AlertCard info-icon drops role=button + tabIndex={0} per D-12; TooltipWrapper.cloneElement onFocus/onBlur is the real keyboard contract
+- Phase 5 Plan 2: AlertCard inline rationale comment phrased to avoid literal 'role=button' string — same comment-grep-collision pattern Phases 1-4 used (D-43, useMarsData JSDoc, useDonkiEvents env-discipline)
 
 ### Pending Todos
 
@@ -146,8 +155,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T16:34:14.574Z
-Stopped at: Completed 05-reliability-ux-polish/05-01-PLAN.md
+Last session: 2026-05-21T16:41:40.813Z
+Stopped at: Completed 05-reliability-ux-polish/05-02-PLAN.md
 Resume file: None
 
 **Planned Phase:** 05 () — 0 plans — 2026-05-21T14:14:36.179Z

@@ -95,7 +95,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. User watching a panel during a background refetch sees existing data stay on screen (stale-while-revalidate) — the UI never blanks mid-refresh.
 **Plans**: 3 plans
 - [x] 05-01-PLAN.md — Centralize number formatters in src/utils/formatters.js; refactor MarsTab/MoonTab to import; fix useMarsData "nine"→"eight" doc + useDonkiEvents eslint-disable rationale comment (REL-02)
-- [ ] 05-02-PLAN.md — TooltipWrapper touch tap-to-toggle (module-level IS_TOUCH) + scroll/resize follow (rAF) + narrow-viewport clamp + Math.max(0,...) guard; AlertCard info-icon role="button" + tabIndex={0} removal (REL-03)
+- [x] 05-02-PLAN.md — TooltipWrapper touch tap-to-toggle (module-level IS_TOUCH) + scroll/resize follow (rAF) + narrow-viewport clamp + Math.max(0,...) guard; AlertCard info-icon role="button" + tabIndex={0} removal (REL-03)
 - [ ] 05-03-PLAN.md — Thread TanStack v5 AbortSignal through useMarsData/useSolarWind/useDonkiEvents; MoonTab DONKI list keyboard a11y (tabIndex/role/aria-label) + AlertCard key namespacing; Phase 5 audit checklist in SUMMARY.md (REL-01, REL-04, REL-05)
 **UI hint**: yes
 
@@ -121,5 +121,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Shared UI Primitives | 3/3 | Complete    | 2026-05-19 |
 | 3. Mars Tab — Surface Data | 2/2 | Complete    | 2026-05-19 |
 | 4. Moon Tab — Three Sub-Sections | 3/3 | Complete    | 2026-05-21 |
-| 5. Reliability & UX Polish | 1/3 | In progress | - |
+| 5. Reliability & UX Polish | 2/3 | In progress | - |
 | 6. Vercel Deployment | 0/TBD | Not started | - |
