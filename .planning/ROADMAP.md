@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Scaffold & Shell** — Vite/React/Tailwind/Query app boots with two-tab dark UI and env vars wired
 - [x] **Phase 2: Shared UI Primitives** — Reusable DataCard/TooltipWrapper/StatusBadge/AlertCard/LastUpdated/LoadingState ready for data tabs
 - [x] **Phase 3: Mars Tab — Surface Data** — Mars tab shows live MAAS2/Curiosity REMS data with tooltips and timestamps
-- [ ] **Phase 4: Moon Tab — Three Sub-Sections** — Moon tab shows lunar context, NOAA solar wind, and NASA DONKI alerts end-to-end
+- [x] **Phase 4: Moon Tab — Three Sub-Sections** — Moon tab shows lunar context, NOAA solar wind, and NASA DONKI alerts end-to-end
 - [ ] **Phase 5: Reliability & UX Polish** — Every panel has loading/error/freshness states; no blank panels, no full-page failures
 - [ ] **Phase 6: Vercel Deployment** — App ships on Vercel with VITE_NASA_API_KEY and CORS verified from production origin
 
@@ -80,7 +80,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 - [ ] 04-01-PLAN.md — Pure utilities + tooltip copy: src/utils/lunarPhase.js, src/utils/radiationRisk.js, 11-key extension to tooltips.js (LUNAR-05, SWPC-07)
 - [ ] 04-02-PLAN.md — Three data hooks: useLunarPhase (pure math), useSolarWind (3 NOAA endpoints @ 5min), useDonkiEvents (3 NASA DONKI endpoints @ 15min) (LUNAR-01, SWPC-01, DONKI-01)
-- [ ] 04-03-PLAN.md — Live MoonTab.jsx: three independently-sourced sections (Lunar Context, Space Weather, Solar Event Alerts) with per-section cardState, scrollable AlertCard list, verbatim empty-state copy (LUNAR-02..04, SWPC-02..06, DONKI-02..05)
+- [x] 04-03-PLAN.md — Live MoonTab.jsx: three independently-sourced sections (Lunar Context, Space Weather, Solar Event Alerts) with per-section cardState, scrollable AlertCard list, verbatim empty-state copy (LUNAR-02..04, SWPC-02..06, DONKI-02..05)
 **UI hint**: yes
 
 ### Phase 5: Reliability & UX Polish
@@ -117,6 +117,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Scaffold & Shell | 2/2 | Complete    | 2026-05-14 |
 | 2. Shared UI Primitives | 3/3 | Complete    | 2026-05-19 |
 | 3. Mars Tab — Surface Data | 2/2 | Complete    | 2026-05-19 |
-| 4. Moon Tab — Three Sub-Sections | 0/3 | Planned | - |
+| 4. Moon Tab — Three Sub-Sections | 3/3 | Complete    | 2026-05-21 |
 | 5. Reliability & UX Polish | 0/TBD | Not started | - |
 | 6. Vercel Deployment | 0/TBD | Not started | - |

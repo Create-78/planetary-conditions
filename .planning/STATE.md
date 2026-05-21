@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-moon-tab-three-sub-sections/04-02-PLAN.md
-last_updated: "2026-05-21T13:17:12.080Z"
+stopped_at: Completed 04-moon-tab-three-sub-sections/04-03-PLAN.md
+last_updated: "2026-05-21T13:22:00.000Z"
 last_activity: 2026-05-21
 progress:
   total_phases: 6
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 9
-  percent: 90
+  completed_plans: 10
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 03 — mars-tab-surface-data
+**Current focus:** Phase 04 — moon-tab-three-sub-sections (COMPLETE) → next: Phase 05 reliability-and-ux-polish
 
 ## Current Position
 
-Phase: 4
-Plan: 04-02 complete (next: 04-03)
+Phase: 4 complete (next: 5)
+Plan: 04-03 complete (Phase 4 done)
 Status: Executing
 Last activity: 2026-05-21
 
-Progress: [█████████░] 90%
+Progress: [██████████] 100% (Phase 4 of 6 complete; Phase 5/6 not yet planned)
 
 ## Performance Metrics
 
@@ -64,6 +64,7 @@ Progress: [█████████░] 90%
 | Phase 03 P03-02 | 2.33 | 1 tasks | 1 files |
 | Phase 04 P04-01 | 2.83 | 3 tasks | 3 files |
 | Phase 04 P04-02 | 3.10 | 3 tasks | 3 files |
+| Phase 04 P04-03 | 1.80 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -115,6 +116,12 @@ Recent decisions affecting current work:
 - Phase 4 Plan 2: Event sort uses new Date(time).getTime() (not string compare) for tz-deterministic reverse-chronological ordering across mixed ISO formats
 - Phase 4 Plan 2: GST severity reduces over allKpIndex (not Math.max with spread) so non-numeric kpIndex entries are skipped without NaN poisoning
 - Phase 4 Plan 2: useDonkiEvents JSDoc paraphrases 'import.meta.env' as 'the build-time env object' to avoid comment-grep collision with the env-discipline negative-grep — same pattern as Phase 1/2/3 doc comments
+- Phase 4 Plan 3: MoonTab.jsx fully replaced — 4 inline number formatters retained (formatInt, formatOneDecimal, formatSignedInt, formatSignedOneDecimal); extraction to src/utils/formatters.js deferred to Phase 5 alongside MarsTab refactor
+- Phase 4 Plan 3: StatusBadge rendered conditionally on `swpcCardState === 'ok' && radiationSeverity != null` — omitting badge during loading/error is cleaner than 'Risk: —' (StatusBadge contract requires real severity)
+- Phase 4 Plan 3: No sub-component extraction (LunarSection / SolarWindSection / DonkiSection) — MoonTab ~250 LOC, each section ~50 LOC; below the clarity-gain threshold; revisit in Phase 5 if cross-tab reuse demands it
+- Phase 4 Plan 3: Doc-comment paraphrases 'the background-refresh flag' for D-43 silent-refresh lock comment-grep collision — same Phase 1/2/3 pattern
+- Phase 4 Plan 3: Tab-level LastUpdated intentionally omitted on MoonTab (three sources, three cadences); MarsTab keeps its tab-level chip (single source) — asymmetry is intentional, preserve in Phase 5
+- Phase 4 Plan 3: DONKI empty-state rendered as plain styled div (not wrapped in AlertCard) per D-25 — empty state is not an alert
 
 ### Pending Todos
 
@@ -134,8 +141,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T13:17:12.069Z
-Stopped at: Completed 04-moon-tab-three-sub-sections/04-02-PLAN.md
+Last session: 2026-05-21T13:22:00.000Z
+Stopped at: Completed 04-moon-tab-three-sub-sections/04-03-PLAN.md (Phase 4 complete)
 Resume file: None
 
 **Planned Phase:** 04 () — 0 plans — 2026-05-19T18:16:11.397Z
