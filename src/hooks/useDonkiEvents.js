@@ -49,8 +49,8 @@ function todayKey() {
   return new Date().toISOString().slice(0, 10)
 }
 
-async function fetchDonki(url) {
-  const response = await fetch(url)
+async function fetchDonki(url, { signal } = {}) {
+  const response = await fetch(url, { signal })
   if (!response.ok) {
     throw new Error(`DONKI fetch failed: ${response.status} ${response.statusText}`)
   }
@@ -122,19 +122,19 @@ export function useDonkiEvents() {
     queries: [
       {
         queryKey: ['donki', 'cme', dayKey],
-        queryFn: () => fetchDonki(cmeUrl),
+        queryFn: ({ signal }) => fetchDonki(cmeUrl, { signal }),
         refetchInterval: FIFTEEN_MIN_MS,
         refetchOnWindowFocus: false,
       },
       {
         queryKey: ['donki', 'flr', dayKey],
-        queryFn: () => fetchDonki(flrUrl),
+        queryFn: ({ signal }) => fetchDonki(flrUrl, { signal }),
         refetchInterval: FIFTEEN_MIN_MS,
         refetchOnWindowFocus: false,
       },
       {
         queryKey: ['donki', 'gst', dayKey],
-        queryFn: () => fetchDonki(gstUrl),
+        queryFn: ({ signal }) => fetchDonki(gstUrl, { signal }),
         refetchInterval: FIFTEEN_MIN_MS,
         refetchOnWindowFocus: false,
       },

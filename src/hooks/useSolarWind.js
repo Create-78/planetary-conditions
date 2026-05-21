@@ -31,8 +31,8 @@ const KP_URL = 'https://services.swpc.noaa.gov/products/noaa-planetary-k-index.j
 const FIVE_MIN_MS = 1000 * 60 * 5
 
 // Tabular-JSON helper: fetch + validate shape.
-async function fetchTabular(url) {
-  const response = await fetch(url)
+async function fetchTabular(url, { signal } = {}) {
+  const response = await fetch(url, { signal })
   if (!response.ok) {
     throw new Error(`SWPC fetch failed: ${response.status} ${response.statusText}`)
   }
@@ -63,8 +63,8 @@ function toNumberOrNull(v) {
   return Number.isNaN(n) ? null : n
 }
 
-async function fetchPlasma() {
-  const table = await fetchTabular(PLASMA_URL)
+async function fetchPlasma({ signal } = {}) {
+  const table = await fetchTabular(PLASMA_URL, { signal })
   const latest = latestObject(table, 'speed')
   return {
     speed: toNumberOrNull(latest.speed),
@@ -72,16 +72,16 @@ async function fetchPlasma() {
   }
 }
 
-async function fetchMag() {
-  const table = await fetchTabular(MAG_URL)
+async function fetchMag({ signal } = {}) {
+  const table = await fetchTabular(MAG_URL, { signal })
   const latest = latestObject(table, 'bz_gsm')
   return {
     bz: toNumberOrNull(latest.bz_gsm),
   }
 }
 
-async function fetchKp() {
-  const table = await fetchTabular(KP_URL)
+async function fetchKp({ signal } = {}) {
+  const table = await fetchTabular(KP_URL, { signal })
   const latest = latestObject(table, 'kp_index')
   return {
     kp: toNumberOrNull(latest.kp_index),

@@ -25,10 +25,13 @@ import { useQuery } from '@tanstack/react-query'
 const MAAS2_URL = 'https://api.maas2.apollorion.com/'
 const ONE_HOUR_MS = 1000 * 60 * 60
 
-async function fetchMarsData() {
+async function fetchMarsData({ signal } = {}) {
   // Manual text → JSON.parse to bypass any wrong Content-Type header from
   // MAAS2's GitHub Pages host (per CLAUDE.md and 03-CONTEXT D-04).
-  const response = await fetch(MAAS2_URL)
+  // TanStack Query v5 passes the abort signal in the queryFn context object;
+  // forwarding it to fetch lets v5 cancel in-flight requests on unmount or
+  // when a refetch supersedes this one (per 05-CONTEXT D-19, D-20).
+  const response = await fetch(MAAS2_URL, { signal })
   if (!response.ok) {
     throw new Error(`MAAS2 fetch failed: ${response.status} ${response.statusText}`)
   }
