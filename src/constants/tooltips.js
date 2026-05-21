@@ -5,7 +5,6 @@
  *   Keys are flat, lowercase, and namespaced as `{tab|source}.{datapoint}`.
  *   Examples:
  *     - 'mars.pressure'        — Mars-tab datapoint
- *     - 'moon.example'         — Moon-tab datapoint
  *     - 'swpc.bz'              — NOAA SWPC source-specific
  *     - 'donki.cme'            — NASA DONKI source-specific
  *     - 'lunar.phase'          — Computed lunar context
@@ -17,7 +16,7 @@
  *
  * Phase 2 seeded placeholders demonstrating the Earth-anchored style.
  * Phase 3 added the real mars.* per-datapoint keys (Curiosity REMS).
- * Phase 4 (Moon) will add the real moon.*, swpc.*, donki.*, lunar.* keys.
+ * Phase 4 (Moon) added the real lunar.*, swpc.*, donki.* keys.
  *
  * Lookups go through `getTooltip(key)` so missing keys return null instead of crashing.
  */
@@ -63,19 +62,59 @@ export const TOOLTIPS = {
       "Describes dust loading in the atmosphere. 'Sunny' means clear skies; 'Dusty' can signal regional or global storms.",
     source: 'MAAS2 / Curiosity REMS',
   },
-  'moon.example': {
+  'lunar.phase': {
     text:
-      'The Moon has no atmosphere — daytime surface temperature swings from about +127°C in direct sun to -173°C in shadow.',
-    source: 'Computed',
+      "The Moon takes ~29.5 days to complete one cycle. The lunar 'day' (sunrise to sunrise) lasts about 29.5 Earth days.",
+    source: 'Computed (lunar phase model)',
+  },
+  'lunar.surfaceTemp': {
+    text:
+      'Lunar surface temperatures swing more than 300°C between day and night — the Moon has no atmosphere to moderate temperature.',
+    source: 'Computed (lunar phase model)',
+  },
+  'lunar.dayNight': {
+    text:
+      'We see the lit half of the Moon based on where it sits relative to the Sun. The dark side faces away from the Sun, not always away from Earth.',
+    source: 'Computed (lunar phase model)',
+  },
+  'swpc.speed': {
+    text:
+      'The constant flow of charged particles from the Sun. Typical speed is 400–800 km/s. High speeds can intensify radiation at the lunar surface.',
+    source: 'NOAA SWPC',
+  },
+  'swpc.density': {
+    text:
+      'Number of protons per cubic centimeter. Higher density = stronger interaction with the lunar surface.',
+    source: 'NOAA SWPC',
+  },
+  'swpc.bz': {
+    text:
+      'When the interplanetary magnetic field points south (negative Bz), it can trigger geomagnetic storms. Strongly negative = elevated radiation risk.',
+    source: 'NOAA SWPC',
+  },
+  'swpc.kp': {
+    text:
+      'A global measure of geomagnetic disturbance. Kp ≥ 5 = geomagnetic storm conditions.',
+    source: 'NOAA SWPC',
   },
   'swpc.radiationRisk': {
     text:
-      'Derived from solar wind speed and Kp index. Low = quiet conditions; High = storm-level activity that elevates surface radiation.',
+      'Derived from solar wind speed + Kp index. Low = quiet; Moderate = elevated; High = storm-level activity that increases surface radiation at the Moon.',
     source: 'NOAA SWPC',
   },
   'donki.cme': {
     text:
-      'Coronal Mass Ejection — a burst of plasma and magnetic field from the Sun. Can drive geomagnetic storms days after eruption.',
+      'Coronal Mass Ejection — a burst of plasma and magnetic field from the Sun. Drives geomagnetic storms days after eruption. At the lunar surface: radiation flux can spike for hours to days.',
+    source: 'NASA DONKI',
+  },
+  'donki.flr': {
+    text:
+      "Solar Flare — a sudden burst of X-ray/UV radiation from the Sun's surface. At the Moon: instantaneous radiation increase, lasting minutes to hours. Classes M and X are notable; class X is extreme.",
+    source: 'NASA DONKI',
+  },
+  'donki.gst': {
+    text:
+      "Geomagnetic Storm — large-scale disturbance of Earth's magnetic field caused by solar activity. At the Moon: elevated radiation from trapped energetic particles.",
     source: 'NASA DONKI',
   },
 }
