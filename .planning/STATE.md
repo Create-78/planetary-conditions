@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
 status: executing
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-05-28T19:21:29.479Z"
+stopped_at: Plan 08-02 Tasks 1-2 done; STOPPED at Task 3 human-verify checkpoint
+last_updated: "2026-05-28T19:24:55.761Z"
 last_activity: 2026-05-28 — Completed 08-01-PLAN.md (motion hooks + two-layer cross-fades)
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 4
-  percent: 80
+  completed_plans: 5
+  percent: 100
 ---
 
 # Project State
@@ -26,10 +26,10 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 ## Current Position
 
 Phase: 08 — Motion & Transitions — EXECUTING
-Plan: 2 of 2 (Plan 01 complete)
-Status: Executing Phase 08 — Plan 01 done, Plan 02 (App.jsx wiring) remaining
-Next plan: 08-02 — thread reducedMotion into App.jsx
-Last activity: 2026-05-28 — Completed 08-01-PLAN.md (motion hooks + two-layer cross-fades)
+Plan: 2 of 2 (Plan 01 complete; Plan 02 Tasks 1-2 done, paused at Task 3 checkpoint)
+Status: Executing Phase 08 — Plan 02 App.jsx wiring done, AWAITING human-verify checkpoint (Task 3)
+Next plan: 08-02 Task 3 — human visual verification of cross-fade, parallax, reduced-motion
+Last activity: 2026-05-28 — Plan 08-02 Tasks 1-2 complete (reducedMotion threaded + full-suite green); STOPPED at human-verify gate
 
 Progress: [████████░░] 80%
 
@@ -187,9 +187,9 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-28T19:21:05.689Z
-Stopped at: Completed 08-01-PLAN.md
-Resume file: None
+Last session: 2026-05-28T19:24:55.750Z
+Stopped at: Plan 08-02 Tasks 1-2 done; STOPPED at Task 3 human-verify checkpoint
+Resume file: 08-02-PLAN.md (resume at Task 3 after visual approval)
 
 **Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7
 
