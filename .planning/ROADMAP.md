@@ -56,7 +56,9 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
   1. When the user switches tabs, the backdrop and hero cross-fade smoothly rather than snapping.
   2. As the user scrolls, the hero responds with a gentle parallax (~10px) that reads as depth, not jitter.
   3. With `prefers-reduced-motion: reduce` enabled, both cross-fade and parallax are disabled — tab switches are instant and the hero is static.
-**Plans**: TBD
+**Plans**: 2 plans (2 waves)
+- [ ] 08-01-PLAN.md — Create useScrollParallax + usePrefersReducedMotion hooks (with Nyquist unit tests); refactor AtmosphericBackdrop + BodyHero to two-layer opacity cross-fade with parallax ref (MOTION-01, MOTION-02, MOTION-03)
+- [ ] 08-02-PLAN.md — Thread reducedMotion through App.jsx; full-suite verification + human visual check of cross-fade, parallax, reduced-motion (MOTION-01, MOTION-02, MOTION-03)
 **UI hint**: yes
 
 ### Phase 9: Card & Typography Refresh
@@ -90,6 +92,6 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 | 5. Reliability & UX Polish | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 6. Vercel Deployment | v1.0 | 2/2 | Complete | 2026-05-27 |
 | 7. Hero + Atmospheric Backdrop | v2.0 | 3/3 | Complete | 2026-05-28 |
-| 8. Motion & Transitions | v2.0 | 0/— | Planned | - |
+| 8. Motion & Transitions | v2.0 | 0/2 | Planned | - |
 | 9. Card & Typography Refresh | v2.0 | 0/— | Planned | - |
 | 10. Reliability Carryforward | v2.0 | 0/— | Planned | - |
