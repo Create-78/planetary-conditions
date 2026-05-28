@@ -27,6 +27,7 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 
 - [x] **Phase 7: Hero + Atmospheric Backdrop** — Per-body sharp hero image and treated full-bleed backdrop, fed by a committed pre-optimized image pipeline (WebP + PNG + LQIP) — completed 2026-05-28
 - [x] **Phase 8: Motion & Transitions** — Cross-fade on tab switch and gentle hero scroll parallax, with reduced-motion respected — completed 2026-05-28
+- [ ] **Phase 8.5: Full-Background Hero + Glassmorphic Overlay** — Hero images fill the viewport as a cinematic full-bleed layer; data panel overlaid with glassmorphism, making cross-fade and parallax visually prominent
 - [ ] **Phase 9: Card & Typography Refresh** — Body-themed DataCard and type system, intensified per-tab palettes, all data states preserved
 - [ ] **Phase 10: Reliability Carryforward** — `useSolarWind` degrades per-card so one failed SWPC sub-query no longer blanks the whole Space Weather section
 
@@ -61,6 +62,18 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 - [x] 08-02-PLAN.md — Thread reducedMotion through App.jsx; full-suite verification + human visual check of cross-fade, parallax, reduced-motion (MOTION-01, MOTION-02, MOTION-03)
 **UI hint**: yes
 
+### Phase 8.5: Full-Background Hero + Glassmorphic Overlay
+**Goal**: The hero images fill the viewport as a cinematic full-bleed layer with the data panel overlaid in a glassmorphic card — making the Phase 8 cross-fade and parallax visually prominent and the overall experience feel cinematic.
+**Depends on**: Phase 8 (motion hooks, two-layer cross-fade pattern, and parallax ref hook exist and must be reused)
+**Requirements**: LAYOUT-01, LAYOUT-02, LAYOUT-03 (TBD — defined during planning)
+**Success Criteria** (what must be TRUE):
+  1. The active body's hero image fills the viewport (or a large portion of it) as a full-bleed layer — not contained in a 16:7 framed box.
+  2. The data panel sits above the hero image in a glassmorphic overlay (backdrop-blur + translucent background) that remains fully legible.
+  3. The Phase 8 cross-fade (opacity transition on tab switch) and parallax (~10px on scroll) are visibly noticeable with full-background images.
+  4. Reduced-motion OS setting still disables both animations correctly (Phase 8 MOTION-03 is preserved).
+**Plans**: TBD
+**UI hint**: yes
+
 ### Phase 9: Card & Typography Refresh
 **Goal**: Cards and typography read as a deliberate, body-themed design system on both tabs, with every existing data behavior preserved.
 **Depends on**: Phase 7 (the layered hero/backdrop frame sets the visual context the cards are restyled against)
@@ -93,5 +106,6 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 | 6. Vercel Deployment | v1.0 | 2/2 | Complete | 2026-05-27 |
 | 7. Hero + Atmospheric Backdrop | v2.0 | 3/3 | Complete | 2026-05-28 |
 | 8. Motion & Transitions | v2.0 | 2/2 | Complete | 2026-05-28 |
+| 8.5. Full-Background Hero + Glassmorphic Overlay | v2.0 | 0/— | Planned | - |
 | 9. Card & Typography Refresh | v2.0 | 0/— | Planned | - |
 | 10. Reliability Carryforward | v2.0 | 0/— | Planned | - |
