@@ -33,9 +33,12 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 
 ### Full-Background Layout + Glassmorphic Overlay (LAYOUT)
 
-- [ ] **LAYOUT-01**: Hero image fills the viewport as a full-bleed cinematic layer — the contained 16:7 framed BodyHero box is replaced with a full-background image that spans the full width and a significant portion of the viewport height
-- [ ] **LAYOUT-02**: The data panel sits above the full-bleed hero in a glassmorphic overlay card (backdrop-blur + translucent background) — fully legible, no contrast regression vs the contained layout
-- [ ] **LAYOUT-03**: Phase 8 cross-fade (MOTION-01) and scroll parallax (MOTION-02) remain functional on the full-bleed hero images; prefers-reduced-motion (MOTION-03) is preserved
+- [x] **LAYOUT-01
+**: Hero image fills the viewport as a full-bleed cinematic layer — the contained 16:7 framed BodyHero box is replaced with a full-background image that spans the full width and a significant portion of the viewport height
+- [x] **LAYOUT-02
+**: The data panel sits above the full-bleed hero in a glassmorphic overlay card (backdrop-blur + translucent background) — fully legible, no contrast regression vs the contained layout
+- [x] **LAYOUT-03
+**: Phase 8 cross-fade (MOTION-01) and scroll parallax (MOTION-02) remain functional on the full-bleed hero images; prefers-reduced-motion (MOTION-03) is preserved
 
 ### Card & Typography Refresh (THEME)
 

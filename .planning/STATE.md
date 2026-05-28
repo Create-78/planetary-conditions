@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
 status: planning
-stopped_at: Phase 8 complete — awaiting Phase 9 planning
-last_updated: "2026-05-28T20:00:00.000Z"
-last_activity: 2026-05-28 — Completed 08-02-PLAN.md (reducedMotion threading + human-verify approved)
+stopped_at: Completed 08.5-01-PLAN.md (Tasks 1+2); awaiting Task 3 human-verify checkpoint
+last_updated: "2026-05-28T21:08:43.367Z"
+last_activity: 2026-05-28 — Plan 08-02 Task 3 human-verify approved (motion correct; full-background layout redesign deferred to Phase 8.5)
 progress:
-  total_phases: 4
-  completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  total_phases: 5
+  completed_phases: 3
+  total_plans: 6
+  completed_plans: 6
   percent: 100
 ---
 
@@ -76,6 +76,7 @@ Progress: [██████████] 100% (Phase 8 complete — 2/2 plans 
 | Phase 07-hero-atmospheric-backdrop P07-02 | 2 | 3 tasks | 3 files |
 | Phase 07-hero-atmospheric-backdrop P03 | 2.5 | 3 tasks | 2 files |
 | Phase 08-motion-transitions P01 | 2.2 | 3 tasks | 6 files |
+| Phase 08.5-full-background-glass P01 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -166,6 +167,9 @@ Recent decisions affecting current work:
 - Phase 8 Plan 1: AtmosphericBackdrop comment rephrased to drop the literal 'key={activeTab}' so the banned-pattern negative-grep passes — same comment-grep-collision-avoidance pattern as Phases 1-6
 - Phase 8 Plan 1: MOTION-01/02/03 requirements NOT marked complete yet — hooks/components built but App.jsx wiring (Plan 08-02) delivers them live; mark on Plan 02 completion to avoid premature traceability
 - Phase 8 Plan 2: Human-verify checkpoint approved — motion is technically correct. User elected to keep Phase 8 closed as-is; full-background hero layout redesign (glassmorphic overlay + full-bleed photo) deferred to a new Phase 8.5 before Phase 9 executes
+- Phase 8.5 Plan 01: baseTransform changed from 'translateY(-50%)' to '' — object-fit:cover handles native sizing; center-crop trick no longer needed
+- Phase 8.5 Plan 01: CSS Grid single-cell stacking chosen for hero + panel overlap — no position:absolute on panel; cell auto-sizes to tallest child
+- Phase 8.5 Plan 01: F-03 fix — ticking.current = false added to useScrollParallax cleanup to prevent dropped first scroll event after rapid tab-switch
 
 ### Pending Todos
 
@@ -188,9 +192,9 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-28T20:00:00.000Z
-Stopped at: Phase 8 complete — human-verify approved; Phase 9 planning next
-Resume file: None — phase complete, run /gsd-plan-phase 9 to continue
+Last session: 2026-05-28T21:08:35.603Z
+Stopped at: Completed 08.5-01-PLAN.md (Tasks 1+2); awaiting Task 3 human-verify checkpoint
+Resume file: None
 
 **Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7
 
