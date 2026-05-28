@@ -14,9 +14,11 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 
 ### Image Pipeline (IMG)
 
-- [ ] **IMG-01**: Optimized image assets are committed (≈1600px WebP + PNG fallback per body); the multi-MB source PNGs are gitignored, not committed
+- [x] **IMG-01
+**: Optimized image assets are committed (≈1600px WebP + PNG fallback per body); the multi-MB source PNGs are gitignored, not committed
 - [ ] **IMG-02**: A low-quality blur-up placeholder (LQIP) shows instantly and the hero reserves its dimensions (no layout shift / CLS ≈ 0)
-- [ ] **IMG-03**: Added image weight served per tab stays within budget (≤ ~300 KB on the WebP path)
+- [x] **IMG-03
+**: Added image weight served per tab stays within budget (≤ ~300 KB on the WebP path)
 
 ### Motion & Transitions (MOTION)
 

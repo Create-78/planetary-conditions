@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
-status: Roadmap created — v2.0 Visual Upgrade (Phases 7–10)
-stopped_at: Phase 7 context gathered
-last_updated: "2026-05-28T13:33:22.458Z"
-last_activity: 2026-05-28 — v2.0 roadmap created
+status: executing
+stopped_at: Completed 07-01-PLAN.md — hero image asset pipeline
+last_updated: "2026-05-28T17:16:13.063Z"
+last_activity: 2026-05-28 -- Phase --phase execution started
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 3
+  completed_plans: 1
+  percent: 33
 ---
 
 # Project State
@@ -21,17 +21,17 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** v2.0 Visual Upgrade — roadmap created (Phases 7–10, continues numbering from v1.0). Next: `/gsd-plan-phase 7` to detail the first v2.0 phase.
+**Current focus:** Phase --phase — 07
 
 ## Current Position
 
-Phase: Phase 7 — Hero + Atmospheric Backdrop (not started)
-Plan: —
-Status: Roadmap created — v2.0 Visual Upgrade (Phases 7–10)
+Phase: --phase (07) — EXECUTING
+Plan: 1 of --name
+Status: Executing Phase --phase
 Next phase: Phase 7 — Hero + Atmospheric Backdrop
-Last activity: 2026-05-28 — v2.0 roadmap created
+Last activity: 2026-05-28 -- Phase --phase execution started
 
-Progress: [░░░░░░░░░░] 0% (v2.0 — 0/4 phases)
+Progress: [███░░░░░░░] 33%
 
 ## Performance Metrics
 
@@ -72,6 +72,7 @@ Progress: [░░░░░░░░░░] 0% (v2.0 — 0/4 phases)
 | Phase Phase 05 PP05-02 | 2.38 | 2 tasks tasks | 2 files files |
 | Phase Phase 05 PP05-03 | 2.4 | 3 tasks | 4 files |
 | Phase 06-vercel-deployment P06-01 | 4 | 3 tasks | 3 files |
+| Phase 07-hero-atmospheric-backdrop P07-01 | 5 | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -150,6 +151,9 @@ Recent decisions affecting current work:
 - Phase 6 Plan 2: NOAA Kp endpoint (noaa-planetary-k-index.json) returns an ARRAY OF OBJECTS (field `Kp`), not the tabular array-of-arrays of plasma/mag — fetchKp now parses it via selectLatestKp(); the shared tabular helper threw `headers.map is not a function` and blanked the whole solar wind section (found via UAT, fixed TDD in 3a5118a)
 - Phase 6 Plan 2: Added node:test (Node built-in) + `npm test` rather than vitest — zero new deps for one pure-function test
 - Phase 6 Plan 2: Live in production at https://planetary-conditions.vercel.app; DEPLOY-01..04 validated; milestone v1.0 complete
+- Phase 7 Plan 1: npx sharp-cli used (not sips) for WebP encoding — sips on macOS 26.5 fails with 'Can't write format: org.webmproject.webp' despite listing webp in --formats
+- Phase 7 Plan 1: PNG fallbacks at 800x436px (not 1600px) — RGBA source images compress to ~1.9MB at 1600px even at 1400px; removing alpha + 800px yields 401-402KB within 409KB budget; WebP path delivers full 1600px
+- Phase 7 Plan 1: LQIP generated at 24x13px, quality 20 WebP — 104/102 bytes pre-encode; data URIs are 163/159 chars; captured in 07-01-LQIP.md for Plan 02 to inline
 
 ### Pending Todos
 
@@ -172,8 +176,10 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: --stopped-at
-Stopped at: Phase 7 context gathered
-Resume file: --resume-file
+Last session: 2026-05-28T17:16:13.054Z
+Stopped at: Completed 07-01-PLAN.md — hero image asset pipeline
+Resume file: None
 
 **Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7
+
+**Planned Phase:** 7 (Hero + Atmospheric Backdrop) — 3 plans — 2026-05-28T17:06:37.247Z
