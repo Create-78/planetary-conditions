@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
-status: idle
-stopped_at: Phase 7 complete — human checkpoint approved; ready for Phase 8
-last_updated: "2026-05-28T18:10:00.000Z"
+status: planned
+stopped_at: Phase 8 Motion & Transitions — 2 plans ready, execute with /gsd-execute-phase 8
+last_updated: "2026-05-28T19:00:00.000Z"
 last_activity: 2026-05-28 -- Phase --phase execution started
 progress:
   total_phases: 4
