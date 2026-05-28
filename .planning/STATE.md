@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
 status: executing
-stopped_at: Completed 07-01-PLAN.md — hero image asset pipeline
-last_updated: "2026-05-28T17:16:13.063Z"
+stopped_at: Completed 07-02-PLAN.md — AtmosphericBackdrop + BodyHero components
+last_updated: "2026-05-28T17:21:16.902Z"
 last_activity: 2026-05-28 -- Phase --phase execution started
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # Project State
@@ -31,7 +31,7 @@ Status: Executing Phase --phase
 Next phase: Phase 7 — Hero + Atmospheric Backdrop
 Last activity: 2026-05-28 -- Phase --phase execution started
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -73,6 +73,7 @@ Progress: [███░░░░░░░] 33%
 | Phase Phase 05 PP05-03 | 2.4 | 3 tasks | 4 files |
 | Phase 06-vercel-deployment P06-01 | 4 | 3 tasks | 3 files |
 | Phase 07-hero-atmospheric-backdrop P07-01 | 5 | 3 tasks | 6 files |
+| Phase 07-hero-atmospheric-backdrop P07-02 | 2 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -154,6 +155,9 @@ Recent decisions affecting current work:
 - Phase 7 Plan 1: npx sharp-cli used (not sips) for WebP encoding — sips on macOS 26.5 fails with 'Can't write format: org.webmproject.webp' despite listing webp in --formats
 - Phase 7 Plan 1: PNG fallbacks at 800x436px (not 1600px) — RGBA source images compress to ~1.9MB at 1600px even at 1400px; removing alpha + 800px yields 401-402KB within 409KB budget; WebP path delivers full 1600px
 - Phase 7 Plan 1: LQIP generated at 24x13px, quality 20 WebP — 104/102 bytes pre-encode; data URIs are 163/159 chars; captured in 07-01-LQIP.md for Plan 02 to inline
+- Phase 7 Plan 2: Components created but NOT mounted in App.jsx — Plan 03 wires them and runs live contrast/CLS/perf verification
+- Phase 7 Plan 2: AtmosphericBackdrop filter starting values blur(24px) brightness(35%) saturate(80%) — tunable; Plan 03 may dial brightness toward 25% under live contrast check
+- Phase 7 Plan 2: Real LQIP base64 strings inlined verbatim from 07-01-LQIP.md — no placeholders remain
 
 ### Pending Todos
 
@@ -176,8 +180,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-28T17:16:13.054Z
-Stopped at: Completed 07-01-PLAN.md — hero image asset pipeline
+Last session: 2026-05-28T17:21:16.893Z
+Stopped at: Completed 07-02-PLAN.md — AtmosphericBackdrop + BodyHero components
 Resume file: None
 
 **Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7

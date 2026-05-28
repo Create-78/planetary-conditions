@@ -7,8 +7,10 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 
 ### Hero & Atmospheric Backdrop (HERO)
 
-- [ ] **HERO-01**: User sees a sharp, framed hero image of the active body between the tab toggle and the data panel (~16/7, rounded, soft bottom vignette)
-- [ ] **HERO-02**: User sees a full-bleed atmospheric backdrop of the active body's image behind the page content, treated for contrast (blurred + dimmed)
+- [x] **HERO-01
+**: User sees a sharp, framed hero image of the active body between the tab toggle and the data panel (~16/7, rounded, soft bottom vignette)
+- [x] **HERO-02
+**: User sees a full-bleed atmospheric backdrop of the active body's image behind the page content, treated for contrast (blurred + dimmed)
 - [ ] **HERO-03**: Hero and backdrop both switch to match the active tab (Mars ↔ Moon)
 - [ ] **HERO-04**: Data panel and card text remain high-contrast and fully legible over the backdrop (no contrast regression vs v1.0)
 
@@ -16,7 +18,8 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 
 - [x] **IMG-01
 **: Optimized image assets are committed (≈1600px WebP + PNG fallback per body); the multi-MB source PNGs are gitignored, not committed
-- [ ] **IMG-02**: A low-quality blur-up placeholder (LQIP) shows instantly and the hero reserves its dimensions (no layout shift / CLS ≈ 0)
+- [x] **IMG-02
+**: A low-quality blur-up placeholder (LQIP) shows instantly and the hero reserves its dimensions (no layout shift / CLS ≈ 0)
 - [x] **IMG-03
 **: Added image weight served per tab stays within budget (≤ ~300 KB on the WebP path)
 
