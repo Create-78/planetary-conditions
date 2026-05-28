@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
 status: planning
-stopped_at: v1.0 archived (tag v1.0); v2.0 started — defining requirements
+stopped_at: v2.0 roadmap created (Phases 7–10); next — /gsd-plan-phase 7
 last_updated: "2026-05-28T08:00:00.000Z"
 last_activity: 2026-05-28
 progress:
-  total_phases: 0
+  total_phases: 4
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -21,16 +21,17 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** v1.0 ARCHIVED (tag v1.0, live in prod). Between milestones — next: `/gsd-new-milestone` to seed v2 Visual Upgrade from `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
+**Current focus:** v2.0 Visual Upgrade — roadmap created (Phases 7–10, continues numbering from v1.0). Next: `/gsd-plan-phase 7` to detail the first v2.0 phase.
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: Phase 7 — Hero + Atmospheric Backdrop (not started)
 Plan: —
-Status: Defining requirements — v2.0 Visual Upgrade
-Last activity: 2026-05-28 — Milestone v2.0 started
+Status: Roadmap created — v2.0 Visual Upgrade (Phases 7–10)
+Next phase: Phase 7 — Hero + Atmospheric Backdrop
+Last activity: 2026-05-28 — v2.0 roadmap created
 
-Progress: [░░░░░░░░░░] 0% (v2.0)
+Progress: [░░░░░░░░░░] 0% (v2.0 — 0/4 phases)
 
 ## Performance Metrics
 
@@ -167,12 +168,12 @@ Items acknowledged and carried forward from previous milestone close:
 | process-uat | Phases 1–5 human-UAT never run (22 pending scenarios) | accepted | v1.0 close (2026-05-28) |
 | process-verification | Phases 1–5 VERIFICATION.md stuck at human_needed | accepted | v1.0 close (2026-05-28) |
 | process-nyquist | No VALIDATION.md in any phase (nyquist enabled) | accepted | v1.0 close (2026-05-28) |
-| reliability | useSolarWind blanks whole section on one sub-query failure | → v2 Phase 4 | v1.0 close (2026-05-28) |
+| reliability | useSolarWind blanks whole section on one sub-query failure | → v2.0 Phase 10 (REL-06) | v1.0 close (2026-05-28) |
 
 ## Session Continuity
 
-Last session: 2026-05-27T02:30:00.000Z
-Stopped at: Completed 06-vercel-deployment/06-02-PLAN.md — milestone v1.0 complete
+Last session: 2026-05-28T08:00:00.000Z
+Stopped at: v2.0 roadmap created — Phases 7–10 defined, 14 REQ-IDs mapped (100% coverage)
 Resume file: None
 
-**Milestone v1.0 complete** — all 6 phases done; live at https://planetary-conditions.vercel.app. Next: /gsd-complete-milestone
+**Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7

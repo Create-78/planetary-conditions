@@ -49,8 +49,19 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 
 ## Traceability
 
-<!-- Filled by roadmapper: REQ-ID | Phase | Status -->
-
 | REQ-ID | Phase | Status |
 |--------|-------|--------|
-| (pending roadmap) | | |
+| HERO-01 | Phase 7 | Pending |
+| HERO-02 | Phase 7 | Pending |
+| HERO-03 | Phase 7 | Pending |
+| HERO-04 | Phase 7 | Pending |
+| IMG-01 | Phase 7 | Pending |
+| IMG-02 | Phase 7 | Pending |
+| IMG-03 | Phase 7 | Pending |
+| MOTION-01 | Phase 8 | Pending |
+| MOTION-02 | Phase 8 | Pending |
+| MOTION-03 | Phase 8 | Pending |
+| THEME-01 | Phase 9 | Pending |
+| THEME-02 | Phase 9 | Pending |
+| THEME-03 | Phase 9 | Pending |
+| REL-06 | Phase 10 | Pending |
