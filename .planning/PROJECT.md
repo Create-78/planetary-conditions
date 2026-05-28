@@ -10,6 +10,20 @@ The name is deliberate: the Moon has no atmosphere, so "weather" would be inaccu
 
 A single cinematic dashboard that shows current environmental conditions on Mars and the Moon, sourced from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible. If everything else fails, **the data must be real, current, and clearly explained.**
 
+## Current Milestone: v2.0 Visual Upgrade
+
+**Goal:** Transform the dashboard from a clean data view into a cinematic body portrait — per-body hero images and atmospheric backdrops, motion, and a themed card/typography system — without compromising data legibility.
+
+**Target features:**
+- Per-body hero image (layered with a treated full-bleed atmospheric backdrop)
+- Motion & transitions (cross-fade on tab switch, hero scroll parallax, reduced-motion respected)
+- Card & typography refresh (body-themed design system)
+- Reliability carryforward (`useSolarWind` degrades per-card, not per-section)
+- Pre-optimized image pipeline (WebP + PNG fallback + LQIP, ≤~300 KB/tab)
+
+**Spec:** `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`
+**Phases:** 7–10 (continues numbering from v1.0). **Out of scope:** mobile polish, new data sources.
+
 ## Requirements
 
 ### Validated
