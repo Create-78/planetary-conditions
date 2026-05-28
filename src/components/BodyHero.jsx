@@ -43,7 +43,8 @@ function BodyHero({ activeTab }) {
           height={700}
           loading="eager"
           onLoad={() => setImgLoaded(true)}
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute w-full object-cover object-center"
+          style={{ height: '200%', top: '50%', transform: 'translateY(-50%)' }}
         />
       </picture>
 

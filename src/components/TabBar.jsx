@@ -5,7 +5,7 @@ import { TAB_LIST } from '../constants/tabs.js'
 // Inactive tab gets a muted slate look so the active one reads as clearly distinct.
 const TAB_STYLES = {
   mars: {
-    active: 'bg-mars-700 text-mars-50 border-mars-accent shadow-[0_0_24px_-6px_#f59e0b]',
+    active: 'bg-mars-700 text-mars-50 border-mars-900 shadow-[0_0_24px_-6px_#7f1d1d]',
     inactive: 'bg-slate-900/60 text-slate-400 border-slate-700 hover:text-mars-50 hover:border-mars-700',
   },
   moon: {

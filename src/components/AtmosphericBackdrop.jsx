@@ -16,7 +16,7 @@ function AtmosphericBackdrop({ activeTab }) {
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       style={{
         backgroundImage: `url(${src})`,
-        backgroundSize: 'cover',
+        backgroundSize: '200%',
         backgroundPosition: 'center',
         filter: 'blur(24px) brightness(35%) saturate(80%)',
       }}
