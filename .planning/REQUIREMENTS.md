@@ -11,8 +11,10 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 **: User sees a sharp, framed hero image of the active body between the tab toggle and the data panel (~16/7, rounded, soft bottom vignette)
 - [x] **HERO-02
 **: User sees a full-bleed atmospheric backdrop of the active body's image behind the page content, treated for contrast (blurred + dimmed)
-- [ ] **HERO-03**: Hero and backdrop both switch to match the active tab (Mars ↔ Moon)
-- [ ] **HERO-04**: Data panel and card text remain high-contrast and fully legible over the backdrop (no contrast regression vs v1.0)
+- [x] **HERO-03
+**: Hero and backdrop both switch to match the active tab (Mars ↔ Moon)
+- [x] **HERO-04
+**: Data panel and card text remain high-contrast and fully legible over the backdrop (no contrast regression vs v1.0)
 
 ### Image Pipeline (IMG)
 
