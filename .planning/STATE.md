@@ -18,10 +18,10 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-14)
+See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Milestone v1.0 COMPLETE — live at https://planetary-conditions.vercel.app. All 6 phases done; both tabs render real data end-to-end. Next: `/gsd-complete-milestone`.
+**Current focus:** v1.0 ARCHIVED (tag v1.0, live in prod). Between milestones — next: `/gsd-new-milestone` to seed v2 Visual Upgrade from `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 
 ## Current Position
 
@@ -164,7 +164,10 @@ Items acknowledged and carried forward from previous milestone close:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| *(none)* | | | |
+| process-uat | Phases 1–5 human-UAT never run (22 pending scenarios) | accepted | v1.0 close (2026-05-28) |
+| process-verification | Phases 1–5 VERIFICATION.md stuck at human_needed | accepted | v1.0 close (2026-05-28) |
+| process-nyquist | No VALIDATION.md in any phase (nyquist enabled) | accepted | v1.0 close (2026-05-28) |
+| reliability | useSolarWind blanks whole section on one sub-query failure | → v2 Phase 4 | v1.0 close (2026-05-28) |
 
 ## Session Continuity
 
