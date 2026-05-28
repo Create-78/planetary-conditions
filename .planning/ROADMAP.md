@@ -42,7 +42,10 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
   3. Data panel and card text stay high-contrast and fully legible over the backdrop — no contrast regression versus v1.0.
   4. The hero shows an instant LQIP blur-up and reserves its dimensions so there is no layout shift (CLS ≈ 0).
   5. Committed assets are optimized (≈1600px WebP + PNG fallback per body) with multi-MB source PNGs gitignored, and added image weight served per tab stays within ~300 KB on the WebP path.
-**Plans**: TBD
+**Plans**: 3 plans (3 waves)
+- [ ] 07-01-PLAN.md — Image pipeline: optimize ≈1600px WebP + PNG per body, capture LQIP base64, gitignore source PNGs (IMG-01, IMG-03)
+- [ ] 07-02-PLAN.md — Build AtmosphericBackdrop + BodyHero components (LQIP blur-up, artist label) + tabs.js heroAlt (HERO-01, HERO-02, IMG-02)
+- [ ] 07-03-PLAN.md — Wire layered frame into App.jsx, reduce StarField opacity, enforce contrast/CLS/perf + human verify (HERO-03, HERO-04, IMG-03)
 **UI hint**: yes
 
 ### Phase 8: Motion & Transitions
@@ -86,7 +89,7 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 | 4. Moon Tab — Three Sub-Sections | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 5. Reliability & UX Polish | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 6. Vercel Deployment | v1.0 | 2/2 | Complete | 2026-05-27 |
-| 7. Hero + Atmospheric Backdrop | v2.0 | 0/— | Planned | - |
+| 7. Hero + Atmospheric Backdrop | v2.0 | 0/3 | Planned | - |
 | 8. Motion & Transitions | v2.0 | 0/— | Planned | - |
 | 9. Card & Typography Refresh | v2.0 | 0/— | Planned | - |
 | 10. Reliability Carryforward | v2.0 | 0/— | Planned | - |
