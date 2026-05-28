@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
-status: executing
-stopped_at: Plan 08-02 Tasks 1-2 done; STOPPED at Task 3 human-verify checkpoint
-last_updated: "2026-05-28T19:24:55.761Z"
-last_activity: 2026-05-28 — Completed 08-01-PLAN.md (motion hooks + two-layer cross-fades)
+status: planning
+stopped_at: Phase 8 complete — awaiting Phase 9 planning
+last_updated: "2026-05-28T20:00:00.000Z"
+last_activity: 2026-05-28 — Completed 08-02-PLAN.md (reducedMotion threading + human-verify approved)
 progress:
   total_phases: 4
   completed_phases: 2
@@ -25,13 +25,13 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 
 ## Current Position
 
-Phase: 08 — Motion & Transitions — EXECUTING
-Plan: 2 of 2 (Plan 01 complete; Plan 02 Tasks 1-2 done, paused at Task 3 checkpoint)
-Status: Executing Phase 08 — Plan 02 App.jsx wiring done, AWAITING human-verify checkpoint (Task 3)
-Next plan: 08-02 Task 3 — human visual verification of cross-fade, parallax, reduced-motion
-Last activity: 2026-05-28 — Plan 08-02 Tasks 1-2 complete (reducedMotion threaded + full-suite green); STOPPED at human-verify gate
+Phase: 08 — Motion & Transitions — COMPLETE
+Plan: 2 of 2 (both plans complete; Task 3 human-verify checkpoint approved)
+Status: Phase 08 complete — MOTION-01, MOTION-02, MOTION-03 all confirmed. Ready for Phase 9 planning.
+Next plan: Phase 9 — Card & Typography Refresh (plan phase first)
+Last activity: 2026-05-28 — Plan 08-02 Task 3 human-verify approved (motion correct; full-background layout redesign deferred to Phase 8.5)
 
-Progress: [████████░░] 80%
+Progress: [██████████] 100% (Phase 8 complete — 2/2 plans done)
 
 ## Performance Metrics
 
@@ -165,6 +165,7 @@ Recent decisions affecting current work:
 - Phase 8 Plan 1: parallaxOffset exported as a standalone pure function beside useScrollParallax so the Nyquist test runs in node:test with zero DOM mocking (selectLatestKp pattern)
 - Phase 8 Plan 1: AtmosphericBackdrop comment rephrased to drop the literal 'key={activeTab}' so the banned-pattern negative-grep passes — same comment-grep-collision-avoidance pattern as Phases 1-6
 - Phase 8 Plan 1: MOTION-01/02/03 requirements NOT marked complete yet — hooks/components built but App.jsx wiring (Plan 08-02) delivers them live; mark on Plan 02 completion to avoid premature traceability
+- Phase 8 Plan 2: Human-verify checkpoint approved — motion is technically correct. User elected to keep Phase 8 closed as-is; full-background hero layout redesign (glassmorphic overlay + full-bleed photo) deferred to a new Phase 8.5 before Phase 9 executes
 
 ### Pending Todos
 
@@ -187,9 +188,9 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-28T19:24:55.750Z
-Stopped at: Plan 08-02 Tasks 1-2 done; STOPPED at Task 3 human-verify checkpoint
-Resume file: 08-02-PLAN.md (resume at Task 3 after visual approval)
+Last session: 2026-05-28T20:00:00.000Z
+Stopped at: Phase 8 complete — human-verify approved; Phase 9 planning next
+Resume file: None — phase complete, run /gsd-plan-phase 9 to continue
 
 **Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7
 

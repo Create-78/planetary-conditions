@@ -26,7 +26,7 @@ Full detail archived: `milestones/v1.0-ROADMAP.md` · Audit: `milestones/v1.0-MI
 Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 
 - [x] **Phase 7: Hero + Atmospheric Backdrop** — Per-body sharp hero image and treated full-bleed backdrop, fed by a committed pre-optimized image pipeline (WebP + PNG + LQIP) — completed 2026-05-28
-- [ ] **Phase 8: Motion & Transitions** — Cross-fade on tab switch and gentle hero scroll parallax, with reduced-motion respected
+- [x] **Phase 8: Motion & Transitions** — Cross-fade on tab switch and gentle hero scroll parallax, with reduced-motion respected — completed 2026-05-28
 - [ ] **Phase 9: Card & Typography Refresh** — Body-themed DataCard and type system, intensified per-tab palettes, all data states preserved
 - [ ] **Phase 10: Reliability Carryforward** — `useSolarWind` degrades per-card so one failed SWPC sub-query no longer blanks the whole Space Weather section
 
@@ -58,7 +58,7 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
   3. With `prefers-reduced-motion: reduce` enabled, both cross-fade and parallax are disabled — tab switches are instant and the hero is static.
 **Plans**: 2 plans (2 waves)
 - [x] 08-01-PLAN.md — Create useScrollParallax + usePrefersReducedMotion hooks (with Nyquist unit tests); refactor AtmosphericBackdrop + BodyHero to two-layer opacity cross-fade with parallax ref (MOTION-01, MOTION-02, MOTION-03)
-- [ ] 08-02-PLAN.md — Thread reducedMotion through App.jsx; full-suite verification + human visual check of cross-fade, parallax, reduced-motion (MOTION-01, MOTION-02, MOTION-03)
+- [x] 08-02-PLAN.md — Thread reducedMotion through App.jsx; full-suite verification + human visual check of cross-fade, parallax, reduced-motion (MOTION-01, MOTION-02, MOTION-03)
 **UI hint**: yes
 
 ### Phase 9: Card & Typography Refresh
@@ -92,6 +92,6 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 | 5. Reliability & UX Polish | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 6. Vercel Deployment | v1.0 | 2/2 | Complete | 2026-05-27 |
 | 7. Hero + Atmospheric Backdrop | v2.0 | 3/3 | Complete | 2026-05-28 |
-| 8. Motion & Transitions | v2.0 | 1/2 | In Progress | - |
+| 8. Motion & Transitions | v2.0 | 2/2 | Complete | 2026-05-28 |
 | 9. Card & Typography Refresh | v2.0 | 0/— | Planned | - |
 | 10. Reliability Carryforward | v2.0 | 0/— | Planned | - |

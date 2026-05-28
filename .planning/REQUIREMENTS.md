@@ -27,9 +27,9 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 
 ### Motion & Transitions (MOTION)
 
-- [ ] **MOTION-01**: Backdrop and hero cross-fade when the user switches tabs
-- [ ] **MOTION-02**: The hero responds to scroll with a gentle parallax (~10px)
-- [ ] **MOTION-03**: When `prefers-reduced-motion: reduce` is set, cross-fade and parallax are disabled (instant, static)
+- [x] **MOTION-01**: Backdrop and hero cross-fade when the user switches tabs
+- [x] **MOTION-02**: The hero responds to scroll with a gentle parallax (~10px)
+- [x] **MOTION-03**: When `prefers-reduced-motion: reduce` is set, cross-fade and parallax are disabled (instant, static)
 
 ### Card & Typography Refresh (THEME)
 
@@ -65,9 +65,9 @@ REQ-IDs continue from v1.0 (REL continues at 06). Phase numbering continues at 7
 | IMG-01 | Phase 7 | Pending |
 | IMG-02 | Phase 7 | Pending |
 | IMG-03 | Phase 7 | Pending |
-| MOTION-01 | Phase 8 | Pending |
-| MOTION-02 | Phase 8 | Pending |
-| MOTION-03 | Phase 8 | Pending |
+| MOTION-01 | Phase 8 | Complete |
+| MOTION-02 | Phase 8 | Complete |
+| MOTION-03 | Phase 8 | Complete |
 | THEME-01 | Phase 9 | Pending |
 | THEME-02 | Phase 9 | Pending |
 | THEME-03 | Phase 9 | Pending |
