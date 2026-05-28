@@ -25,7 +25,7 @@ Full detail archived: `milestones/v1.0-ROADMAP.md` · Audit: `milestones/v1.0-MI
 
 Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 
-- [ ] **Phase 7: Hero + Atmospheric Backdrop** — Per-body sharp hero image and treated full-bleed backdrop, fed by a committed pre-optimized image pipeline (WebP + PNG + LQIP)
+- [x] **Phase 7: Hero + Atmospheric Backdrop** — Per-body sharp hero image and treated full-bleed backdrop, fed by a committed pre-optimized image pipeline (WebP + PNG + LQIP) — completed 2026-05-28
 - [ ] **Phase 8: Motion & Transitions** — Cross-fade on tab switch and gentle hero scroll parallax, with reduced-motion respected
 - [ ] **Phase 9: Card & Typography Refresh** — Body-themed DataCard and type system, intensified per-tab palettes, all data states preserved
 - [ ] **Phase 10: Reliability Carryforward** — `useSolarWind` degrades per-card so one failed SWPC sub-query no longer blanks the whole Space Weather section
@@ -43,9 +43,9 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
   4. The hero shows an instant LQIP blur-up and reserves its dimensions so there is no layout shift (CLS ≈ 0).
   5. Committed assets are optimized (≈1600px WebP + PNG fallback per body) with multi-MB source PNGs gitignored, and added image weight served per tab stays within ~300 KB on the WebP path.
 **Plans**: 3 plans (3 waves)
-- [ ] 07-01-PLAN.md — Image pipeline: optimize ≈1600px WebP + PNG per body, capture LQIP base64, gitignore source PNGs (IMG-01, IMG-03)
-- [ ] 07-02-PLAN.md — Build AtmosphericBackdrop + BodyHero components (LQIP blur-up, artist label) + tabs.js heroAlt (HERO-01, HERO-02, IMG-02)
-- [ ] 07-03-PLAN.md — Wire layered frame into App.jsx, reduce StarField opacity, enforce contrast/CLS/perf + human verify (HERO-03, HERO-04, IMG-03)
+- [x] 07-01-PLAN.md — Image pipeline: optimize ≈1600px WebP + PNG per body, capture LQIP base64, gitignore source PNGs (IMG-01, IMG-03)
+- [x] 07-02-PLAN.md — Build AtmosphericBackdrop + BodyHero components (LQIP blur-up, artist label) + tabs.js heroAlt (HERO-01, HERO-02, IMG-02)
+- [x] 07-03-PLAN.md — Wire layered frame into App.jsx, reduce StarField opacity, enforce contrast/CLS/perf + human verify (HERO-03, HERO-04, IMG-03)
 **UI hint**: yes
 
 ### Phase 8: Motion & Transitions
@@ -89,7 +89,7 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 | 4. Moon Tab — Three Sub-Sections | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 5. Reliability & UX Polish | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 6. Vercel Deployment | v1.0 | 2/2 | Complete | 2026-05-27 |
-| 7. Hero + Atmospheric Backdrop | v2.0 | 0/3 | Planned | - |
+| 7. Hero + Atmospheric Backdrop | v2.0 | 3/3 | Complete | 2026-05-28 |
 | 8. Motion & Transitions | v2.0 | 0/— | Planned | - |
 | 9. Card & Typography Refresh | v2.0 | 0/— | Planned | - |
 | 10. Reliability Carryforward | v2.0 | 0/— | Planned | - |

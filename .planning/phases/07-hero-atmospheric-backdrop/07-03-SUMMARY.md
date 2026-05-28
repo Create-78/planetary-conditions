@@ -130,14 +130,19 @@ Phase 8 (Motion & Transitions) will animate the now-static layers — cross-fade
 
 ## Human Checkpoint Status
 
-Task 4 (human-verify) is the blocking gate for this plan. The checkpoint requires the user to:
-1. Open `http://localhost:5173` and verify Mars tab shows correct backdrop + framed hero
-2. Click MOON and confirm both backdrop AND hero swap to Moon (HERO-03)
-3. Confirm data text legibility on both tabs (HERO-04 visual backstop)
-4. Confirm no layout shift on hard-refresh (IMG-02)
-5. Confirm star texture still reads faintly over backdrop
+Task 4 (human-verify) — **APPROVED** (2026-05-28)
 
-Status: **AWAITING HUMAN VERIFICATION**
+During the checkpoint review the user requested 4 additional visual polish changes, applied and committed as `fbcec87`:
+
+| Change | Files | Detail |
+|--------|-------|--------|
+| Orbitron logotype | `index.html`, `tailwind.config.js` | Added Orbitron Google Font; `font-logo` Tailwind alias |
+| Header redesign | `src/App.jsx` | Flex layout: `PlanetaryIcon` SVG + Orbitron h1 + muted tagline at `text-slate-500 text-xs` |
+| Waxing-gibbous icon | `src/App.jsx` | `PlanetaryIcon` — black bg circle + colored planet circle + dark shadow arc path; color switches with `activeTab` (red Mars, grey Moon) |
+| Hero + backdrop zoom | `src/components/BodyHero.jsx`, `src/components/AtmosphericBackdrop.jsx` | `<img>` height 200% `translateY(-50%)` center-crop; backdrop `backgroundSize: '200%'` |
+| Mars tab button border | `src/components/TabBar.jsx` | `border-mars-accent` (amber #f59e0b) → `border-mars-900` (dark red #450a0a); shadow `#f59e0b` → `#7f1d1d` |
+
+Post-polish build verified: `npm run build` exits 0, WebP weights unchanged (39KB / 63KB).
 
 ## Self-Check: PASSED
 
