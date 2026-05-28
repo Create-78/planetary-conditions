@@ -32,6 +32,7 @@ export function useScrollParallax({ speed = 0.05, disabled = false, baseTransfor
     return () => {
       window.removeEventListener('scroll', onScroll)
       if (rafHandle.current) cancelAnimationFrame(rafHandle.current)
+      ticking.current = false   // F-03 fix: reset flag so rapid tab-switch doesn't drop first scroll event
     }
   }, [disabled, speed, baseTransform])
 

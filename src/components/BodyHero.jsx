@@ -20,14 +20,14 @@ const BODIES = ['mars', 'moon']
 
 // Two always-mounted body layers cross-fade via opacity (MOTION-01). Per-body loaded state
 // (Pitfall 3) so each body's LQIP fades only when ITS image loads — no shared boolean.
-// Parallax ref attaches to the ACTIVE inner <img> only (Pitfall 4); baseTransform keeps the
-// Phase 7 translateY(-50%) center-crop (Pitfall 1). Cross-fade gated by reducedMotion (MOTION-03).
+// Parallax ref attaches to the ACTIVE inner <img> only (Pitfall 4); baseTransform is '' because
+// object-fit:cover handles sizing natively — no center-crop hack needed. Cross-fade gated by reducedMotion (MOTION-03).
 function BodyHero({ activeTab, reducedMotion }) {
   const [loaded, setLoaded] = useState({ mars: false, moon: false })
-  const parallaxRef = useScrollParallax({ speed: 0.05, disabled: reducedMotion, baseTransform: 'translateY(-50%)' })
+  const parallaxRef = useScrollParallax({ speed: 0.05, disabled: reducedMotion, baseTransform: '' })
 
   return (
-    <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden mb-4">
+    <div className="absolute inset-0 overflow-hidden" style={{ gridArea: '1 / 1' }}>
       {BODIES.map((body) => {
         const asset = HERO_ASSETS[body]
         const lqip = LQIP[body]
@@ -49,22 +49,15 @@ function BodyHero({ activeTab, reducedMotion }) {
                 ref={isActive ? parallaxRef : null}
                 src={asset.png}
                 alt={asset.alt}
-                width={1600}
-                height={700}
                 loading="eager"
                 onLoad={() => setLoaded((prev) => ({ ...prev, [body]: true }))}
-                className="absolute w-full object-cover object-center"
-                style={{ height: '200%', top: '50%', transform: 'translateY(-50%)', willChange: 'transform' }}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                style={{ willChange: 'transform' }}
               />
             </picture>
           </div>
         )
       })}
-      {/* Bottom vignette — soft handoff into the data panel below; does NOT transition */}
-      <div
-        className="absolute inset-x-0 bottom-0 h-1/3"
-        style={{ background: 'linear-gradient(to top, #020617 0%, transparent 100%)' }}
-      />
       {/* NASA image honesty label (D-01) — bottom-right dark pill; does NOT transition */}
       <span
         className="absolute bottom-2 right-2 rounded bg-black/50 px-2 py-1 text-xs text-white"
