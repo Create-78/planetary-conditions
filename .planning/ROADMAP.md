@@ -65,13 +65,14 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 ### Phase 8.5: Full-Background Hero + Glassmorphic Overlay
 **Goal**: The hero images fill the viewport as a cinematic full-bleed layer with the data panel overlaid in a glassmorphic card — making the Phase 8 cross-fade and parallax visually prominent and the overall experience feel cinematic.
 **Depends on**: Phase 8 (motion hooks, two-layer cross-fade pattern, and parallax ref hook exist and must be reused)
-**Requirements**: LAYOUT-01, LAYOUT-02, LAYOUT-03 (TBD — defined during planning)
+**Requirements**: LAYOUT-01, LAYOUT-02, LAYOUT-03
 **Success Criteria** (what must be TRUE):
   1. The active body's hero image fills the viewport (or a large portion of it) as a full-bleed layer — not contained in a 16:7 framed box.
   2. The data panel sits above the hero image in a glassmorphic overlay (backdrop-blur + translucent background) that remains fully legible.
   3. The Phase 8 cross-fade (opacity transition on tab switch) and parallax (~10px on scroll) are visibly noticeable with full-background images.
   4. Reduced-motion OS setting still disables both animations correctly (Phase 8 MOTION-03 is preserved).
-**Plans**: TBD
+**Plans**: 1 plan (1 wave)
+- [ ] 08.5-01-PLAN.md — Refactor BodyHero to full-bleed, restructure App.jsx with CSS Grid + glass panel, fix F-03 parallax cleanup, human-verify (LAYOUT-01, LAYOUT-02, LAYOUT-03)
 **UI hint**: yes
 
 ### Phase 9: Card & Typography Refresh
@@ -106,6 +107,6 @@ Design spec: `docs/superpowers/specs/2026-05-28-v2-visual-upgrade-design.md`.
 | 6. Vercel Deployment | v1.0 | 2/2 | Complete | 2026-05-27 |
 | 7. Hero + Atmospheric Backdrop | v2.0 | 3/3 | Complete | 2026-05-28 |
 | 8. Motion & Transitions | v2.0 | 2/2 | Complete | 2026-05-28 |
-| 8.5. Full-Background Hero + Glassmorphic Overlay | v2.0 | 0/— | Planned | - |
+| 8.5. Full-Background Hero + Glassmorphic Overlay | v2.0 | 0/1 | Planned | - |
 | 9. Card & Typography Refresh | v2.0 | 0/— | Planned | - |
 | 10. Reliability Carryforward | v2.0 | 0/— | Planned | - |
