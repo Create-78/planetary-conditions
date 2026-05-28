@@ -16,7 +16,7 @@ function StarField() {
           radial-gradient(circle at 10% 70%, rgba(255,255,255,0.3) 0.5px, transparent 1px)
         `,
         backgroundSize: '120px 120px, 180px 180px, 150px 150px, 200px 200px, 160px 160px',
-        opacity: 0.6,
+        opacity: 0.4,
       }}
     />
   )
