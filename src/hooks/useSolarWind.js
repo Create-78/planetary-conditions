@@ -11,9 +11,12 @@ import { useQueries } from '@tanstack/react-query'
  * No auth required (NOAA SWPC is CORS-open and serves correct Content-Type;
  * no MAAS2-style quirk here).
  *
- * Response shape: tabular JSON — first array element is the headers row,
- * subsequent elements are data rows. We pull the latest row whose target
- * field is non-null (NOAA occasionally writes null measurements).
+ * Response shapes differ by endpoint:
+ *   - Plasma & Mag: tabular JSON — first array element is the headers row,
+ *     subsequent elements are data rows. We pull the latest row whose target
+ *     field is non-null (NOAA occasionally writes null measurements).
+ *   - Kp: array of OBJECTS (newest last) with a capital-K `Kp` field — NOT
+ *     tabular. Parsed separately via selectLatestKp (see fetchKp below).
  *
  * Cadence: 5-minute refetchInterval per Discussion.md §3 and 04-CONTEXT D-12.
  * refetchOnWindowFocus disabled (matches Phase 3 silent-refresh lock).
@@ -80,11 +83,30 @@ async function fetchMag({ signal } = {}) {
   }
 }
 
+// Kp is the odd one out: noaa-planetary-k-index.json returns an ARRAY OF OBJECTS
+// (newest last), NOT the tabular array-of-arrays that plasma/mag use, and the
+// field is `Kp` (capital K). So it can't go through fetchTabular/latestObject
+// (which call headers.map and would throw on an object). Parse it directly.
+// Walk newest -> oldest for the first non-null Kp (NOAA occasionally trails nulls).
+export function selectLatestKp(payload) {
+  if (!Array.isArray(payload) || payload.length === 0) {
+    throw new Error('SWPC Kp response had no data rows')
+  }
+  for (let i = payload.length - 1; i >= 0; i--) {
+    const point = payload[i]
+    if (point && point.Kp != null) return toNumberOrNull(point.Kp)
+  }
+  return toNumberOrNull(payload[payload.length - 1]?.Kp)
+}
+
 async function fetchKp({ signal } = {}) {
-  const table = await fetchTabular(KP_URL, { signal })
-  const latest = latestObject(table, 'kp_index')
+  const response = await fetch(KP_URL, { signal })
+  if (!response.ok) {
+    throw new Error(`SWPC fetch failed: ${response.status} ${response.statusText}`)
+  }
+  const payload = await response.json()
   return {
-    kp: toNumberOrNull(latest.kp_index),
+    kp: selectLatestKp(payload),
   }
 }
 
