@@ -46,11 +46,21 @@ function App() {
           <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
         </div>
 
-        <BodyHero activeTab={activeTab} reducedMotion={reducedMotion} />
+        <div
+          className="grid"
+          style={{ gridTemplateColumns: '1fr', minHeight: '70vh' }}
+        >
+          {/* Full-bleed hero: absolute inset-0 within grid cell (BodyHero's outer div uses gridArea:'1/1') */}
+          <BodyHero activeTab={activeTab} reducedMotion={reducedMotion} />
 
-        <div className="rounded-lg border border-slate-800/60 bg-slate-950/30 backdrop-blur-md p-6 md:p-8">
-          {activeTab === TABS.MARS.id && <MarsTab />}
-          {activeTab === TABS.MOON.id && <MoonTab />}
+          {/* Glass panel: defines cell height, sits above hero in same grid cell */}
+          <div
+            className="relative z-10 backdrop-blur-md bg-slate-950/50 border border-slate-700/40 rounded-xl p-6 md:p-8 m-4 md:m-8"
+            style={{ gridArea: '1 / 1' }}
+          >
+            {activeTab === TABS.MARS.id && <MarsTab />}
+            {activeTab === TABS.MOON.id && <MoonTab />}
+          </div>
         </div>
       </main>
     </div>
