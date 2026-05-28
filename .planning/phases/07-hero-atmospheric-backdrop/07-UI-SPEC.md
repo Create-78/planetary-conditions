@@ -62,8 +62,8 @@ Inherited from v1.0 (Tailwind's default 4px base scale — no custom tokens adde
 
 | Token | Value | Usage in Phase 7 |
 |-------|-------|-----------------|
-| xs | 4px | Hero label internal padding (px-1 py-0.5) |
-| sm | 8px | Hero label margin from corner (m-2) |
+| xs | 4px | Hero label internal padding-y (py-1) |
+| sm | 8px | Hero label internal padding-x (px-2); label margin from corner (m-2) |
 | md | 16px | Gap between BodyHero bottom edge and data panel |
 | lg | 24px | Existing data panel padding (unchanged: p-6) |
 | xl | 32px | Existing section/header margins (unchanged) |
@@ -176,7 +176,7 @@ Source: D-06, HERO-04, WCAG 2.1 AA.
 | Size | 11px (text-xs) |
 | Weight | 400 (normal) |
 | Color | White (`text-white`) |
-| Background | `bg-black/50 rounded px-1.5 py-0.5` — dark pill, rounded |
+| Background | `bg-black/50 rounded px-2 py-1` — dark pill, rounded (8px / 4px padding) |
 | z-index | Above hero image, below vignette overlay if vignette is a sibling div |
 | Present on | Hero only — NOT on AtmosphericBackdrop (D-03) |
 | aria | `aria-label="This is an artist's impression, not a photograph"` on the label span for screen readers |
