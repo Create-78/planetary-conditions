@@ -25,3 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Phase 7 — source PNGs (multi-MB design masters, not committed)
+mars-image.png
+moon-image.png
