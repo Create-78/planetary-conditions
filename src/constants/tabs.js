@@ -6,11 +6,13 @@ export const TABS = {
     id: 'mars',
     label: 'Mars',
     paletteKey: 'mars',
+    heroAlt: "Mars — artist's impression",
   },
   MOON: {
     id: 'moon',
     label: 'Moon',
     paletteKey: 'moon',
+    heroAlt: "Moon — artist's impression",
   },
 }
 
