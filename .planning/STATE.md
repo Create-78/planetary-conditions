@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Visual Upgrade
-status: planned
-stopped_at: Phase 8 Motion & Transitions — 2 plans ready, execute with /gsd-execute-phase 8
-last_updated: "2026-05-28T19:00:00.000Z"
-last_activity: 2026-05-28 -- Phase --phase execution started
+status: executing
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-05-28T19:21:29.479Z"
+last_activity: 2026-05-28 — Completed 08-01-PLAN.md (motion hooks + two-layer cross-fades)
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
-  percent: 100
+  total_plans: 5
+  completed_plans: 4
+  percent: 80
 ---
 
 # Project State
@@ -25,13 +25,13 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 
 ## Current Position
 
-Phase: --phase (07) — EXECUTING
-Plan: 1 of --name
-Status: Executing Phase --phase
-Next phase: Phase 7 — Hero + Atmospheric Backdrop
-Last activity: 2026-05-28 -- Phase --phase execution started
+Phase: 08 — Motion & Transitions — EXECUTING
+Plan: 2 of 2 (Plan 01 complete)
+Status: Executing Phase 08 — Plan 01 done, Plan 02 (App.jsx wiring) remaining
+Next plan: 08-02 — thread reducedMotion into App.jsx
+Last activity: 2026-05-28 — Completed 08-01-PLAN.md (motion hooks + two-layer cross-fades)
 
-Progress: [██████████] 100%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -75,6 +75,7 @@ Progress: [██████████] 100%
 | Phase 07-hero-atmospheric-backdrop P07-01 | 5 | 3 tasks | 6 files |
 | Phase 07-hero-atmospheric-backdrop P07-02 | 2 | 3 tasks | 3 files |
 | Phase 07-hero-atmospheric-backdrop P03 | 2.5 | 3 tasks | 2 files |
+| Phase 08-motion-transitions P01 | 2.2 | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -160,6 +161,10 @@ Recent decisions affecting current work:
 - Phase 7 Plan 2: AtmosphericBackdrop filter starting values blur(24px) brightness(35%) saturate(80%) — tunable; Plan 03 may dial brightness toward 25% under live contrast check
 - Phase 7 Plan 2: Real LQIP base64 strings inlined verbatim from 07-01-LQIP.md — no placeholders remain
 - Phase 7 Plan 03: D-06 guardrail — No tuning levers applied; worst-case computed contrast 11.72:1–14.16:1 passes WCAG AA (>=4.5:1) with headroom; bg-slate-950/30 + backdrop-blur-md retained as shipped values
+- Phase 8 Plan 1: usePrefersReducedMotion.test.js tests the OBSERVABLE matchMedia contract (locked query string + matches branches) rather than mounting the hook — Node has no DOM, mirroring useSolarWind.test.js exercising a pure helper
+- Phase 8 Plan 1: parallaxOffset exported as a standalone pure function beside useScrollParallax so the Nyquist test runs in node:test with zero DOM mocking (selectLatestKp pattern)
+- Phase 8 Plan 1: AtmosphericBackdrop comment rephrased to drop the literal 'key={activeTab}' so the banned-pattern negative-grep passes — same comment-grep-collision-avoidance pattern as Phases 1-6
+- Phase 8 Plan 1: MOTION-01/02/03 requirements NOT marked complete yet — hooks/components built but App.jsx wiring (Plan 08-02) delivers them live; mark on Plan 02 completion to avoid premature traceability
 
 ### Pending Todos
 
@@ -182,8 +187,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-28T17:27:03.511Z
-Stopped at: Completed 07-03 automated tasks (Tasks 1-3); at human-verify checkpoint Task 4
+Last session: 2026-05-28T19:21:05.689Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None
 
 **Milestone v2.0 roadmap created** — Phases 7 (Hero + Atmospheric Backdrop), 8 (Motion & Transitions), 9 (Card & Typography Refresh), 10 (Reliability Carryforward). Next: /gsd-plan-phase 7
