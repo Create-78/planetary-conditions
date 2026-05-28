@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 06-vercel-deployment/06-01-PLAN.md
-last_updated: "2026-05-21T19:14:28.690Z"
-last_activity: 2026-05-21
+status: complete
+stopped_at: Completed 06-vercel-deployment/06-02-PLAN.md — milestone v1.0 complete
+last_updated: "2026-05-27T02:30:00.000Z"
+last_activity: 2026-05-27
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 15
-  completed_plans: 14
-  percent: 93
+  completed_plans: 15
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-14)
 
 **Core value:** A single cinematic dashboard showing current Mars and Moon conditions from real NASA/NOAA APIs, presented so non-experts find it compelling and accessible.
-**Current focus:** Phase 06 — Vercel Deployment Plan 06-01 (pre-deploy hygiene + runbook) COMPLETE → next: Plan 06-02 (user-action gates: GitHub push, Vercel import, env var, CORS verification, smoke test)
+**Current focus:** Milestone v1.0 COMPLETE — live at https://planetary-conditions.vercel.app. All 6 phases done; both tabs render real data end-to-end. Next: `/gsd-complete-milestone`.
 
 ## Current Position
 
-Phase: 6
+Phase: 6 (final)
 Plan: 06-02
-Status: Ready to execute
-Last activity: 2026-05-21
+Status: Complete — milestone v1.0 shipped
+Last activity: 2026-05-27
 
-Progress: [█████████░] 93%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -145,6 +145,10 @@ Recent decisions affecting current work:
 - Phase 6 Plan 1: Paraphrased DEMO_KEY refs in useDonkiEvents.js JSDoc to satisfy Audit 9 file-count gate (exactly one src/ file mentioning DEMO_KEY) — same comment-grep-collision-avoidance pattern as phases 1-5
 - Phase 6 Plan 1: DEPLOYMENT.md lives at repo root (NOT inside .planning/) per D-16 — users follow it without GSD context; runbook is 171 lines with Prerequisites, First-time deployment, Subsequent deploys, Preview deploys, Troubleshooting sections
 - Phase 6 Plan 1: README Live demo placeholder ('coming soon') NOT a real *.vercel.app URL — real URL inserted by Plan 06-02 Task 7 after user confirms first successful deploy (D-19)
+- Phase 6 Plan 2: MAAS2 routed through a Vercel Edge proxy (api/maas2.js) — MAAS2 emits no Access-Control-Allow-Origin in prod (D-13 contingency). Revises the 'client-side, no proxy' decision for MAAS2 only; NOAA SWPC + NASA DONKI stay client-side
+- Phase 6 Plan 2: NOAA Kp endpoint (noaa-planetary-k-index.json) returns an ARRAY OF OBJECTS (field `Kp`), not the tabular array-of-arrays of plasma/mag — fetchKp now parses it via selectLatestKp(); the shared tabular helper threw `headers.map is not a function` and blanked the whole solar wind section (found via UAT, fixed TDD in 3a5118a)
+- Phase 6 Plan 2: Added node:test (Node built-in) + `npm test` rather than vitest — zero new deps for one pure-function test
+- Phase 6 Plan 2: Live in production at https://planetary-conditions.vercel.app; DEPLOY-01..04 validated; milestone v1.0 complete
 
 ### Pending Todos
 
@@ -164,8 +168,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-21T19:14:28.678Z
-Stopped at: Completed 06-vercel-deployment/06-01-PLAN.md
+Last session: 2026-05-27T02:30:00.000Z
+Stopped at: Completed 06-vercel-deployment/06-02-PLAN.md — milestone v1.0 complete
 Resume file: None
 
-**Planned Phase:** 06 () — 0 plans — 2026-05-21T19:07:09.611Z
+**Milestone v1.0 complete** — all 6 phases done; live at https://planetary-conditions.vercel.app. Next: /gsd-complete-milestone

@@ -125,10 +125,10 @@ Data source: NASA DONKI (CME, FLR, GST endpoints). Requires `VITE_NASA_API_KEY`.
 
 ### Deployment (DEPLOY)
 
-- [ ] **DEPLOY-01**: Vercel project connected to the GitHub repo; auto-deploy on push to `main` works
-- [ ] **DEPLOY-02**: `VITE_NASA_API_KEY` set in Vercel dashboard (Project → Settings → Environment Variables)
-- [ ] **DEPLOY-03**: CORS verified for all four data sources (MAAS2, NOAA SWPC, NASA DONKI) from the deployed origin
-- [ ] **DEPLOY-04**: Production preview shows both tabs rendering live data end-to-end
+- [x] **DEPLOY-01**: Vercel project connected to the GitHub repo; auto-deploy on push to `main` works
+- [x] **DEPLOY-02**: `VITE_NASA_API_KEY` set in Vercel dashboard (Project → Settings → Environment Variables)
+- [x] **DEPLOY-03**: CORS verified for all four data sources (MAAS2, NOAA SWPC, NASA DONKI) from the deployed origin
+- [x] **DEPLOY-04**: Production preview shows both tabs rendering live data end-to-end
 
 ---
 
@@ -215,7 +215,7 @@ Every v1 REQ-ID is mapped to exactly one phase. Coverage: 54/54 ✓
 | REL-03 | Phase 5: Reliability & UX Polish | Pending |
 | REL-04 | Phase 5: Reliability & UX Polish | Pending |
 | REL-05 | Phase 5: Reliability & UX Polish | Pending |
-| DEPLOY-01 | Phase 6: Vercel Deployment | Pending |
-| DEPLOY-02 | Phase 6: Vercel Deployment | Pending |
-| DEPLOY-03 | Phase 6: Vercel Deployment | Pending |
-| DEPLOY-04 | Phase 6: Vercel Deployment | Pending |
+| DEPLOY-01 | Phase 6: Vercel Deployment | Complete |
+| DEPLOY-02 | Phase 6: Vercel Deployment | Complete |
+| DEPLOY-03 | Phase 6: Vercel Deployment | Complete |
+| DEPLOY-04 | Phase 6: Vercel Deployment | Complete |

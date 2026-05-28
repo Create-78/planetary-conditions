@@ -4,7 +4,7 @@ Real-time surface and space environment data from Mars and the Moon — a cinema
 
 Why not "weather"? The Moon has no atmosphere. "Planetary Conditions" is more precise — and more interesting.
 
-**Live demo:** (coming soon — will be updated when first Vercel deploy completes)
+**Live demo:** https://planetary-conditions.vercel.app
 
 ---
 

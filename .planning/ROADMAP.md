@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Mars Tab — Surface Data** — Mars tab shows live MAAS2/Curiosity REMS data with tooltips and timestamps
 - [x] **Phase 4: Moon Tab — Three Sub-Sections** — Moon tab shows lunar context, NOAA solar wind, and NASA DONKI alerts end-to-end
 - [x] **Phase 5: Reliability & UX Polish** — Every panel has loading/error/freshness states; no blank panels, no full-page failures
-- [ ] **Phase 6: Vercel Deployment** — App ships on Vercel with VITE_NASA_API_KEY and CORS verified from production origin
+- [x] **Phase 6: Vercel Deployment** — App ships on Vercel with VITE_NASA_API_KEY and CORS verified from production origin
 
 ## Phase Details
 
@@ -110,7 +110,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. User on a production preview deploy sees the same end-to-end experience as local development.
 **Plans**: 2 plans
 - [x] 06-01-PLAN.md — Pre-deploy hygiene audit + DEPLOYMENT.md runbook + README Deployment section (autonomous; prep for user-gated 06-02)
-- [ ] 06-02-PLAN.md — User-gated deploy: GitHub push, Vercel import, env var, first build, CORS verify, smoke test, then docs-update sweep (DEPLOY-01..04)
+- [x] 06-02-PLAN.md — User-gated deploy: GitHub push, Vercel import, env var, first build, CORS verify, smoke test, then docs-update sweep (DEPLOY-01..04)
 
 ## Progress
 
@@ -124,4 +124,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Mars Tab — Surface Data | 2/2 | Complete    | 2026-05-19 |
 | 4. Moon Tab — Three Sub-Sections | 3/3 | Complete    | 2026-05-21 |
 | 5. Reliability & UX Polish | 3/3 | Complete    | 2026-05-21 |
-| 6. Vercel Deployment | 1/2 | In Progress | - |
+| 6. Vercel Deployment | 2/2 | Complete    | 2026-05-27 |

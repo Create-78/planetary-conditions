@@ -1,21 +1,14 @@
 ---
-status: diagnosed
+status: complete
 phase: 06-vercel-deployment
 source: [06-02-PLAN.md must_haves, 06-01-SUMMARY.md]
 started: 2026-05-27T00:00:00Z
-updated: 2026-05-27T01:00:00Z
+updated: 2026-05-27T02:00:00Z
 ---
 
 ## Current Test
-<!-- OVERWRITE each test - shows where we are -->
 
-number: 6
-name: Auto-deploy on push to main
-expected: |
-  Push any commit to main (github.com/Create-78/planetary-conditions). In Vercel
-  → Deployments, a new build triggers automatically within ~1 min and reaches
-  "Ready"; the production URL reflects the change.
-awaiting: user response
+[testing complete]
 
 <!-- prod URL confirmed: https://planetary-conditions.vercel.app -->
 production_url: https://planetary-conditions.vercel.app
@@ -34,9 +27,9 @@ note: User confirmed all Mars cards display latest data.
 
 ### 3. Moon tab — all three sections render live
 expected: On the Moon tab, all three sections show real data: (1) lunar context — current phase + modeled temperature, (2) NOAA SWPC solar wind values with the derived radiation-risk badge, (3) recent NASA DONKI solar-event alerts (or a clean "no significant events" empty state). No section is stuck on skeleton/error. (DEPLOY-04)
-result: issue
-reported: "On Moon all displays except space weather solar wind section. It says data temporarily unavailable"
-severity: major
+result: pass
+note: Initially failed (solar wind Kp crash — see Gaps). Fixed in 3a5118a; user re-verified live that all three Moon sections render, Kp ≈ 3.3, radiation badge shows.
+severity: major (resolved)
 
 ### 4. No CORS errors — production fetches succeed
 expected: With DevTools → Network + Console open on the production origin, reload. The upstream fetches all return 200: 1 MAAS2 (via /api/maas2 proxy) + 3 NOAA SWPC (plasma, mag, planetary-k-index) + 3 NASA DONKI (CME, FLR, GST). The browser console shows ZERO CORS errors (no "blocked by CORS policy", no "Access-Control-Allow-Origin"). (DEPLOY-03)
@@ -50,21 +43,24 @@ note: DONKI requests show api_key=gMXhnAetu5… (registered key, not DEMO_KEY); 
 
 ### 6. Auto-deploy on push to main
 expected: Push any commit to the `main` branch of github.com/Create-78/planetary-conditions. In the Vercel dashboard (Project → Deployments), a new build triggers automatically within ~1 min and reaches "Ready", and the production URL reflects the change. (DEPLOY-01)
-result: [pending]
+result: pass
+note: The fix push (3a6b365) auto-triggered a Vercel build that reached Ready; user confirmed.
 
 ## Summary
 
 total: 6
-passed: 4
-issues: 1
-pending: 1
+passed: 6
+issues: 0
+pending: 0
 skipped: 0
 blocked: 0
+note: 1 issue found and resolved during the session (solar wind Kp parse — fixed in 3a5118a, re-verified live).
 
 ## Gaps
 
 - truth: "Moon tab NOAA SWPC solar-wind section renders live data with the derived radiation-risk badge"
-  status: failed
+  status: resolved
+  fix_commit: 3a5118a
   reason: "User reported: On Moon all displays except space weather solar wind section. It says data temporarily unavailable"
   severity: major
   test: 3

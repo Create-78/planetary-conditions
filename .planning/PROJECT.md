@@ -27,7 +27,7 @@ A single cinematic dashboard that shows current environmental conditions on Mars
 - [ ] Per-source "last updated" timestamps on each data panel
 - [ ] Per-card loading skeletons and error states (no full-page failures)
 - [ ] React Query hooks with per-source `refetchInterval` (MAAS2: 1hr, SWPC: 5min, DONKI: 15min)
-- [ ] Vercel deployment with `VITE_NASA_API_KEY` env var (auto-deploy from `main`)
+- [x] Vercel deployment with `VITE_NASA_API_KEY` env var (auto-deploy from `main`)
 
 ### Out of Scope
 
@@ -70,12 +70,12 @@ A single cinematic dashboard that shows current environmental conditions on Mars
 | Name: "Planetary Conditions" not "Weather" | Moon has no atmosphere — "weather" would be inaccurate; deliberate brand precision | ✓ Good |
 | MAAS2/Curiosity over Perseverance MEDA for v1 | NASA PDS pipeline too complex for MVP; MAAS2 returns clean JSON, no key | — Pending validation |
 | React + Vite + Tailwind + React Query | Fast dev, no backend overhead, clean per-source refresh handling | — Pending |
-| Vercel deployment | Zero-config GitHub deploys, env vars, free tier sufficient | — Pending |
+| Vercel deployment | Zero-config GitHub deploys, env vars, free tier sufficient | ✓ Validated 2026-05-27 — live at https://planetary-conditions.vercel.app (auto-deploy from main verified) |
 | Desktop-first | v1 audience uses dashboards on desktop; mobile is non-broken baseline only | — Pending |
 | Per-card timestamps (not app-level) | Data sources refresh at different rates; trust requires honesty about each | — Pending |
 | Tooltips for education, not body copy | Keep dashboard cinematic; education is opt-in on hover | — Pending |
 | Modeled lunar surface temp (not LRO Diviner) | PDS direct access too complex for MVP; phase-based model is honest if labeled as estimate | — Pending; v2 upgrade path is real LRO data |
-| Client-side API calls (no proxy) | NASA/NOAA endpoints are CORS-open and key-safe enough for client exposure | — Pending; revisit if rate limits hit |
+| Client-side API calls (no proxy) | NASA/NOAA endpoints are CORS-open and key-safe enough for client exposure | ⚠ Partially revised 2026-05-27 — NOAA SWPC + NASA DONKI are CORS-open and called client-side, but MAAS2 lacks CORS headers in prod and now routes through a Vercel Edge proxy (`api/maas2.js`). Rate limits never hit. |
 | Skip research phase | Discussion.md already specifies stack, features, architecture, and pitfalls in detail | — Decision applies to this init only |
 
 ## Evolution
