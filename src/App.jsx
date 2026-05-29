@@ -1,69 +1,62 @@
 import { useState } from 'react'
+import PlanetStage from './components/PlanetStage.jsx'
 import TabBar from './components/TabBar.jsx'
-import StarField from './components/StarField.jsx'
-import AtmosphericBackdrop from './components/AtmosphericBackdrop.jsx'
-import BodyHero from './components/BodyHero.jsx'
-import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion.js'
 import MarsTab from './tabs/MarsTab.jsx'
 import MoonTab from './tabs/MoonTab.jsx'
+import { useNow } from './hooks/useNow.js'
 import { DEFAULT_TAB, TABS } from './constants/tabs.js'
 
-function PlanetaryIcon({ activeTab }) {
+/** Planet glyph in the wordmark — matches the original App's PlanetaryIcon. */
+function PlanetMark({ activeTab, size = 44 }) {
   const color = activeTab === 'mars' ? '#b91c1c' : '#94a3b8'
-  const bg = '#020617'
   return (
-    <svg width="44" height="44" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="flex-shrink-0">
-      <circle cx="18" cy="18" r="18" fill={bg} />
+    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" aria-hidden="true" className="flex-shrink-0">
+      <circle cx="18" cy="18" r="18" fill="#04050a" />
       <circle cx="18" cy="18" r="14" fill={color} />
-      <path d="M 18 4 A 14 14 0 0 0 18 32 A 5 14 0 0 1 18 4 Z" fill={bg} />
+      <path d="M 18 4 A 14 14 0 0 0 18 32 A 5 14 0 0 1 18 4 Z" fill="#04050a" />
     </svg>
   )
 }
 
+function nowUtc(now) {
+  const hh = String(now.getUTCHours()).padStart(2, '0')
+  const mm = String(now.getUTCMinutes()).padStart(2, '0')
+  return `${hh}:${mm} UTC`
+}
+
 function App() {
   const [activeTab, setActiveTab] = useState(DEFAULT_TAB)
-  const reducedMotion = usePrefersReducedMotion()
+  const now = useNow()
 
   return (
-    <div className="relative min-h-screen w-full font-sans text-slate-100 antialiased">
-      <AtmosphericBackdrop activeTab={activeTab} reducedMotion={reducedMotion} />
-      <StarField />
-
-      <main className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 md:px-8 py-8 md:py-12">
-        <header className="mb-8 md:mb-12 flex items-center gap-4">
-          <PlanetaryIcon activeTab={activeTab} />
-          <div>
-            <h1 className="font-logo text-xl md:text-2xl tracking-widest uppercase text-white leading-none mb-1">
-              Planetary Conditions
-            </h1>
-            <p className="text-slate-500 text-xs tracking-wide">
-              Real-time surface and space environment data from Mars and the Moon.
-            </p>
+    <PlanetStage activeTab={activeTab}>
+      <main className="mx-auto flex min-h-screen w-full max-w-[1500px] flex-col px-6 pb-11 pt-9 md:px-11 text-slate-100 antialiased">
+        {/* header: wordmark · live chip + tab pills */}
+        <header className="flex flex-wrap items-center justify-between gap-5">
+          <div className="flex items-center gap-4">
+            <PlanetMark activeTab={activeTab} />
+            <div>
+              <h1 className="wordmark text-[19px] leading-none text-white">Planetary Conditions</h1>
+              <p className="mt-1.5 text-[12.5px] text-slate-400">
+                Real-time surface &amp; space-environment telemetry
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3.5">
+            <span className="chip telem">
+              <span className="live-dot" /> Live · {nowUtc(now)}
+            </span>
+            <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
           </div>
         </header>
 
-        <div className="mb-8 md:mb-10">
-          <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
-        </div>
-
-        <div
-          className="grid relative"
-          style={{ gridTemplateColumns: '1fr', minHeight: '70vh' }}
-        >
-          {/* Full-bleed hero: absolute inset-0 within grid cell (BodyHero's outer div uses gridArea:'1/1') */}
-          <BodyHero activeTab={activeTab} reducedMotion={reducedMotion} />
-
-          {/* Glass panel: defines cell height, sits above hero in same grid cell */}
-          <div
-            className="relative z-10 backdrop-blur-md bg-slate-950/50 border border-slate-700/40 rounded-xl p-6 md:p-8 m-4 md:m-8"
-            style={{ gridArea: '1 / 1' }}
-          >
-            {activeTab === TABS.MARS.id && <MarsTab />}
-            {activeTab === TABS.MOON.id && <MoonTab />}
-          </div>
+        {/* tab content fills the rest; each tab floats its bento grid low over the planet */}
+        <div className="flex flex-1 flex-col">
+          {activeTab === TABS.MARS.id && <MarsTab />}
+          {activeTab === TABS.MOON.id && <MoonTab />}
         </div>
       </main>
-    </div>
+    </PlanetStage>
   )
 }
 
