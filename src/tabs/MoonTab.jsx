@@ -1,8 +1,9 @@
 import DataCard from '../components/DataCard.jsx'
+import Gauge from '../components/Gauge.jsx'
+import Icon from '../components/Icon.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
 import AlertCard from '../components/AlertCard.jsx'
 import LastUpdated from '../components/LastUpdated.jsx'
-import LoadingState from '../components/LoadingState.jsx'
 import { useLunarPhase } from '../hooks/useLunarPhase.js'
 import { useSolarWind } from '../hooks/useSolarWind.js'
 import { useDonkiEvents } from '../hooks/useDonkiEvents.js'
@@ -10,217 +11,130 @@ import { deriveRadiationRisk } from '../utils/radiationRisk.js'
 import { formatInt, formatOneDecimal, formatSignedDecimal } from '../utils/formatters.js'
 
 /**
- * MoonTab — live wiring for the three Moon-tab sub-sections.
- *
- * Replaces the prior demo gallery with three independently-sourced sections:
- *
- *   1. Lunar Context (useLunarPhase) — pure computation, 30s tick from useNow.
- *   2. Space Weather — Solar Wind (useSolarWind) — NOAA SWPC, 5min refetch.
- *   3. Solar Event Alerts (useDonkiEvents) — NASA DONKI, 15min refetch.
- *
- * Each section computes its own cardState from its own hook's flags. One
- * section's failure never affects the others' render — the section heading
- * and structure remain visible across all states (per 04-CONTEXT D-30, D-41).
- *
- * Background refetches stay silent: each section reads the first-mount
- * loading flag (and ignores the background-refresh flag) so the 5-minute
- * and 15-minute refetch ticks keep prior values rendered (D-43).
+ * MoonTab — computed lunar context + live NOAA SWPC + NASA DONKI in the glass
+ * bento layout. Each data source keeps its own state (one failing never blanks
+ * the others) and background refetches stay silent — same locks as the
+ * original. Layout mirrors the signed-off "C" direction: hero phase readout ·
+ * SWPC tiles · Kp gauge + radiation risk · solar-event feed.
  */
-
-// Number formatters live in src/utils/formatters.js (per 05-CONTEXT D-16, D-17).
 
 function MoonTab() {
   const lunar = useLunarPhase()
   const swpc = useSolarWind()
   const donki = useDonkiEvents()
 
-  // Per-section cardState — each section is independent. We read isLoading
-  // (and ignore the background-refresh flag) so refetches stay silent.
-  const swpcCardState = swpc.isLoading ? 'loading' : swpc.isError ? 'error' : 'ok'
+  const swpcState = swpc.isLoading ? 'loading' : swpc.isError ? 'error' : 'ok'
+  const swpcTs = swpc.dataUpdatedAt ? new Date(swpc.dataUpdatedAt) : null
 
-  // Timestamps for the per-section LastUpdated chips. Pre-fetch the merged
-  // dataUpdatedAt is 0; the guard converts to null so LastUpdated renders an
-  // em-dash instead of "N years ago" relative to epoch 0 (prior carry-forward).
-  const swpcTimestamp = swpc.dataUpdatedAt ? new Date(swpc.dataUpdatedAt) : null
-  const donkiTimestamp = donki.dataUpdatedAt ? new Date(donki.dataUpdatedAt) : null
-
-  // Lunar values — destructured for clarity. No null guards needed: the
-  // lunar computation cannot fail.
   const phaseName = lunar.phaseName
   const phasePercent = formatInt(lunar.phaseFraction * 100)
   const dayNight = lunar.dayNightStatus
   const surfaceTemp = formatSignedDecimal(lunar.surfaceTempC)
 
-  // Radiation Risk severity — null when either input is missing or when
-  // the SWPC section is loading/errored. We only render the badge when we
-  // have a real severity AND the SWPC card state is 'ok' — StatusBadge
-  // requires a valid severity, so omitting it during loading/error is the
-  // right call (per 04-CONTEXT D-15 + plan layout_spec).
   const radiationSeverity = deriveRadiationRisk({ speed: swpc.speed, kp: swpc.kp })
   const radiationLabel = radiationSeverity
     ? radiationSeverity[0].toUpperCase() + radiationSeverity.slice(1)
     : null
 
   return (
-    <section
-      role="tabpanel"
-      aria-label="Moon conditions"
-      className="text-moon-50 space-y-12"
-    >
-      <header>
-        <h2 className="text-2xl font-bold mb-1">Moon — Conditions</h2>
-        <p className="text-moon-50/60 text-sm italic">
-          Live space weather + computed lunar context
-        </p>
-      </header>
-
-      {/* Section 1: Lunar Context (useLunarPhase, computed locally) */}
-      <section aria-label="Lunar context">
-        <div className="mb-3">
-          <h3 className="text-xs uppercase tracking-wider text-moon-accent/70">
-            Lunar Context
-          </h3>
-          <p className="text-moon-50/60 text-xs">Computed locally</p>
+    <section role="tabpanel" aria-label="Moon conditions" className="flex h-full flex-col text-moon-50">
+      {/* hero phase readout */}
+      <div className="mt-12">
+        <div className="telem" style={{ color: 'var(--moon-accent)', opacity: 0.85, marginBottom: 14 }}>
+          Near side · Computed lunar context + NOAA SWPC
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <DataCard
-            label="Phase Name"
-            value={phaseName}
-            tooltipKey="lunar.phase"
-            palette="moon"
-          />
-          <DataCard
-            label="Phase Percentage"
-            value={phasePercent}
-            unit="%"
-            tooltipKey="lunar.phase"
-            palette="moon"
-          />
-          <DataCard
-            label="Day/Night"
-            value={dayNight}
-            tooltipKey="lunar.dayNight"
-            palette="moon"
-          />
-          <DataCard
-            label="Estimated Surface Temp (visible face)"
-            value={surfaceTemp}
-            unit="°C"
-            tooltipKey="lunar.surfaceTemp"
-            palette="moon"
-          />
+        <div className="flex flex-wrap items-end gap-6">
+          <div>
+            <div className="telem mb-2.5 text-slate-400">Current Phase</div>
+            <div className="flex items-baseline gap-3.5">
+              <span className="stat-num text-white" style={{ fontSize: 60 }}>{phaseName}</span>
+              <span className="stat-num" style={{ fontSize: 38, color: 'var(--moon-accent)' }}>{phasePercent}%</span>
+            </div>
+          </div>
+          <span className="chip mb-2.5" style={{ color: 'var(--moon-accent)' }}>
+            <Icon name="moon" size={15} />
+            <span className="text-[13px] font-semibold">{dayNight}</span>
+          </span>
         </div>
-      </section>
+      </div>
 
-      {/* Section 2: Space Weather — Solar Wind (useSolarWind, 5min refetch) */}
-      <section aria-label="Space weather solar wind">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xs uppercase tracking-wider text-moon-accent/70">
-            Space Weather — Solar Wind
-          </h3>
-          <LastUpdated timestamp={swpcTimestamp} palette="moon" />
-        </div>
+      {/* spacer pushes the bento grid into the lower frame so the planet reads above it */}
+      <div className="flex-1 min-h-[300px]" />
 
-        {swpcCardState === 'ok' && radiationSeverity && (
-          <div className="mb-4">
-            <StatusBadge
-              severity={radiationSeverity}
-              label="Radiation Risk"
-              value={radiationLabel}
-              tooltipKey="swpc.radiationRisk"
+      {/* bento grid */}
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <DataCard label="Solar Wind" value={formatInt(swpc.speed)} unit="km/s" icon="wind" sub="Bulk speed" tooltipKey="swpc.speed" state={swpcState} palette="moon" />
+        <DataCard label="Wind Density" value={formatOneDecimal(swpc.density)} unit="p/cm³" icon="activity" sub="Proton" tooltipKey="swpc.density" state={swpcState} palette="moon" />
+        <DataCard label="Bz Component" value={formatSignedDecimal(swpc.bz)} unit="nT" icon="magnet" sub="IMF N/S" tooltipKey="swpc.bz" state={swpcState} palette="moon" />
+        <DataCard label="Surface Temp" value={surfaceTemp} unit="°C" icon="thermo" sub="Visible face" tooltipKey="lunar.surfaceTemp" palette="moon" />
+
+        {/* Kp gauge + radiation risk feature */}
+        <div className="glass rim-moon flex flex-col justify-between lg:row-span-2" style={{ padding: 24 }}>
+          <div className="flex items-center justify-between">
+            <span className="telem text-slate-400">Geomagnetic · Kp</span>
+            <span style={{ color: 'var(--moon-accent)' }}><Icon name="radio" size={18} /></span>
+          </div>
+          <div className="flex justify-center py-1.5">
+            <Gauge
+              value={swpcState === 'ok' ? (formatOneDecimal(swpc.kp) ?? '—') : '—'}
+              numericValue={swpc.kp ?? 0}
+              min={0}
+              max={9}
+              unit="Kp"
+              accent="#cbd5e1"
+              size={176}
             />
           </div>
-        )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Solar Wind Speed"
-              value={formatInt(swpc.speed)}
-              unit="km/s"
-              tooltipKey="swpc.speed"
-              state={swpcCardState}
-              palette="moon"
-            />
-            <LastUpdated timestamp={swpcTimestamp} palette="moon" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Solar Wind Density"
-              value={formatOneDecimal(swpc.density)}
-              unit="p/cm³"
-              tooltipKey="swpc.density"
-              state={swpcCardState}
-              palette="moon"
-            />
-            <LastUpdated timestamp={swpcTimestamp} palette="moon" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Bz"
-              value={formatSignedDecimal(swpc.bz)}
-              unit="nT"
-              tooltipKey="swpc.bz"
-              state={swpcCardState}
-              palette="moon"
-            />
-            <LastUpdated timestamp={swpcTimestamp} palette="moon" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Kp Index"
-              value={formatOneDecimal(swpc.kp)}
-              tooltipKey="swpc.kp"
-              state={swpcCardState}
-              palette="moon"
-            />
-            <LastUpdated timestamp={swpcTimestamp} palette="moon" />
+          <div className="flex items-center justify-between" style={{ padding: '10px 14px', borderRadius: 14, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--glass-border)' }}>
+            <span className="telem text-slate-400">Radiation risk</span>
+            {swpcState === 'ok' && radiationSeverity ? (
+              <StatusBadge severity={radiationSeverity} value={radiationLabel} tooltipKey="swpc.radiationRisk" />
+            ) : (
+              <span className="telem text-slate-500">—</span>
+            )}
           </div>
         </div>
-      </section>
 
-      {/* Section 3: Solar Event Alerts (useDonkiEvents, 15min refetch) */}
-      <section aria-label="Solar event alerts">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xs uppercase tracking-wider text-moon-accent/70">
-            Solar Event Alerts (last 7 days)
-          </h3>
-          <LastUpdated timestamp={donkiTimestamp} palette="moon" />
+        {/* solar event feed */}
+        <div className="glass flex flex-col gap-3 lg:col-span-3 lg:row-span-2" style={{ padding: '20px 22px' }}>
+          <div className="flex items-center justify-between">
+            <span className="telem text-slate-400">Solar Event Alerts · last 7 days · NASA DONKI</span>
+            <LastUpdated timestamp={donki.dataUpdatedAt ? new Date(donki.dataUpdatedAt) : null} palette="moon" />
+          </div>
+
+          {donki.isLoading ? (
+            <div className="flex flex-col gap-2">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="animate-pulse" style={{ height: 56, borderRadius: 14, background: 'rgba(255,255,255,0.04)' }} />
+              ))}
+            </div>
+          ) : donki.isError ? (
+            <div className="text-sm italic text-slate-500">Data temporarily unavailable</div>
+          ) : donki.events.length === 0 ? (
+            <div className="py-6 text-center text-sm italic text-moon-50/60">
+              No significant events in the past 7 days — conditions are calm.
+            </div>
+          ) : (
+            <div
+              className="thin-scroll flex flex-col gap-2"
+              style={{ overflowY: 'auto', paddingRight: 4 }}
+              tabIndex={0}
+              role="region"
+              aria-label="Recent solar events"
+            >
+              {donki.events.map((ev) => (
+                <AlertCard
+                  key={`${ev.type}-${ev.id}`}
+                  eventType={ev.type}
+                  timeUtc={ev.time}
+                  severity={ev.severity}
+                  tooltipKey={ev.tooltipKey}
+                />
+              ))}
+            </div>
+          )}
         </div>
-
-        {donki.isLoading ? (
-          <div className="flex flex-col gap-2">
-            <div className="h-14"><LoadingState /></div>
-            <div className="h-14"><LoadingState /></div>
-            <div className="h-14"><LoadingState /></div>
-          </div>
-        ) : donki.isError ? (
-          <div className="text-sm text-slate-500 italic px-3 py-4 bg-space-900/40 rounded-md">
-            Data temporarily unavailable
-          </div>
-        ) : donki.events.length === 0 ? (
-          <div className="text-sm text-moon-50/60 italic py-6 text-center">
-            No significant events in the past 7 days — conditions are calm.
-          </div>
-        ) : (
-          <div
-            className="flex flex-col gap-2 max-h-96 overflow-y-auto pr-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-moon-accent"
-            tabIndex={0}
-            role="region"
-            aria-label="Recent solar events"
-          >
-            {donki.events.map((ev) => (
-              <AlertCard
-                key={`${ev.type}-${ev.id}`}
-                eventType={ev.type}
-                timeUtc={ev.time}
-                severity={ev.severity}
-                tooltipKey={ev.tooltipKey}
-              />
-            ))}
-          </div>
-        )}
-      </section>
+      </div>
     </section>
   )
 }

@@ -1,182 +1,129 @@
 import DataCard from '../components/DataCard.jsx'
+import Gauge from '../components/Gauge.jsx'
+import Icon from '../components/Icon.jsx'
+import SolLogFeed from '../components/SolLogFeed.jsx'
 import LastUpdated from '../components/LastUpdated.jsx'
 import { useMarsData } from '../hooks/useMarsData.js'
 import { formatInt, formatOneDecimal } from '../utils/formatters.js'
 
 /**
- * MarsTab — Phase 3 live wiring.
+ * MarsTab — Curiosity REMS conditions in the glass bento layout.
  *
- * Replaces the Phase 2 demo gallery with a real Curiosity REMS dashboard for
- * the latest Martian sol. One useMarsData() call drives all eight DataCards;
- * isLoading propagates to every card on first mount, isError on failure, and
- * dataUpdatedAt drives both the tab-level chip and per-card chips.
+ * One useMarsData() call drives the whole tab; cardState propagates the
+ * first-mount loading / hard-error state to every card (hourly background
+ * refetches stay silent, per the original D-18 lock). Tooltips, LastUpdated
+ * and the formatters are unchanged from the original wiring.
  *
- * Background refetches every 1 hour: we read isLoading (and ignore the
- * background-refresh flag) so the hourly refresh is silent — prior values stay
- * on screen.
+ * Layout (the signed-off "C" direction):
+ *   hero high/low readout · 4 context tiles · pressure gauge · REMS sol log.
  *
- * Source: MAAS2 (https://api.maas2.apollorion.com/) wrapping Curiosity REMS.
+ * NOTE: MAAS2 returns only the latest sol, so the sol-log feed shows one live
+ * row today. See INTEGRATION.md → "Mars sol history" to wire multiple sols.
  */
 
-// Source attribution string lives as a component-local constant per D-13.
-// If Phase 4 ends up needing the same pattern, this is a candidate for
-// src/constants/sources.js — but doesn't exist yet and isn't worth pre-extracting.
-const SOURCE_LINE = 'From Curiosity Rover · REMS instrument'
+const SOURCE = 'Gale Crater · 4.6°S 137.4°E · Curiosity REMS'
 
-// Number formatters live in src/utils/formatters.js (per 05-CONTEXT D-16).
+function opacitySeverity(opacity) {
+  if (!opacity) return 'sev-low'
+  return /sunny|clear/i.test(opacity) ? 'sev-low' : 'sev-mod'
+}
 
 function MarsTab() {
   const { data, isLoading, isError, dataUpdatedAt } = useMarsData()
-
-  // Shared card state — first-mount loading or hard error covers every card.
-  // The background-refresh flag is intentionally NOT consulted: hourly refetches
-  // stay silent so prior values remain on screen (D-18).
   const cardState = isLoading ? 'loading' : isError ? 'error' : 'ok'
-
-  // Timestamp prop for LastUpdated: convert epoch ms to Date, but pass null
-  // BEFORE the first successful fetch so LastUpdated renders an em-dash instead
-  // of "N years ago" relative to epoch 0.
   const timestamp = dataUpdatedAt ? new Date(dataUpdatedAt) : null
 
-  // MAAS2 field bindings (per Discussion.md §5 and 03-CONTEXT D-25, D-26, D-27).
-  // When state !== 'ok', DataCard ignores `value` — so passing undefined for
-  // the loading/error branches is safe; we still pass formatted values so the
-  // post-fetch state needs no further code.
-  const sol = data ? formatInt(data.sol) : undefined
-  const earthDate = data ? data.terrestrial_date : undefined          // raw string per D-27
-  const minTemp = data ? formatOneDecimal(data.min_temp) : undefined
-  const maxTemp = data ? formatOneDecimal(data.max_temp) : undefined
-  const pressure = data ? formatInt(data.pressure) : undefined        // integer Pa per D-26
-  const windSpeed = data ? formatOneDecimal(data.wind_speed) : undefined
-  const humidity = data ? formatOneDecimal(data.humidity) : undefined
-  const opacity = data ? data.atmo_opacity : undefined                // verbatim categorical per D-15
+  const sol = data ? formatInt(data.sol) : null
+  const earthDate = data ? data.terrestrial_date : null
+  const minTemp = data ? formatOneDecimal(data.min_temp) : null
+  const maxTemp = data ? formatOneDecimal(data.max_temp) : null
+  const pressure = data ? formatInt(data.pressure) : null
+  const windSpeed = data ? formatOneDecimal(data.wind_speed) : null
+  const humidity = data ? formatOneDecimal(data.humidity) : null
+  const opacity = data ? data.atmo_opacity : null
+
+  // Single live sol → one feed row. Built as an array so adding history later
+  // (INTEGRATION.md) requires no layout change.
+  const solHistory = data
+    ? [{
+        sol: sol,
+        earthDate: earthDate,
+        condition: opacity || undefined,
+        tempRange: `${maxTemp ?? '—'}° / ${minTemp ?? '—'}°C`,
+        pressure: pressure ? `${pressure} Pa` : undefined,
+        severity: opacitySeverity(opacity),
+      }]
+    : []
 
   return (
-    <section
-      role="tabpanel"
-      aria-label="Mars conditions"
-      className="text-mars-50 space-y-8"
-    >
-      {/* Tab header: title, source attribution, tab-level LastUpdated */}
-      <header className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h2 className="text-2xl font-bold mb-1">Mars — Surface Conditions</h2>
-          <p className="text-mars-50/60 text-sm italic">{SOURCE_LINE}</p>
+    <section role="tabpanel" aria-label="Mars conditions" className="flex h-full flex-col text-mars-50">
+      {/* hero readout — floats over the sky above the planet */}
+      <div className="mt-12">
+        <div className="telem" style={{ color: 'var(--mars-accent)', opacity: 0.85, marginBottom: 14 }}>{SOURCE}</div>
+        <div className="flex flex-wrap items-end gap-7">
+          <div>
+            <div className="telem mb-2.5 text-slate-400">
+              {sol ? `Sol ${sol} · ${earthDate}` : 'Surface conditions'}
+            </div>
+            <div className="flex items-baseline gap-1">
+              <span className="stat-num text-white" style={{ fontSize: 84 }}>{maxTemp ?? '—'}</span>
+              <span className="stat-num" style={{ fontSize: 34, color: 'var(--mars-accent)' }}>°C</span>
+              <span className="stat-num ml-2.5" style={{ fontSize: 40, color: 'rgba(241,245,249,0.35)' }}>/ {minTemp ?? '—'}°</span>
+            </div>
+          </div>
+          <span className="chip mb-3" style={{ color: 'var(--mars-accent)', borderColor: 'rgba(245,158,11,0.32)' }}>
+            <Icon name="sun" size={15} />
+            <span className="text-[13px] font-semibold">{opacity || 'Sky clarity'}</span>
+          </span>
+          <LastUpdated timestamp={timestamp} palette="mars" />
         </div>
-        <LastUpdated timestamp={timestamp} palette="mars" />
-      </header>
+      </div>
 
-      {/* Section 1: Sol context */}
-      <section aria-label="Sol context">
-        <h3 className="text-xs uppercase tracking-wider text-mars-accent/70 mb-3">
-          Sol Context
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Sol"
-              value={sol}
-              tooltipKey="mars.sol"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Earth Date"
-              value={earthDate}
-              tooltipKey="mars.earthDate"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
-          </div>
-        </div>
-      </section>
+      {/* spacer pushes the bento grid into the lower frame so the planet reads above it */}
+      <div className="flex-1 min-h-[300px]" />
 
-      {/* Section 2: Temperature & atmosphere */}
-      <section aria-label="Temperature and atmosphere">
-        <h3 className="text-xs uppercase tracking-wider text-mars-accent/70 mb-3">
-          Temperature &amp; Atmosphere
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Min Temp"
-              value={minTemp}
-              unit="°C"
-              tooltipKey="mars.minTemp"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
+      {/* bento grid */}
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <DataCard label="Min Temp" value={minTemp} unit="°C" icon="thermo" sub="Pre-dawn" tooltipKey="mars.minTemp" state={cardState} palette="mars" />
+        <DataCard label="Max Temp" value={maxTemp} unit="°C" icon="thermo" sub="Afternoon" tooltipKey="mars.maxTemp" state={cardState} palette="mars" />
+        <DataCard label="Wind Speed" value={windSpeed} unit="m/s" icon="wind" sub="Surface" tooltipKey="mars.windSpeed" state={cardState} palette="mars" />
+        <DataCard label="Humidity" value={humidity} unit="%" icon="drop" sub="Relative" tooltipKey="mars.humidity" state={cardState} palette="mars" />
+
+        {/* pressure gauge feature */}
+        <div className="glass rim-mars flex flex-col justify-between lg:row-span-2" style={{ padding: 24 }}>
+          <div className="flex items-center justify-between">
+            <span className="telem text-slate-400">Surface Pressure</span>
+            <span style={{ color: 'var(--mars-accent)' }}><Icon name="gauge" size={18} /></span>
           </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Max Temp"
-              value={maxTemp}
-              unit="°C"
-              tooltipKey="mars.maxTemp"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Pressure"
-              value={pressure}
+          <div className="flex justify-center py-1.5">
+            <Gauge
+              value={pressure ?? '—'}
+              numericValue={data ? Number(data.pressure) : 0}
+              min={600}
+              max={900}
               unit="Pa"
-              tooltipKey="mars.pressure"
-              state={cardState}
-              palette="mars"
+              band="Surface"
+              accent="#f59e0b"
+              size={176}
             />
-            <LastUpdated timestamp={timestamp} palette="mars" />
           </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Humidity"
-              value={humidity}
-              unit="%"
-              tooltipKey="mars.humidity"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
+          <div className="flex items-center justify-between" style={{ padding: '10px 14px', borderRadius: 14, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--glass-border)' }}>
+            <span className="telem text-slate-400">Sky opacity</span>
+            <span className={`sev ${opacitySeverity(opacity)}`}>{cardState === 'ok' ? (opacity || '—') : '—'}</span>
           </div>
         </div>
-      </section>
 
-      {/* Section 3: Wind & sky */}
-      <section aria-label="Wind and sky">
-        <h3 className="text-xs uppercase tracking-wider text-mars-accent/70 mb-3">
-          Wind &amp; Sky
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Wind Speed"
-              value={windSpeed}
-              unit="m/s"
-              tooltipKey="mars.windSpeed"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
+        {/* REMS sol log */}
+        <div className="glass flex flex-col gap-3 lg:col-span-3 lg:row-span-2" style={{ padding: '20px 22px' }}>
+          <div className="flex items-center justify-between">
+            <span className="telem text-slate-400">REMS Sol Log · Curiosity</span>
+            <span className="telem flex items-center gap-1.5" style={{ color: 'var(--mars-accent)' }}>
+              {solHistory.length} sol{solHistory.length === 1 ? '' : 's'} <Icon name="arrow" size={12} />
+            </span>
           </div>
-          <div className="flex flex-col gap-2">
-            <DataCard
-              label="Atmospheric Opacity"
-              value={opacity}
-              tooltipKey="mars.opacity"
-              state={cardState}
-              palette="mars"
-            />
-            <LastUpdated timestamp={timestamp} palette="mars" />
-          </div>
+          <SolLogFeed items={solHistory} state={cardState} />
         </div>
-      </section>
+      </div>
     </section>
   )
 }

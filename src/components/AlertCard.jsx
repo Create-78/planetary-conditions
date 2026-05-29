@@ -2,31 +2,22 @@ import TooltipWrapper from './TooltipWrapper.jsx'
 import { getTooltip } from '../constants/tooltips.js'
 
 /**
- * AlertCard — compact horizontal row for a single space-weather event.
+ * AlertCard — glass feed row for a single space-weather event (NASA DONKI).
  *
- * Layout (per 02-CONTEXT `## Alert card`):
- *   [event-type badge] [severity (bold) + UTC time (dim) + optional description]   [info icon]
- *
- * Event-type badge colors are neutral / type-specific (indigo CME, orange FLR,
- * fuchsia GST) so severity reads as the primary signal, not the type chrome.
- *
- * Empty-state copy lives in the DONKI feature consumer (Phase 4 §4c), not here.
- *
- * Props:
- *   - eventType    'CME' | 'FLR' | 'GST' (extensible)
- *   - timeUtc      ISO 8601 string — formatted as "DD Mon HH:MM UTC"
- *   - severity     string — e.g. "M2.3", "G2", "Halo CME"
- *   - description  string (optional) — short freeform context line
- *   - tooltipKey   string (optional) — key into TOOLTIPS for the info icon
+ * API unchanged (eventType, timeUtc, severity, description, tooltipKey).
+ * Layout: [type badge] [severity (bold) + UTC time + optional description] [ⓘ].
+ * Type badge tint is event-specific so severity still reads as the primary
+ * signal; the row sits on a faint glass fill consistent with the feed cards.
  */
 
-const EVENT_CLASSES = {
-  CME: 'bg-indigo-700/40 text-indigo-200 ring-indigo-500/30',
-  FLR: 'bg-orange-700/40 text-orange-200 ring-orange-500/30',
-  GST: 'bg-fuchsia-700/40 text-fuchsia-200 ring-fuchsia-500/30',
+const TYPE_TINT = {
+  CME: { color: '#a5b4fc', bg: 'rgba(99,102,241,0.14)', border: 'rgba(99,102,241,0.32)' },
+  FLR: { color: '#fdba74', bg: 'rgba(249,115,22,0.14)', border: 'rgba(249,115,22,0.32)' },
+  GST: { color: '#f0abfc', bg: 'rgba(217,70,239,0.14)', border: 'rgba(217,70,239,0.32)' },
+  HSS: { color: '#7dd3fc', bg: 'rgba(56,189,248,0.14)', border: 'rgba(56,189,248,0.32)' },
+  SEP: { color: '#fcd34d', bg: 'rgba(245,158,11,0.14)', border: 'rgba(245,158,11,0.32)' },
 }
-
-const FALLBACK_EVENT_CLASS = 'bg-slate-700/40 text-slate-200 ring-slate-500/30'
+const FALLBACK_TINT = { color: '#cbd5e1', bg: 'rgba(148,163,184,0.14)', border: 'rgba(148,163,184,0.3)' }
 
 function formatUtc(iso) {
   if (!iso) return '—'
@@ -40,38 +31,35 @@ function formatUtc(iso) {
 }
 
 function AlertCard({ eventType, timeUtc, severity, description, tooltipKey }) {
-  const eventClasses = EVENT_CLASSES[eventType] || FALLBACK_EVENT_CLASS
+  const tint = TYPE_TINT[eventType] || FALLBACK_TINT
   const tip = tooltipKey ? getTooltip(tooltipKey) : null
 
-  // The info icon is a static visual affordance — hover (desktop) and tap
-  // (touch, per TooltipWrapper IS_TOUCH path) drive the tooltip. No button
-  // ARIA role is advertised because we do not implement Enter/Space
-  // activation (per 05-CONTEXT D-12 / 02-REVIEW WR-01 — a false ARIA
-  // contract is worse than no contract).
   const infoIcon = tip ? (
     <TooltipWrapper content={tip.text}>
-      <span
-        className="ml-auto text-slate-500 text-xs cursor-help"
-        aria-label="More info"
-      >
-        ⓘ
-      </span>
+      <span className="ml-auto text-slate-500 text-xs cursor-help" aria-label="More info">ⓘ</span>
     </TooltipWrapper>
   ) : null
 
   return (
-    <article className="flex items-center gap-3 rounded-md bg-space-900/60 ring-1 ring-slate-800/60 px-3 py-2">
+    <article
+      className="flex items-center gap-4"
+      style={{
+        padding: '12px 16px',
+        borderRadius: 14,
+        background: 'rgba(255,255,255,0.035)',
+        border: '1px solid var(--glass-border)',
+      }}
+    >
       <span
-        className={`rounded-full px-2.5 py-0.5 ring-1 text-[10px] font-bold uppercase tracking-wider ${eventClasses}`}
+        className="sev"
+        style={{ minWidth: 50, justifyContent: 'center', color: tint.color, background: tint.bg, border: `1px solid ${tint.border}` }}
       >
         {eventType}
       </span>
       <div className="flex flex-col">
-        <span className="text-sm font-semibold text-slate-100">{severity}</span>
-        <span className="text-xs text-slate-400">{formatUtc(timeUtc)}</span>
-        {description ? (
-          <span className="text-xs text-slate-300 mt-0.5">{description}</span>
-        ) : null}
+        <span className="text-[15px] font-semibold text-slate-100">{severity}</span>
+        <span className="telem" style={{ color: 'rgba(241,245,249,0.4)', marginTop: 4 }}>{formatUtc(timeUtc)}</span>
+        {description ? <span className="text-xs text-slate-300 mt-1">{description}</span> : null}
       </div>
       {infoIcon}
     </article>
