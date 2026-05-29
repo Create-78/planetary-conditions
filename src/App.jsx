@@ -47,7 +47,7 @@ function App() {
         </div>
 
         <div
-          className="grid"
+          className="grid relative"
           style={{ gridTemplateColumns: '1fr', minHeight: '70vh' }}
         >
           {/* Full-bleed hero: absolute inset-0 within grid cell (BodyHero's outer div uses gridArea:'1/1') */}
